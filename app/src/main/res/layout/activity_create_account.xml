@@ -132,7 +132,7 @@
             android:layout_alignStart="@+id/ssnEdit"
             android:elevation="16dp"
             android:hint="Insert fullname"
-            android:inputType="textPersonName"
+            android:inputType="text"
             android:textAppearance="@style/TextAppearance.AppCompat" />
 
 
@@ -148,7 +148,7 @@
             android:layout_alignStart="@+id/usernameEdit"
             android:ems="10"
             android:hint="Insert Social Security Number"
-            android:inputType="textPersonName"
+            android:inputType="number"
             android:textAppearance="@style/TextAppearance.AppCompat" />
 
         <EditText
@@ -162,7 +162,7 @@
             android:layout_alignRight="@+id/ssnEdit"
             android:layout_alignStart="@+id/ssnEdit"
             android:ems="10"
-            android:hint="Insert Birthday"
+            android:hint="Insert Birthday : mm/dd/yyyy"
             android:inputType="date"
             android:textAppearance="@style/TextAppearance.AppCompat" />
 
@@ -191,7 +191,7 @@
             android:layout_below="@+id/emailEdit"
             android:ems="10"
             android:hint="username"
-            android:inputType="textPersonName"
+            android:inputType="text"
             android:textAppearance="@style/TextAppearance.AppCompat" />
 
         <EditText
@@ -203,7 +203,7 @@
             android:layout_toRightOf="@+id/textView9"
             android:ems="10"
             android:hint="password"
-            android:inputType="textPersonName" />
+            android:inputType="text" />
 
         <EditText
             android:id="@+id/initialDepositEdit"
@@ -224,7 +224,7 @@
         android:id="@+id/createAccountbtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="singUpClick"
+        android:onClick="CreateAccountBtn"
         android:text="Create Account"
         android:textAppearance="@android:style/TextAppearance.Holo.Widget.Button"
         android:layout_alignParentBottom="true"

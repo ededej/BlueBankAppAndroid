@@ -21,6 +21,9 @@
    
 package bluebankapp.swe443.bluebankappandroid.myapplication.resource;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import de.uniks.networkparser.interfaces.SendableEntity;
 import java.beans.PropertyChangeSupport;
 import java.beans.PropertyChangeListener;
@@ -33,8 +36,7 @@ import bluebankapp.swe443.bluebankappandroid.myapplication.resource.User;
     * 
     * @see <a href='../../../../../../../../../app/src/test/java/bluebankapp/swe443/bluebankappandroid/ExampleUnitTest.java'>ExampleUnitTest.java</a>
  */
-   public  class Bank implements SendableEntity
-{
+   public  class Bank implements SendableEntity, Parcelable {
 
    
    //==========================================================================
@@ -330,5 +332,40 @@ import bluebankapp.swe443.bluebankappandroid.myapplication.resource.User;
       User value = new User();
       withUser_In(value);
       return value;
-   } 
-}
+   }
+
+      @Override
+      public int describeContents() {
+         return 0;
+      }
+
+      @Override
+      public void writeToParcel(Parcel dest, int flags) {
+         dest.writeSerializable(this.listeners);
+         dest.writeString(this.bankName);
+         dest.writeParcelable((Parcelable) this.Account_Has, flags);
+         dest.writeParcelable((Parcelable) this.User_In, flags);
+      }
+
+      public Bank() {
+      }
+
+      protected Bank(Parcel in) {
+         this.listeners = (PropertyChangeSupport) in.readSerializable();
+         this.bankName = in.readString();
+         this.Account_Has = in.readParcelable(AccountSet.class.getClassLoader());
+         this.User_In = in.readParcelable(UserSet.class.getClassLoader());
+      }
+
+      public static final Parcelable.Creator<Bank> CREATOR = new Parcelable.Creator<Bank>() {
+         @Override
+         public Bank createFromParcel(Parcel source) {
+            return new Bank(source);
+         }
+
+         @Override
+         public Bank[] newArray(int size) {
+            return new Bank[size];
+         }
+      };
+   }

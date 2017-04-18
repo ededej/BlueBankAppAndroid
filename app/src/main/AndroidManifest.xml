@@ -16,6 +16,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".CreateAccountActivity" />
+        <activity android:name=".BankMainActivity" />
+        <activity android:name=".WithdrawDepositActivity" />
+        <activity android:name=".TransferActivity" />
+        <activity android:name=".ManageAccountActivity" />
+        <activity android:name=".SupportActivity"></activity>
     </application>
 
 </manifest>

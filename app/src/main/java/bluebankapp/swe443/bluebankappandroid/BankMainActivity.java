@@ -5,7 +5,10 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
+import bluebankapp.swe443.bluebankappandroid.myapplication.resource.Bank;
+
 public class BankMainActivity extends AppCompatActivity {
+    //Bank blue = new Bank();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -21,6 +21,9 @@
    
 package bluebankapp.swe443.bluebankappandroid.myapplication.resource;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import de.uniks.networkparser.interfaces.SendableEntity;
 import java.beans.PropertyChangeSupport;
 import java.beans.PropertyChangeListener;
@@ -32,8 +35,7 @@ import bluebankapp.swe443.bluebankappandroid.myapplication.resource.Bank;
     * 
     * @see <a href='../../../../../../../../../app/src/test/java/bluebankapp/swe443/bluebankappandroid/ExampleUnitTest.java'>ExampleUnitTest.java</a>
  */
-   public  class User implements SendableEntity
-{
+   public  class User implements SendableEntity, Parcelable {
 
    
    //==========================================================================
@@ -260,5 +262,40 @@ import bluebankapp.swe443.bluebankappandroid.myapplication.resource.Bank;
       Bank value = new Bank();
       withBank_has(value);
       return value;
-   } 
-}
+   }
+
+      @Override
+      public int describeContents() {
+         return 0;
+      }
+
+      @Override
+      public void writeToParcel(Parcel dest, int flags) {
+         dest.writeSerializable(this.listeners);
+         dest.writeString(this.userName);
+         dest.writeParcelable((Parcelable) this.Account_Has, flags);
+         dest.writeParcelable(this.Bank_has, flags);
+      }
+
+      public User() {
+      }
+
+      protected User(Parcel in) {
+         this.listeners = (PropertyChangeSupport) in.readSerializable();
+         this.userName = in.readString();
+         this.Account_Has = in.readParcelable(AccountSet.class.getClassLoader());
+         this.Bank_has = in.readParcelable(Bank.class.getClassLoader());
+      }
+
+      public static final Parcelable.Creator<User> CREATOR = new Parcelable.Creator<User>() {
+         @Override
+         public User createFromParcel(Parcel source) {
+            return new User(source);
+         }
+
+         @Override
+         public User[] newArray(int size) {
+            return new User[size];
+         }
+      };
+   }

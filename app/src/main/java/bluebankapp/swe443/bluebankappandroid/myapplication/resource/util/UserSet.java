@@ -21,6 +21,9 @@
    
 package bluebankapp.swe443.bluebankappandroid.myapplication.resource.util;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import de.uniks.networkparser.list.SimpleSet;
 import bluebankapp.swe443.bluebankappandroid.myapplication.resource.User;
 import de.uniks.networkparser.interfaces.Condition;
@@ -32,9 +35,23 @@ import bluebankapp.swe443.bluebankappandroid.myapplication.resource.Account;
 import bluebankapp.swe443.bluebankappandroid.myapplication.resource.util.BankSet;
 import bluebankapp.swe443.bluebankappandroid.myapplication.resource.Bank;
 
-public class UserSet extends SimpleSet<User>
-{
-	protected Class<?> getTypClass() {
+public class UserSet extends SimpleSet<User> implements Parcelable {
+   protected UserSet(Parcel in) {
+   }
+
+   public static final Creator<UserSet> CREATOR = new Creator<UserSet>() {
+      @Override
+      public UserSet createFromParcel(Parcel in) {
+         return new UserSet(in);
+      }
+
+      @Override
+      public UserSet[] newArray(int size) {
+         return new UserSet[size];
+      }
+   };
+
+   protected Class<?> getTypClass() {
 		return User.class;
 	}
 
@@ -331,4 +348,12 @@ public class UserSet extends SimpleSet<User>
       return this;
    }
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+    }
 }

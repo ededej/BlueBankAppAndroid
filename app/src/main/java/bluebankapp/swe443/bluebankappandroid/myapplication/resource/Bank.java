@@ -334,6 +334,9 @@ import bluebankapp.swe443.bluebankappandroid.myapplication.resource.User;
       return value;
    }
 
+      public Bank() {
+      }
+
       @Override
       public int describeContents() {
          return 0;
@@ -343,11 +346,8 @@ import bluebankapp.swe443.bluebankappandroid.myapplication.resource.User;
       public void writeToParcel(Parcel dest, int flags) {
          dest.writeSerializable(this.listeners);
          dest.writeString(this.bankName);
-         dest.writeParcelable((Parcelable) this.Account_Has, flags);
-         dest.writeParcelable((Parcelable) this.User_In, flags);
-      }
-
-      public Bank() {
+         dest.writeParcelable(this.Account_Has, flags);
+         dest.writeParcelable(this.User_In, flags);
       }
 
       protected Bank(Parcel in) {
@@ -357,7 +357,7 @@ import bluebankapp.swe443.bluebankappandroid.myapplication.resource.User;
          this.User_In = in.readParcelable(UserSet.class.getClassLoader());
       }
 
-      public static final Parcelable.Creator<Bank> CREATOR = new Parcelable.Creator<Bank>() {
+      public static final Creator<Bank> CREATOR = new Creator<Bank>() {
          @Override
          public Bank createFromParcel(Parcel source) {
             return new Bank(source);

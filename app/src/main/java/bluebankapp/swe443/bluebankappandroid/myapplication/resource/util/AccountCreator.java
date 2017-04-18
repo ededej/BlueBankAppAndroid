@@ -166,7 +166,7 @@ public class AccountCreator implements SendableEntityCreator
 
       if (Account.PROPERTY_DOB.equalsIgnoreCase(attrName))
       {
-         ((Account) target).setDob((Object) value);
+         ((Account) target).setDob((String) value);
          return true;
       }
 

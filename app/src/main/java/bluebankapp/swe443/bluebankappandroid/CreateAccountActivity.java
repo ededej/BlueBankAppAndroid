@@ -28,7 +28,7 @@ public class CreateAccountActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        blue = (Bank) getIntent().getParcelableExtra("bank");;
+        blue = (Bank) getIntent().getParcelableExtra("bank");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_account);
         name = (EditText) findViewById(R.id.fullNameEdit);
@@ -136,18 +136,20 @@ public class CreateAccountActivity extends AppCompatActivity {
             valid = false;
         } else {
             acct.setInitialAmount(Double.parseDouble(initial.getText().toString()));
+            acct.setAccountBalance(Double.parseDouble(initial.getText().toString()));
             valid = true;
         }
 
 
         if(valid == true){
+            blue.withAccount_Has(acct);
+            acct.withBank_has(blue);
+            new_user.withAccount_Has(acct);
+
             Intent bankMainIntent = new Intent(CreateAccountActivity.this,BankMainActivity.class);
+            bankMainIntent.putExtra("bank",blue);
+            bankMainIntent.putExtra("current_acct",acct);
             startActivity(bankMainIntent);
         }
-
-
-        blue.withAccount_Has(acct);
-        acct.withBank_has(blue);
-        new_user.withAccount_Has(acct);
     }
 }

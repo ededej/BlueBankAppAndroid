@@ -21,6 +21,9 @@
    
 package bluebankapp.swe443.bluebankappandroid.myapplication.resource.util;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import de.uniks.networkparser.list.SimpleSet;
 import bluebankapp.swe443.bluebankappandroid.myapplication.resource.Account;
 import de.uniks.networkparser.interfaces.Condition;
@@ -32,9 +35,23 @@ import bluebankapp.swe443.bluebankappandroid.myapplication.resource.User;
 import bluebankapp.swe443.bluebankappandroid.myapplication.resource.util.BankSet;
 import bluebankapp.swe443.bluebankappandroid.myapplication.resource.Bank;
 
-public class AccountSet extends SimpleSet<Account>
-{
-	protected Class<?> getTypClass() {
+public class AccountSet extends SimpleSet<Account> implements Parcelable {
+   protected AccountSet(Parcel in) {
+   }
+
+   public static final Creator<AccountSet> CREATOR = new Creator<AccountSet>() {
+      @Override
+      public AccountSet createFromParcel(Parcel in) {
+         return new AccountSet(in);
+      }
+
+      @Override
+      public AccountSet[] newArray(int size) {
+         return new AccountSet[size];
+      }
+   };
+
+   protected Class<?> getTypClass() {
 		return Account.class;
 	}
 
@@ -326,7 +343,7 @@ public class AccountSet extends SimpleSet<Account>
     * 
     * @return Current set of Account objects now with new attribute values.
     */
-   public AccountSet withDob(Object value)
+   public AccountSet withDob(String value)
    {
       for (Account obj : this)
       {
@@ -964,4 +981,12 @@ public class AccountSet extends SimpleSet<Account>
       return this;
    }
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+    }
 }

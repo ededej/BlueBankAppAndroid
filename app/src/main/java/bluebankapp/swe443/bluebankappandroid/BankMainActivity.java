@@ -4,16 +4,27 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.TextView;
 
+import bluebankapp.swe443.bluebankappandroid.myapplication.resource.Account;
 import bluebankapp.swe443.bluebankappandroid.myapplication.resource.Bank;
+import bluebankapp.swe443.bluebankappandroid.myapplication.resource.User;
 
 public class BankMainActivity extends AppCompatActivity {
-    //Bank blue = new Bank();
+    Bank blue;
+    Account current_acct;
+    TextView acct_amount;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        blue = (Bank) getIntent().getParcelableExtra("bank");
+        current_acct = (Account) getIntent().getParcelableExtra("current_acct");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bank_main);
+        //gets balances and prints it out on screen
+        acct_amount = (TextView) findViewById(R.id.currentBalanceTxt);
+        acct_amount.setText("Balance: $" + Double.toString(current_acct.getAccountBalance()));
+
     }
     public void DrawDepositBtnClick(View v){
         Intent depositWithdrawIntent = new Intent(BankMainActivity.this,WithdrawDepositActivity.class);

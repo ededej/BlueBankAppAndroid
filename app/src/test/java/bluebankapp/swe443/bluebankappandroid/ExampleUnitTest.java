@@ -32,7 +32,7 @@ public class ExampleUnitTest {
         Clazz accountClass = model.createClazz("Account")
                 .withAttribute("name", DataType.STRING)
                 .withAttribute("ssn", DataType.INT)
-                .withAttribute("dob", DataType.OBJECT)
+                .withAttribute("dob", DataType.STRING)
                 .withAttribute("username", DataType.STRING)
                 .withAttribute("password", DataType.STRING)
                 .withAttribute("initialAmount", DataType.DOUBLE)

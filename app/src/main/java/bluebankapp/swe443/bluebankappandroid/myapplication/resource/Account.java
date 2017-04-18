@@ -21,6 +21,9 @@
    
 package bluebankapp.swe443.bluebankappandroid.myapplication.resource;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import de.uniks.networkparser.interfaces.SendableEntity;
 import java.beans.PropertyChangeSupport;
 import java.beans.PropertyChangeListener;
@@ -31,8 +34,7 @@ import bluebankapp.swe443.bluebankappandroid.myapplication.resource.Bank;
     * 
     * @see <a href='../../../../../../../../../app/src/test/java/bluebankapp/swe443/bluebankappandroid/ExampleUnitTest.java'>ExampleUnitTest.java</a>
  */
-   public  class Account implements SendableEntity
-{
+   public  class Account implements SendableEntity, Parcelable {
 
    
    //==========================================================================
@@ -177,24 +179,24 @@ import bluebankapp.swe443.bluebankappandroid.myapplication.resource.Bank;
    
    public static final String PROPERTY_DOB = "dob";
    
-   private Object dob;
+   private String dob;
 
-   public Object getDob()
+   public String getDob()
    {
       return this.dob;
    }
    
-   public void setDob(Object value)
+   public void setDob(String value)
    {
       if (this.dob != value) {
       
-         Object oldValue = this.dob;
+         String oldValue = this.dob;
          this.dob = value;
          this.firePropertyChange(PROPERTY_DOB, oldValue, value);
       }
    }
    
-   public Account withDob(Object value)
+   public Account withDob(String value)
    {
       setDob(value);
       return this;
@@ -484,5 +486,56 @@ import bluebankapp.swe443.bluebankappandroid.myapplication.resource.Bank;
       Bank value = new Bank();
       withBank_has(value);
       return value;
-   } 
-}
+   }
+
+      public Account() {
+      }
+
+      @Override
+      public int describeContents() {
+         return 0;
+      }
+
+      @Override
+      public void writeToParcel(Parcel dest, int flags) {
+         dest.writeSerializable(this.listeners);
+         dest.writeString(this.name);
+         dest.writeInt(this.ssn);
+         dest.writeString(this.dob);
+         dest.writeString(this.username);
+         dest.writeString(this.password);
+         dest.writeDouble(this.initialAmount);
+         dest.writeDouble(this.accountBalance);
+         dest.writeString(this.recentTransaction);
+         dest.writeDouble(this.iOweTheBank);
+         dest.writeParcelable(this.User_Has, flags);
+         dest.writeParcelable(this.Bank_has, flags);
+      }
+
+      protected Account(Parcel in) {
+         this.listeners = (PropertyChangeSupport) in.readSerializable();
+         this.name = in.readString();
+         this.ssn = in.readInt();
+         this.dob = in.readString();
+         this.username = in.readString();
+         this.password = in.readString();
+         this.initialAmount = in.readDouble();
+         this.accountBalance = in.readDouble();
+         this.recentTransaction = in.readString();
+         this.iOweTheBank = in.readDouble();
+         this.User_Has = in.readParcelable(User.class.getClassLoader());
+         this.Bank_has = in.readParcelable(Bank.class.getClassLoader());
+      }
+
+      public static final Creator<Account> CREATOR = new Creator<Account>() {
+         @Override
+         public Account createFromParcel(Parcel source) {
+            return new Account(source);
+         }
+
+         @Override
+         public Account[] newArray(int size) {
+            return new Account[size];
+         }
+      };
+   }

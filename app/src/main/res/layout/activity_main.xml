@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="bluebankapp.swe443.bluebankappandroid.MainActivity">
+
+    <RelativeLayout
+        android:layout_width="376dp"
+        android:layout_height="489dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/welcomMsg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/guideline"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="27dp"
+            android:text="Welcome to Blue Bank"
+            android:textAlignment="center"
+            android:textAllCaps="true"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+            android:textColor="@android:color/holo_blue_dark"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:typeface="serif"
+            tools:layout_editor_absoluteX="31dp"
+            tools:layout_editor_absoluteY="16dp" />
+
+        <TextView
+            android:id="@+id/userName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/userNameInput"
+            android:layout_alignBottom="@+id/userNameInput"
+            android:layout_alignLeft="@+id/welcomMsg"
+            android:layout_alignStart="@+id/welcomMsg"
+            android:text="Username: "
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="150dp" />
+
+        <Button
+            android:id="@+id/createAccount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/passwordInput"
+            android:layout_alignParentBottom="true"
+            android:layout_alignRight="@+id/passwordInput"
+            android:layout_marginBottom="49dp"
+            android:onClick="createAccountClick"
+            android:text="Create Account"
+            tools:layout_editor_absoluteX="120dp"
+            tools:layout_editor_absoluteY="391dp" />
+
+        <Button
+            android:id="@+id/enterBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="submitClick"
+            android:text="Submit"
+            tools:layout_editor_absoluteX="148dp"
+            tools:layout_editor_absoluteY="312dp"
+            android:layout_above="@+id/createAccount"
+            android:layout_alignLeft="@+id/createAccount"
+            android:layout_alignStart="@+id/createAccount"
+            android:layout_marginBottom="13dp"
+            android:layout_alignRight="@+id/createAccount"
+            android:layout_alignEnd="@+id/createAccount" />
+
+        <TextView
+            android:id="@+id/loginTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/welcomMsg"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="33dp"
+            android:fontFamily="sans-serif-smallcaps"
+            android:text="Login"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display3"
+            android:textSize="30sp"
+            tools:layout_editor_absoluteX="154dp"
+            tools:layout_editor_absoluteY="70dp" />
+
+        <TextView
+            android:id="@+id/passwordTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/passwordInput"
+            android:layout_alignBottom="@+id/passwordInput"
+            android:layout_alignEnd="@+id/userName"
+            android:layout_alignRight="@+id/userName"
+            android:text="Password: "
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="247dp" />
+
+        <EditText
+            android:id="@+id/passwordInput"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/userNameInput"
+            android:layout_alignStart="@+id/userNameInput"
+            android:layout_centerVertical="true"
+            android:ems="10"
+            android:hint="type password"
+            android:inputType="textPassword"
+            android:textSize="14sp"
+            tools:layout_editor_absoluteX="110dp"
+            tools:layout_editor_absoluteY="236dp" />
+
+        <EditText
+            android:id="@+id/userNameInput"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/loginTxt"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="28dp"
+            android:ems="10"
+            android:hint="type user name"
+            android:inputType="textPersonName"
+            android:textSize="14sp"
+            tools:layout_editor_absoluteX="110dp"
+            tools:layout_editor_absoluteY="139dp" />
+
+        <android.support.constraint.Guideline
+            android:id="@+id/guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_end="364dp"
+            tools:layout_editor_absoluteX="20dp"
+            tools:layout_editor_absoluteY="0dp" />
+
+        <android.support.constraint.Guideline
+            android:id="@+id/guideline2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="20dp"
+            tools:layout_editor_absoluteX="20dp"
+            tools:layout_editor_absoluteY="0dp" />
+    </RelativeLayout>
+</android.support.constraint.ConstraintLayout>

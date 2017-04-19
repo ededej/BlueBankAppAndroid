@@ -61,11 +61,12 @@ public class WithdrawDepositActivity extends AppCompatActivity {
         if(validateInput()){
             Double amountDb= Double.parseDouble(amountText.getText().toString());
             if(mode.equals("Deposit")) {
-//                current_acct.get
-                Toast.makeText(this, "Deposit"+amountDb, Toast.LENGTH_LONG).show();
+                current_acct.deposit(amountDb);
+                Toast.makeText(this, "Deposit"+current_acct.getAccountBalance(), Toast.LENGTH_LONG).show();
 
             }else{
-                Toast.makeText(this, "Withdraw"+amountDb, Toast.LENGTH_LONG).show();
+                current_acct.withdraw(amountDb);
+                Toast.makeText(this, "Withdraw"+current_acct.getAccountBalance(), Toast.LENGTH_LONG).show();
             }
         }
 

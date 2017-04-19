@@ -539,18 +539,54 @@ import bluebankapp.swe443.bluebankappandroid.myapplication.resource.Bank;
             return new Account[size];
          }
       };
-   
-   
-   //==========================================================================
-   public void deposit(  )
-   {
-      //is this here?
-   }
 
-   
-   //==========================================================================
-   public double withdraw(  )
-   {
-      return 0;
+
+      //==========================================================================
+      public void deposit(double amt) {
+         /**
+          * check if valid amount. add amount to balance if greater than 0.
+          */
+         //Bank.setDepositFee(0.05);
+         //double fee = amt*Bank.getDepositFee();
+         if (amt >= 0 ) {
+            double amount = amt ;//- fee;
+            //this.iOweTheBank += fee;
+            this.setAccountBalance(amount + getAccountBalance()); //add amount to the account balance.
+            this.recentTransaction = "deposit " + amt;
+
+            //log the deposit transaction for this account
+          //  new Transaction().writeLog(Transaction.Type.deposit,this,null,amt,fee,false);
+         } else {
+            throw new IllegalArgumentException(amt + " is less than or equal to 0");
+         }
+      }
+
+
+      //==========================================================================
+      public double withdraw(double amt) {
+         double withdraw_amt=0;
+         //Bank.setWithdrawFee(0.05);
+         //double fee = amt*Bank.getWithdrawFee();
+         double amtandfee = amt ;//+ fee;
+         //Check if amount to withdraw results in a negative balance
+         if ((this.getAccountBalance() - amtandfee) < 0) {
+            withdraw_amt =  -1; //return -1; do not do withdrawal
+         }else{
+
+            //Check if amount to withdraw results in a positive balance
+            if((this.getAccountBalance() - amtandfee) > 0){
+
+               this.setAccountBalance(this.getAccountBalance() - amtandfee); //deduct amount from balance. Update balance.
+              // this.iOweTheBank += fee;
+               this.recentTransaction = "withdrawal " + amt;
+               withdraw_amt =  amt; //return requested amount
+
+               //log the deposit transaction for this account
+               //new Transaction().writeLog(Transaction.Type.withdraw,this,null,amt,fee,false);
+            }
+         }
+
+         return withdraw_amt;
+      }
+
    }
-}

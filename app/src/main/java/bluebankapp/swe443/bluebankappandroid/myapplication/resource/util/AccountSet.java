@@ -989,4 +989,74 @@ public class AccountSet extends SimpleSet<Account> implements Parcelable {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
     }
+   
+   //==========================================================================
+   
+   public AccountSet deposit()
+   {
+      return AccountSet.EMPTY_SET;
+   }
+
+   
+   //==========================================================================
+   
+   public NumberList withdraw()
+   {
+      
+      NumberList result = new NumberList();
+      
+      for (Account obj : this)
+      {
+         result.add( obj.withdraw() );
+      }
+      return result;
+   }
+
+
+   /**
+    * Loop through the current set of Account objects and collect those Account objects where the dob attribute matches the parameter value. 
+    * 
+    * @param value Search value
+    * 
+    * @return Subset of Account objects that match the parameter
+    */
+   public AccountSet filterDob(String value)
+   {
+      AccountSet result = new AccountSet();
+      
+      for (Account obj : this)
+      {
+         if (value.equals(obj.getDob()))
+         {
+            result.add(obj);
+         }
+      }
+      
+      return result;
+   }
+
+
+   /**
+    * Loop through the current set of Account objects and collect those Account objects where the dob attribute is between lower and upper. 
+    * 
+    * @param lower Lower bound 
+    * @param upper Upper bound 
+    * 
+    * @return Subset of Account objects that match the parameter
+    */
+   public AccountSet filterDob(String lower, String upper)
+   {
+      AccountSet result = new AccountSet();
+      
+      for (Account obj : this)
+      {
+         if (lower.compareTo(obj.getDob()) <= 0 && obj.getDob().compareTo(upper) <= 0)
+         {
+            result.add(obj);
+         }
+      }
+      
+      return result;
+   }
+
 }

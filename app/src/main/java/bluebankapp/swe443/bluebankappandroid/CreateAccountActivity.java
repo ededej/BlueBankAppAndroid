@@ -7,6 +7,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
+import java.io.*;
 
 import bluebankapp.swe443.bluebankappandroid.myapplication.resource.Account;
 import bluebankapp.swe443.bluebankappandroid.myapplication.resource.Bank;
@@ -46,42 +47,62 @@ public class CreateAccountActivity extends AppCompatActivity {
         acct = new Account();
         new_user = new User();
         //boolean valid = false;
+        String regexSSN = "^(?!000|666)[0-8][0-9]{2}-(?!00)[0-9]{2}-(?!0000)[0-9]{4}$";
+        String regexDOB = "^(1[0-2]|0[1-9])/(3[01]|[12][0-9]|0[1-9])/[0-9]{4}$";
 
         if(TextUtils.isEmpty(name.getText().toString())){
-            error = Toast.makeText(this, "Please enter name", Toast.LENGTH_SHORT);
-            error.show();
+//            error = Toast.makeText(this, "Please enter name", Toast.LENGTH_SHORT);
+//            error.show();
             //valid = false;
+            name.setError("Please enter name");
             return;
-        } else {
+        }
+        //need to fix this regex
+//        else if(name.getText().toString().matches("[a-zA-Z]")){
+//            name.setError("Only characters!!");
+//            return;
+//        }
+        else {
             acct.setName(name.getText().toString());
             new_user.setUserName(name.getText().toString());
             //valid = true;
         }
 
         if(TextUtils.isEmpty(ssn.getText().toString())){
-            error = Toast.makeText(this, "Please enter ssn", Toast.LENGTH_SHORT);
-            error.show();
-            //valid = false;
+//            error = Toast.makeText(this, "Please enter ssn", Toast.LENGTH_SHORT);
+//            error.show();
+//            //valid = false;
+            ssn.setError("Please enter ssn");
             return;
-        } else {
+        }
+//        else if (ssn.getText().toString().matches(regexSSN)) {
+//            ssn.setError("Not valid SSN");
+//            return;
+//        }
+        else {
             acct.setSsn(Integer.parseInt(ssn.getText().toString()));
             //valid = true;
         }
 
         if(TextUtils.isEmpty(dob.getText().toString())){
-            error = Toast.makeText(this, "Please enter DOB", Toast.LENGTH_SHORT);
-            error.show();
+//            error = Toast.makeText(this, "Please enter DOB", Toast.LENGTH_SHORT);
+//            error.show();
             //valid = false;
+            dob.setError("Please enter DOB");
             return;
-        } else {
+        } else if (dob.getText().toString().matches(regexDOB)) {
+            dob.setError("Not valid Date!! mm/dd/yyyy");
+            return;
+        }else {
             acct.setDob(dob.getText().toString());
             //valid = true;
         }
 
         if(TextUtils.isEmpty(username.getText().toString())){
-            error = Toast.makeText(this, "Please enter username", Toast.LENGTH_SHORT);
-            error.show();
+//            error = Toast.makeText(this, "Please enter username", Toast.LENGTH_SHORT);
+//            error.show();
             //valid = false;
+            username.setError("Please enter username");
             return;
         } else {
             acct.setUsername(username.getText().toString());
@@ -89,19 +110,24 @@ public class CreateAccountActivity extends AppCompatActivity {
         }
 
         if(TextUtils.isEmpty(password.getText().toString())){
-            error = Toast.makeText(this, "Please enter password", Toast.LENGTH_SHORT);
-            error.show();
-            //valid = false;
+//            error = Toast.makeText(this, "Please enter password", Toast.LENGTH_SHORT);
+//            error.show();
+//            //valid = false;
+            password.setError("Please enter password");
             return;
-        } else {
+        } else if(password.length()<8) {
+            password.setError("Password must be at least 8 characters");
+            return;
+        }else {
             acct.setPassword(password.getText().toString());
             //valid = true;
         }
 
         if(TextUtils.isEmpty(initial.getText().toString())){
-            error = Toast.makeText(this, "Please enter initial amount", Toast.LENGTH_SHORT);
-            error.show();
+//            error = Toast.makeText(this, "Please enter initial amount", Toast.LENGTH_SHORT);
+//            error.show();
             //valid = false;
+            initial.setError("Please enter initial amount");
             return;
         } else {
             acct.setInitialAmount(Double.parseDouble(initial.getText().toString()));

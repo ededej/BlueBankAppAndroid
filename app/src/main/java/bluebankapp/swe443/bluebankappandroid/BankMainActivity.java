@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import bluebankapp.swe443.bluebankappandroid.myapplication.resource.Account;
 import bluebankapp.swe443.bluebankappandroid.myapplication.resource.Bank;
@@ -24,9 +25,12 @@ public class BankMainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_bank_main);
         //gets balances and prints it out on screen
         acct_amount = (TextView) findViewById(R.id.currentBalanceTxt);
-        acct_amount.setText("Balance: $" + Double.toString(current_acct.getAccountBalance()));
         current_user= (TextView) findViewById(R.id.currentUser);
-        current_user.setText(current_acct.getName()+"'s Account");
+        if(blue!=null){
+            bindBalance();
+        }else{
+            Toast.makeText(this, "No Bank", Toast.LENGTH_LONG).show();
+        }
 
     }
 
@@ -42,11 +46,14 @@ public class BankMainActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
         if (requestCode == 1) {
-            if(resultCode == Activity.RESULT_OK){
+            if(resultCode == BankMainActivity.RESULT_OK){
                 String result=data.getStringExtra("result");
             }
-            if (resultCode == Activity.RESULT_CANCELED) {
+            if (resultCode == BankMainActivity.RESULT_CANCELED) {
                 //Write your code if there's no result
+                Toast.makeText(this, "Successful Back", Toast.LENGTH_LONG).show();
+                bindBalance();
+
             }
         }
     }
@@ -66,5 +73,10 @@ public class BankMainActivity extends AppCompatActivity {
     public void logOutClick(View v){
         Intent logOutActivityIntent = new Intent(BankMainActivity.this,MainActivity.class);
         startActivity(logOutActivityIntent);
+    }
+
+    public void bindBalance(){
+        acct_amount.setText("Balance: $" + Double.toString(current_acct.getAccountBalance()));
+        current_user.setText(current_acct.getName()+"'s Account");
     }
 }

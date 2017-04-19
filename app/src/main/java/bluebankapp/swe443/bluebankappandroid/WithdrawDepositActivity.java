@@ -1,5 +1,6 @@
 package bluebankapp.swe443.bluebankappandroid;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
@@ -60,13 +61,30 @@ public class WithdrawDepositActivity extends AppCompatActivity {
     public void doTransactionClick(View v){
         if(validateInput()){
             Double amountDb= Double.parseDouble(amountText.getText().toString());
+            Intent goToMainIntent = new Intent(WithdrawDepositActivity.this,BankMainActivity.class);
             if(mode.equals("Deposit")) {
+                double temp= current_acct.getAccountBalance() +amountDb;// to check
                 current_acct.deposit(amountDb);
-                Toast.makeText(this, "Deposit"+current_acct.getAccountBalance(), Toast.LENGTH_LONG).show();
+                if ((temp)==current_acct.getAccountBalance()){
+                    Toast.makeText(this, "Successful Deposit", Toast.LENGTH_LONG).show();
+                    goToMainIntent.putExtra("bank",blue);
+                    goToMainIntent.putExtra("current_acct",current_acct);
+                    startActivity(goToMainIntent);
+//                    Intent returnIntent = new Intent();
+//                    setResult(BankMainActivity.RESULT_CANCELED, returnIntent);
+//                    finish();
+//                    return;
+                }
 
             }else{
+                double temp= current_acct.getAccountBalance() -amountDb;// to check
                 current_acct.withdraw(amountDb);
-                Toast.makeText(this, "Withdraw"+current_acct.getAccountBalance(), Toast.LENGTH_LONG).show();
+                if ((temp)==current_acct.getAccountBalance()){
+                    Toast.makeText(this, "Successful Withdraw", Toast.LENGTH_LONG).show();
+                    goToMainIntent.putExtra("bank",blue);
+                    goToMainIntent.putExtra("current_acct",current_acct);
+                    startActivity(goToMainIntent);
+                }
             }
         }
 

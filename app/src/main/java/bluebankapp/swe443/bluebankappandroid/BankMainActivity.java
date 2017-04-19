@@ -1,5 +1,6 @@
 package bluebankapp.swe443.bluebankappandroid;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -23,13 +24,31 @@ public class BankMainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_bank_main);
         //gets balances and prints it out on screen
         acct_amount = (TextView) findViewById(R.id.currentBalanceTxt);
-        acct_amount.setText("Balance: $" + Double.toString(current_acct.getAccountBalance()));
+       acct_amount.setText("Username: "+ current_acct.getName()+ " Balance: $" + Double.toString(current_acct.getAccountBalance()));
 
     }
+
+    //withdraw button amount
     public void DrawDepositBtnClick(View v){
         Intent depositWithdrawIntent = new Intent(BankMainActivity.this,WithdrawDepositActivity.class);
-        startActivity(depositWithdrawIntent);
+        depositWithdrawIntent.putExtra("bank",blue);
+        depositWithdrawIntent.putExtra("current_acct",current_acct);
+        startActivityForResult(depositWithdrawIntent,1);
     }
+    //getting the result back if we need to do something here
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        if (requestCode == 1) {
+            if(resultCode == Activity.RESULT_OK){
+                String result=data.getStringExtra("result");
+            }
+            if (resultCode == Activity.RESULT_CANCELED) {
+                //Write your code if there's no result
+            }
+        }
+    }
+
     public  void transferMoneyClick(View v){
         Intent transferIntent = new Intent(BankMainActivity.this,TransferActivity.class);
         startActivity(transferIntent);

@@ -149,6 +149,7 @@
             android:ems="10"
             android:hint="Insert Social Security Number"
             android:inputType="number"
+            android:maxLength="4"
             android:textAppearance="@style/TextAppearance.AppCompat" />
 
         <EditText
@@ -163,6 +164,7 @@
             android:layout_alignStart="@+id/ssnEdit"
             android:ems="10"
             android:hint="Insert Birthday : mm/dd/yyyy"
+            android:maxLength="10"
             android:inputType="date"
             android:textAppearance="@style/TextAppearance.AppCompat" />
 

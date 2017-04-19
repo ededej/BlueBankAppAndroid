@@ -1000,14 +1000,14 @@ public class AccountSet extends SimpleSet<Account> implements Parcelable {
    
    //==========================================================================
    
-   public NumberList withdraw()
+   public NumberList withdraw(double value)
    {
       
       NumberList result = new NumberList();
       
       for (Account obj : this)
       {
-         result.add( obj.withdraw() );
+         result.add( obj.withdraw(value) );
       }
       return result;
    }

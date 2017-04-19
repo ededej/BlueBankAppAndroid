@@ -14,7 +14,7 @@ import bluebankapp.swe443.bluebankappandroid.myapplication.resource.User;
 public class BankMainActivity extends AppCompatActivity {
     Bank blue;
     Account current_acct;
-    TextView acct_amount;
+    TextView acct_amount,current_user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,7 +24,9 @@ public class BankMainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_bank_main);
         //gets balances and prints it out on screen
         acct_amount = (TextView) findViewById(R.id.currentBalanceTxt);
-       acct_amount.setText("Username: "+ current_acct.getName()+ " Balance: $" + Double.toString(current_acct.getAccountBalance()));
+        acct_amount.setText("Balance: $" + Double.toString(current_acct.getAccountBalance()));
+        current_user= (TextView) findViewById(R.id.currentUser);
+        current_user.setText(current_acct.getName()+"'s Account");
 
     }
 

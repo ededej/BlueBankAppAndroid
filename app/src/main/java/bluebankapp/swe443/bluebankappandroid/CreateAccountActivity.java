@@ -90,10 +90,12 @@ public class CreateAccountActivity extends AppCompatActivity {
             //valid = false;
             dob.setError("Please enter DOB");
             return;
-        } else if (dob.getText().toString().matches(regexDOB)) {
-            dob.setError("Not valid Date!! mm/dd/yyyy");
-            return;
-        }else {
+        }
+//        else if (dob.getText().toString().matches(regexDOB)) {
+//            dob.setError("Not valid Date!! mm/dd/yyyy");
+//            return;
+//        }
+        else {
             acct.setDob(dob.getText().toString());
             //valid = true;
         }

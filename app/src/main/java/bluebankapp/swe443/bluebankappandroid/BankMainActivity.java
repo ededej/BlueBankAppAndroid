@@ -61,4 +61,8 @@ public class BankMainActivity extends AppCompatActivity {
         Intent supportActivityIntent = new Intent(BankMainActivity.this,SupportActivity.class);
         startActivity(supportActivityIntent);
     }
+    public void logOutClick(View v){
+        Intent logOutActivityIntent = new Intent(BankMainActivity.this,MainActivity.class);
+        startActivity(logOutActivityIntent);
+    }
 }

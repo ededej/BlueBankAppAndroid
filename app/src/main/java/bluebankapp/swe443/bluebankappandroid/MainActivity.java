@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         //testing persistency
-        String filename = "myfile";
+        /*String filename = "myfile";
         FileInputStream inputStream;
 
         try {
@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
+*/
         //end test
     }
 
@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
             blue.setBankName("Blue Bank");
         }
         //test 2
-        IdMap idMap = BankCreator.createIdMap("demo");
+       /* IdMap idMap = BankCreator.createIdMap("demo");
         JsonArray jsonArray = idMap.toJsonArray(blue);
         String jsonText = jsonArray.toString();
 
@@ -70,11 +70,11 @@ public class MainActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
-
+*/
         //test end.
-        //Intent createAccountIntent = new Intent(MainActivity.this,CreateAccountActivity.class);
-        //createAccountIntent.putExtra("bank",blue);
-        //startActivity(createAccountIntent);
+        Intent createAccountIntent = new Intent(MainActivity.this,CreateAccountActivity.class);
+        createAccountIntent.putExtra("bank",blue);
+        startActivity(createAccountIntent);
     }
     public void submitClick(View v){
         Username = (EditText) findViewById(R.id.userNameInput);
@@ -94,8 +94,8 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(this, blue.getAccount_Has().filterUsername(Username.getText().toString()).getUsername().toString(), Toast.LENGTH_SHORT).show();
         }*/
 
-        //Intent bankMainIntent = new Intent(MainActivity.this,BankMainActivity.class);
-        //startActivity(bankMainIntent);
+        Intent bankMainIntent = new Intent(MainActivity.this,BankMainActivity.class);
+        startActivity(bankMainIntent);
     }
 
 }

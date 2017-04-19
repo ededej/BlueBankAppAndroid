@@ -36,20 +36,6 @@ import bluebankapp.swe443.bluebankappandroid.myapplication.resource.util.BankSet
 import bluebankapp.swe443.bluebankappandroid.myapplication.resource.Bank;
 
 public class AccountSet extends SimpleSet<Account> implements Parcelable {
-   protected AccountSet(Parcel in) {
-   }
-
-   public static final Creator<AccountSet> CREATOR = new Creator<AccountSet>() {
-      @Override
-      public AccountSet createFromParcel(Parcel in) {
-         return new AccountSet(in);
-      }
-
-      @Override
-      public AccountSet[] newArray(int size) {
-         return new AccountSet[size];
-      }
-   };
 
    protected Class<?> getTypClass() {
 		return Account.class;
@@ -981,15 +967,6 @@ public class AccountSet extends SimpleSet<Account> implements Parcelable {
       return this;
    }
 
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-    }
-   
    //==========================================================================
    
    public AccountSet deposit()
@@ -1059,4 +1036,27 @@ public class AccountSet extends SimpleSet<Account> implements Parcelable {
       return result;
    }
 
+   @Override
+   public int describeContents() {
+      return 0;
+   }
+
+   @Override
+   public void writeToParcel(Parcel dest, int flags) {
+   }
+
+   protected AccountSet(Parcel in) {
+   }
+
+   public static final Creator<AccountSet> CREATOR = new Creator<AccountSet>() {
+      @Override
+      public AccountSet createFromParcel(Parcel source) {
+         return new AccountSet(source);
+      }
+
+      @Override
+      public AccountSet[] newArray(int size) {
+         return new AccountSet[size];
+      }
+   };
 }

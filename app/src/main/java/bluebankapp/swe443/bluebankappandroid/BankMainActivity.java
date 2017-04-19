@@ -71,8 +71,11 @@ public class BankMainActivity extends AppCompatActivity {
         startActivity(supportActivityIntent);
     }
     public void logOutClick(View v){
-        Intent logOutActivityIntent = new Intent(BankMainActivity.this,MainActivity.class);
+        Toast.makeText(this, blue.getAccount_Has().get(0).getUsername(), Toast.LENGTH_SHORT);
+        /*Intent logOutActivityIntent = new Intent(BankMainActivity.this,MainActivity.class);
+        logOutActivityIntent.putExtra("bank",blue);
         startActivity(logOutActivityIntent);
+        finish();*/
     }
 
     public void bindBalance(){

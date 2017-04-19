@@ -27,6 +27,8 @@ import android.os.Parcelable;
 import de.uniks.networkparser.interfaces.SendableEntity;
 import java.beans.PropertyChangeSupport;
 import java.beans.PropertyChangeListener;
+import java.util.Arrays;
+
 import de.uniks.networkparser.EntityUtil;
 import bluebankapp.swe443.bluebankappandroid.myapplication.resource.util.AccountSet;
 import bluebankapp.swe443.bluebankappandroid.myapplication.resource.Account;
@@ -202,7 +204,8 @@ import bluebankapp.swe443.bluebankappandroid.myapplication.resource.User;
    public static final String PROPERTY_ACCOUNT_HAS = "Account_Has";
 
    private AccountSet Account_Has = null;
-   
+
+
    public AccountSet getAccount_Has()
    {
       if (this.Account_Has == null)
@@ -260,7 +263,9 @@ import bluebankapp.swe443.bluebankappandroid.myapplication.resource.User;
       Account value = new Account();
       withAccount_Has(value);
       return value;
-   } 
+   }
+
+
 
    
    /********************************************************************

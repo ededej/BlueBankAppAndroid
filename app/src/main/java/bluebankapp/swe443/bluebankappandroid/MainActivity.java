@@ -71,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
 
-        //test end
+        //test end.
         //Intent createAccountIntent = new Intent(MainActivity.this,CreateAccountActivity.class);
         //createAccountIntent.putExtra("bank",blue);
         //startActivity(createAccountIntent);

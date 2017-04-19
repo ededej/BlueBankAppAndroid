@@ -40,7 +40,7 @@ import bluebankapp.swe443.bluebankappandroid.myapplication.resource.Bank;
    //==========================================================================
    public void transfer(  )
    {
-      
+
    }
 
    
@@ -544,7 +544,7 @@ import bluebankapp.swe443.bluebankappandroid.myapplication.resource.Bank;
    //==========================================================================
    public void deposit(  )
    {
-      
+      //is this here?
    }
 
    

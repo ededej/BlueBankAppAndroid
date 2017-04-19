@@ -142,6 +142,7 @@ import bluebankapp.swe443.bluebankappandroid.myapplication.resource.Bank;
       result.append(" ").append(this.getAccountBalance());
       result.append(" ").append(this.getRecentTransaction());
       result.append(" ").append(this.getIOweTheBank());
+      result.append(" ").append(this.getDob());
       return result.substring(1);
    }
 
@@ -538,4 +539,18 @@ import bluebankapp.swe443.bluebankappandroid.myapplication.resource.Bank;
             return new Account[size];
          }
       };
+   
+   
+   //==========================================================================
+   public void deposit(  )
+   {
+      
    }
+
+   
+   //==========================================================================
+   public double withdraw(  )
+   {
+      return 0;
+   }
+}

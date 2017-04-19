@@ -39,8 +39,8 @@ public class ExampleUnitTest {
                 .withAttribute("accountBalance", DataType.DOUBLE)
                 .withAttribute("recentTransaction",DataType.STRING)
                 .withAttribute("iOweTheBank",DataType.DOUBLE)
-                //.withMethod("deposit", DataType.VOID)
-                //.withMethod("withdraw",DataType.DOUBLE)
+                .withMethod("deposit", DataType.VOID)
+                .withMethod("withdraw",DataType.DOUBLE)
                 //.withMethod("undoRecentTransaction", DataType.VOID)
                 .withMethod("transfer", DataType.VOID);
 

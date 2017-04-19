@@ -41,6 +41,87 @@ public class CreateAccountActivity extends AppCompatActivity {
 
     }
 
+    public void CreateAccountBtn(View v){
+        Toast error;
+        acct = new Account();
+        new_user = new User();
+        //boolean valid = false;
+
+        if(TextUtils.isEmpty(name.getText().toString())){
+            error = Toast.makeText(this, "Please enter name", Toast.LENGTH_SHORT);
+            error.show();
+            //valid = false;
+            return;
+        } else {
+            acct.setName(name.getText().toString());
+            new_user.setUserName(name.getText().toString());
+            //valid = true;
+        }
+
+        if(TextUtils.isEmpty(ssn.getText().toString())){
+            error = Toast.makeText(this, "Please enter ssn", Toast.LENGTH_SHORT);
+            error.show();
+            //valid = false;
+            return;
+        } else {
+            acct.setSsn(Integer.parseInt(ssn.getText().toString()));
+            //valid = true;
+        }
+
+        if(TextUtils.isEmpty(dob.getText().toString())){
+            error = Toast.makeText(this, "Please enter DOB", Toast.LENGTH_SHORT);
+            error.show();
+            //valid = false;
+            return;
+        } else {
+            acct.setDob(dob.getText().toString());
+            //valid = true;
+        }
+
+        if(TextUtils.isEmpty(username.getText().toString())){
+            error = Toast.makeText(this, "Please enter username", Toast.LENGTH_SHORT);
+            error.show();
+            //valid = false;
+            return;
+        } else {
+            acct.setUsername(username.getText().toString());
+            //valid = true;
+        }
+
+        if(TextUtils.isEmpty(password.getText().toString())){
+            error = Toast.makeText(this, "Please enter password", Toast.LENGTH_SHORT);
+            error.show();
+            //valid = false;
+            return;
+        } else {
+            acct.setPassword(password.getText().toString());
+            //valid = true;
+        }
+
+        if(TextUtils.isEmpty(initial.getText().toString())){
+            error = Toast.makeText(this, "Please enter initial amount", Toast.LENGTH_SHORT);
+            error.show();
+            //valid = false;
+            return;
+        } else {
+            acct.setInitialAmount(Double.parseDouble(initial.getText().toString()));
+            acct.setAccountBalance(Double.parseDouble(initial.getText().toString()));
+            //valid = true;
+        }
+
+
+        //if(valid == true){
+        blue.withAccount_Has(acct);
+        acct.withBank_has(blue);
+        new_user.withAccount_Has(acct);
+
+        Intent bankMainIntent = new Intent(CreateAccountActivity.this,BankMainActivity.class);
+        bankMainIntent.putExtra("bank",blue);
+        bankMainIntent.putExtra("current_acct",acct);
+        startActivity(bankMainIntent);
+        //}
+    }
+
     /*public boolean validate() {
         boolean valid = true;
 
@@ -78,78 +159,5 @@ public class CreateAccountActivity extends AppCompatActivity {
         return true;
     }*/
 
-    public void CreateAccountBtn(View v){
-        Toast error;
-        acct = new Account();
-        new_user = new User();
-        boolean valid = false;
 
-        if(TextUtils.isEmpty(name.getText().toString())){
-            error = Toast.makeText(this, "Please enter name", Toast.LENGTH_SHORT);
-            error.show();
-            valid = false;
-        } else {
-            acct.setName(name.getText().toString());
-            new_user.setUserName(name.getText().toString());
-            valid = true;
-        }
-
-        if(TextUtils.isEmpty(ssn.getText().toString())){
-            error = Toast.makeText(this, "Please enter ssn", Toast.LENGTH_SHORT);
-            error.show();
-            valid = false;
-        } else {
-            acct.setSsn(Integer.parseInt(ssn.getText().toString()));
-            valid = true;
-        }
-
-        if(TextUtils.isEmpty(dob.getText().toString())){
-            error = Toast.makeText(this, "Please enter DOB", Toast.LENGTH_SHORT);
-            error.show();
-            valid = false;
-        } else {
-            acct.setDob(dob.getText().toString());
-            valid = true;
-        }
-
-        if(TextUtils.isEmpty(username.getText().toString())){
-            error = Toast.makeText(this, "Please enter username", Toast.LENGTH_SHORT);
-            error.show();
-            valid = false;
-        } else {
-            acct.setUsername(username.getText().toString());
-            valid = true;
-        }
-
-        if(TextUtils.isEmpty(password.getText().toString())){
-            error = Toast.makeText(this, "Please enter password", Toast.LENGTH_SHORT);
-            error.show();
-            valid = false;
-        } else {
-            acct.setPassword(password.getText().toString());
-            valid = true;
-        }
-
-        if(TextUtils.isEmpty(initial.getText().toString())){
-            error = Toast.makeText(this, "Please enter initial amount", Toast.LENGTH_SHORT);
-            error.show();
-            valid = false;
-        } else {
-            acct.setInitialAmount(Double.parseDouble(initial.getText().toString()));
-            acct.setAccountBalance(Double.parseDouble(initial.getText().toString()));
-            valid = true;
-        }
-
-
-        if(valid == true){
-            blue.withAccount_Has(acct);
-            acct.withBank_has(blue);
-            new_user.withAccount_Has(acct);
-
-            Intent bankMainIntent = new Intent(CreateAccountActivity.this,BankMainActivity.class);
-            bankMainIntent.putExtra("bank",blue);
-            bankMainIntent.putExtra("current_acct",acct);
-            startActivity(bankMainIntent);
-        }
-    }
 }

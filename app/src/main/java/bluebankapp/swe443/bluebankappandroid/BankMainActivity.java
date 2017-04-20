@@ -1,6 +1,5 @@
 package bluebankapp.swe443.bluebankappandroid;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -10,7 +9,6 @@ import android.widget.Toast;
 
 import bluebankapp.swe443.bluebankappandroid.myapplication.resource.Account;
 import bluebankapp.swe443.bluebankappandroid.myapplication.resource.Bank;
-import bluebankapp.swe443.bluebankappandroid.myapplication.resource.User;
 
 public class BankMainActivity extends AppCompatActivity {
     Bank blue;

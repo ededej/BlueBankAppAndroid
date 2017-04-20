@@ -7,7 +7,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.RadioButton;
+import android.widget.Switch;
 import android.widget.Toast;
 
 import bluebankapp.swe443.bluebankappandroid.myapplication.resource.Account;
@@ -32,29 +32,19 @@ public class WithdrawDepositActivity extends AppCompatActivity {
 
     }
 
-    public void onRadioButtonClicked(View view) {
-        // Is the button now checked?
-        boolean checked = ((RadioButton) view).isChecked();
+    public void onSwitchToggle(View view){
+        boolean withdraw = ((Switch) view).isChecked();
 
-        // Check which radio button was clicked
-        switch (view.getId()) {
-            case R.id.depositRadio:
-                if (checked) {
-//                    Toast.makeText(this, "Deposit", Toast.LENGTH_LONG).show();
-                    submitBtn.setVisibility(View.VISIBLE);
-                    submitBtn.setText("Deposit");
-                    mode="Deposit";
-                }
-                break;
-            case R.id.withDrawRadio:
-                if (checked) {
-//                    Toast.makeText(this, "Withdraw", Toast.LENGTH_LONG).show();
-                    submitBtn.setVisibility(View.VISIBLE);
-                    submitBtn.setText("Withdraw");
-                    mode="Withdraw";
-
-                }
-                break;
+        if (withdraw){
+            ((Switch) view).setText("Withdraw");
+            submitBtn.setVisibility(View.VISIBLE);
+            submitBtn.setText("Withdraw");
+            mode="Withdraw";
+        } else {
+            ((Switch) view).setText("Deposit");
+            submitBtn.setVisibility(View.VISIBLE);
+            submitBtn.setText("Deposit");
+            mode="Deposit";
         }
     }
 

@@ -86,7 +86,7 @@
         android:checked="true"
         android:onClick="onSwitchToggle"
         android:orientation="horizontal"
-        android:showText="true"
+        android:showText="false"
         android:text="Withdraw"
         android:textAppearance="@style/TextAppearance.AppCompat.Headline"
         app:layout_constraintBottom_toTopOf="@+id/editAmount"

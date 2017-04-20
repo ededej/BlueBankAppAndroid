@@ -1,6 +1,5 @@
 package bluebankapp.swe443.bluebankappandroid;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -8,17 +7,8 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
-
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.util.Scanner;
-
 import bluebankapp.swe443.bluebankappandroid.myapplication.resource.Account;
 import bluebankapp.swe443.bluebankappandroid.myapplication.resource.Bank;
-import bluebankapp.swe443.bluebankappandroid.myapplication.resource.User;
-import bluebankapp.swe443.bluebankappandroid.myapplication.resource.util.BankCreator;
-import de.uniks.networkparser.IdMap;
-import de.uniks.networkparser.json.JsonArray;
 
 
 public class MainActivity extends AppCompatActivity {

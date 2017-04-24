@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
         IPBox = (EditText) findViewById(R.id.ipAddrInput);
 
         if(TextUtils.isEmpty(Username.getText().toString())){
-            Username.setError("Please username");
+            Username.setError("Please enter username");
             return;
         }
 

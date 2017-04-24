@@ -57,7 +57,7 @@
 
         android:background="@android:color/holo_blue_dark"
         android:onClick="doTransactionClick"
-        android:visibility="invisible"
+        android:text="Withdraw"
         app:layout_constraintLeft_toLeftOf="@+id/editAmount"
         app:layout_constraintTop_toBottomOf="@+id/editAmount"
         tools:layout_constraintLeft_creator="1"
@@ -86,6 +86,7 @@
         android:checked="true"
         android:onClick="onSwitchToggle"
         android:orientation="horizontal"
+        android:id="@+id/wdSwitch"
         android:showText="false"
         android:text="Withdraw"
         android:textAppearance="@style/TextAppearance.AppCompat.Headline"

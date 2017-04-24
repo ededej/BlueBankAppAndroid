@@ -92,28 +92,56 @@
             android:id="@+id/passwordTxt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="Password: "
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="247dp"
             android:layout_alignBaseline="@+id/passwordInput"
             android:layout_alignBottom="@+id/passwordInput"
+            android:layout_alignRight="@+id/ipAddrText"
+            android:layout_alignEnd="@+id/ipAddrText" />
+
+        <TextView
+            android:id="@+id/ipAddrText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/ipAddrInput"
+            android:layout_alignBottom="@+id/ipAddrInput"
             android:layout_alignEnd="@+id/userName"
             android:layout_alignRight="@+id/userName"
-            android:text="Password: "
+            android:text="Server IP: "
             android:textAppearance="@style/TextAppearance.AppCompat.Body2"
             tools:layout_editor_absoluteX="16dp"
             tools:layout_editor_absoluteY="247dp" />
 
         <EditText
+            android:id="@+id/ipAddrInput"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="192.168.x.y"
+            android:textSize="14sp"
+            tools:layout_editor_absoluteX="110dp"
+            tools:layout_editor_absoluteY="236dp"
+            android:layout_below="@+id/passwordInput"
+            android:layout_alignLeft="@+id/passwordInput"
+            android:layout_alignStart="@+id/passwordInput"
+            android:layout_marginTop="13dp" />
+
+        <EditText
             android:id="@+id/passwordInput"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/userNameInput"
-            android:layout_alignStart="@+id/userNameInput"
-            android:layout_centerVertical="true"
             android:ems="10"
             android:hint="type password"
             android:inputType="textPassword"
             android:textSize="14sp"
             tools:layout_editor_absoluteX="110dp"
-            tools:layout_editor_absoluteY="236dp" />
+            tools:layout_editor_absoluteY="236dp"
+            android:layout_below="@+id/userNameInput"
+            android:layout_alignLeft="@+id/userNameInput"
+            android:layout_alignStart="@+id/userNameInput"
+            android:layout_marginTop="13dp" />
 
         <EditText
             android:id="@+id/userNameInput"

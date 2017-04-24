@@ -29,7 +29,7 @@
         android:layout_height="60dp"
         android:background="@android:color/holo_blue_light"
         android:lineSpacingExtra="8sp"
-        android:onClick="DrawDepositBtnClick"
+        android:onClick="WithdrawDepositBtnClick"
         android:text="Withdraw&amp;Deposit"
         android:textSize="24sp"
         android:typeface="sans"

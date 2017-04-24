@@ -18,6 +18,7 @@ Server files:
 - clientThread.java (Socket worker thread for server)
 - Client.java (Test client to mock Android app functionality with a desktop)
 
+* found at https://github.com/ededej/BlueBankAppAndroid/tree/master/bbserv
 
 
 Compiling and running the server:

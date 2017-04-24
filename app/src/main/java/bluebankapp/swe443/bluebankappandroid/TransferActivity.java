@@ -1,44 +1,65 @@
 package bluebankapp.swe443.bluebankappandroid;
 
-import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
-import android.widget.Toast;
-
-import bluebankapp.swe443.bluebankappandroid.myapplication.resource.Account;
-import bluebankapp.swe443.bluebankappandroid.myapplication.resource.Bank;
-import bluebankapp.swe443.bluebankappandroid.myapplication.resource.User;
+import android.widget.EditText;
 
 public class TransferActivity extends AppCompatActivity {
 
-    Button submitBtn;
-    TextView amountText;
-    Bank blue;
-    Account current_acct;
+    EditText editAmount;
+    EditText personNameEdit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        blue = (Bank) getIntent().getParcelableExtra("bank");
-        current_acct = (Account) getIntent().getParcelableExtra("current_acct");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_transfer);
-        submitBtn=(Button) findViewById(R.id.submitBtn);
-        //gets balances and prints it out on screen
-        amountText = (TextView) findViewById(R.id.currentBalanceTxt);
-        if(blue!=null){
-            bindBalance();
-        }else{
-            Toast.makeText(this, "No Bank", Toast.LENGTH_LONG).show();
+    }
+
+    public void doTransactionClick(View v){
+        editAmount=(EditText) findViewById(R.id.editAmount);
+        personNameEdit=(EditText) findViewById(R.id.personNameEdit);
+        if(validateInput()){
+            Double amountDb= Double.parseDouble(editAmount.getText().toString());
+            String u = getSharedPreferences("bluebank", MODE_PRIVATE).getString("username", "");
+            String p = getSharedPreferences("bluebank", MODE_PRIVATE).getString("password", "");
+            String ip = getSharedPreferences("bluebank", MODE_PRIVATE).getString("ip", "");
+
+            // Send LOGIN request to server.
+            StringBuilder req = new StringBuilder();
+
+            // Create the request string
+            // op code | username | password | amount
+            // 0  #1  #2       #3  #4
+            // w/d#jlm#letmein0#abc#50.00
+            req.append("t" + ClientLogic.DELIM); // OP CODE
+            req.append(u + ClientLogic.DELIM); // USERNAME
+            req.append(p + ClientLogic.DELIM); // PASSWORD
+            req.append(personNameEdit.getText().toString() + ClientLogic.DELIM); // DESTINATION
+            req.append(Double.toString(amountDb)); // AMOUNT
+
+            // Send the request string and get the response.
+            new ClientLogic.ServerRequest().execute(this, req.toString(), ip);
+
+            /*
+            Intent goToMainIntent = new Intent(WithdrawDepositActivity.this,BankMainActivity.class);
+            double temp= current_acct.getAccountBalance() +amountDb;// to check
+            current_acct.deposit(amountDb);
+            if ((temp)==current_acct.getAccountBalance()){
+                Toast.makeText(this, "Successful Deposit", Toast.LENGTH_LONG).show();
+                goToMainIntent.putExtra("bank",blue);
+                goToMainIntent.putExtra("current_acct",current_acct);
+                startActivity(goToMainIntent);
+            }*/
         }
     }
 
-
-
-    public void bindBalance(){
-        amountText.setText("Balance: $" + Double.toString(current_acct.getAccountBalance()));
+    public boolean validateInput(){
+        if(TextUtils.isEmpty(editAmount.getText().toString())){
+            editAmount.setError("Insert Amount");
+            return false;
+        }
+        return true;
     }
 }

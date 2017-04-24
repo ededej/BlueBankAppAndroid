@@ -1,12 +1,23 @@
 package bluebankapp.swe443.bluebankappandroid;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintStream;
+import java.net.Socket;
+import java.net.UnknownHostException;
+
 import bluebankapp.swe443.bluebankappandroid.myapplication.resource.Account;
 import bluebankapp.swe443.bluebankappandroid.myapplication.resource.Bank;
 import bluebankapp.swe443.bluebankappandroid.myapplication.resource.User;
@@ -24,6 +35,7 @@ public class CreateAccountActivity extends AppCompatActivity {
     Bank blue;
     Account acct;
     User new_user;
+    String res;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +49,6 @@ public class CreateAccountActivity extends AppCompatActivity {
         username = (EditText) findViewById(R.id.usernameEdit);
         password = (EditText) findViewById(R.id.passwordEdit);
         initial = (EditText) findViewById(R.id.initialDepositEdit);
-
     }
 
     public void CreateAccountBtn(View v){
@@ -84,7 +95,7 @@ public class CreateAccountActivity extends AppCompatActivity {
         } else if(password.length()<8) {
             password.setError("Password must be at least 8 characters");
             return;
-        }else {
+        } else {
             acct.setPassword(password.getText().toString());
         }
 
@@ -96,7 +107,31 @@ public class CreateAccountActivity extends AppCompatActivity {
             acct.setAccountBalance(Double.parseDouble(initial.getText().toString()));
         }
 
+        // Unpack SharedPrefs to get the IP of the server.
+        String ip = getSharedPreferences("bluebank", MODE_PRIVATE).getString("ip", "");
 
+        // Send Create Account request to server.
+        StringBuilder req = new StringBuilder();
+
+        // Create the request string
+        // op code | username | password | real name | email | ssn | dob | initial deposit
+        // 0#1  #2      #3     #4          #5   #6       #7
+        // c#jlm#letmein0#jmiers#j@gmail.com#1234#1/1/1995#500
+        req.append("c" + ClientLogic.DELIM); // OP CODE
+        req.append(username.getText().toString() + ClientLogic.DELIM); // USERNAME
+        req.append(password.getText().toString() + ClientLogic.DELIM); // PASSWORD
+        req.append(name.getText().toString() + ClientLogic.DELIM); // REAL NAME
+        req.append(email.getText().toString() + ClientLogic.DELIM); // EMAIL
+        req.append(ssn.getText().toString() + ClientLogic.DELIM); // SSN
+        req.append(dob.getText().toString() + ClientLogic.DELIM); // DOB
+        req.append(initial.getText().toString()); // INITIAL DEPOSIT
+
+        // Send the request string and get the response.
+        new ClientLogic.CreateAccountRequest().execute(this, req.toString(), ip);
+
+        Toast.makeText(getBaseContext(), "Create request sent.", Toast.LENGTH_SHORT).show();
+
+        /*
         blue.withAccount_Has(acct);
         acct.withBank_has(blue);
         new_user.withAccount_Has(acct);
@@ -106,44 +141,6 @@ public class CreateAccountActivity extends AppCompatActivity {
         bankMainIntent.putExtra("current_acct",acct);
         startActivity(bankMainIntent);
         finish();
+        */
     }
-
-    /*public boolean validate() {
-        boolean valid = true;
-
-        String name = this.name.getText().toString();
-        String ssn = this.ssn.getText().toString();
-        String dob = this.dob.getText().toString();
-        String email = this.email.getText().toString();
-        String username = this.username.getText().toString();
-        String password = this.password.getText().toString();
-
-        if(name.isEmpty() || !name.matches("[ \\w]")) {
-            return false;
-        }
-
-        if(ssn.isEmpty() || ssn.matches("[a-zA-Z]")) {
-            return false;
-        }
-
-        if(dob.isEmpty() || dob.matches("[a-zA-Z]")) {
-            return false;
-        }
-
-        if(email.isEmpty() || !email.matches("[@]")) {
-            return false;
-        }
-
-        if(username.isEmpty()) {    //Are there any rules for usernames?
-            return false;
-        }
-
-        if(password.isEmpty() || password.length() < 4) {
-            return false;
-        }
-
-        return true;
-    }*/
-
-
 }

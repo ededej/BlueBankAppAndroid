@@ -17,30 +17,40 @@ public class BankMainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        blue = (Bank) getIntent().getParcelableExtra("bank");
-        current_acct = (Account) getIntent().getParcelableExtra("current_acct");
+        //blue = (Bank) getIntent().getParcelableExtra("bank");
+        //current_acct = (Account) getIntent().getParcelableExtra("current_acct");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bank_main);
         //gets balances and prints it out on screen
         acct_amount = (TextView) findViewById(R.id.currentBalanceTxt);
         current_user= (TextView) findViewById(R.id.currentUser);
+
+        /*acct_amount = (TextView) findViewById(R.id.currentBalanceTxt);
+        current_user= (TextView) findViewById(R.id.currentUser);
         if(blue!=null){
             bindBalance();
         }else{
             Toast.makeText(this, "No Bank", Toast.LENGTH_LONG).show();
-        }
+        }*/
+    }
 
+    @Override
+    protected void onResume(){
+        super.onResume();
+        current_user.setText(getSharedPreferences("bluebank", MODE_PRIVATE).getString("username", ""));
+        acct_amount.setText("Current Balance: $" +
+                getSharedPreferences("bluebank", MODE_PRIVATE).getFloat("balance", 0));
     }
 
     //withdraw button amount
-    public void DrawDepositBtnClick(View v){
+    public void WithdrawDepositBtnClick(View v){
         Intent depositWithdrawIntent = new Intent(BankMainActivity.this,WithdrawDepositActivity.class);
-        depositWithdrawIntent.putExtra("bank",blue);
-        depositWithdrawIntent.putExtra("current_acct",current_acct);
-        startActivityForResult(depositWithdrawIntent,1);
+        //depositWithdrawIntent.putExtra("bank",blue);
+        //depositWithdrawIntent.putExtra("current_acct",current_acct);
+        startActivity(depositWithdrawIntent);
     }
     //getting the result back if we need to do something here
-    @Override
+    /*    @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
         if (requestCode == 1) {
@@ -54,7 +64,7 @@ public class BankMainActivity extends AppCompatActivity {
 
             }
         }
-    }
+    }*/
 
     public  void transferMoneyClick(View v){
         Intent transferIntent = new Intent(BankMainActivity.this,TransferActivity.class);

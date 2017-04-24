@@ -1,0 +1,22 @@
+Title: Networked Android Application
+
+Description:
+Develop the networking code that will allow the current version of the android application to transfer money between two different accounts on two different phones
+
+Related scenario(s):
+-Scenario needed. 
+
+Time estimate(s):
+
+  ~3 days
+
+Author(s):
+-Jess
+
+Assigned persons (currently working on task):
+-Jess (primary developer) 
+-Marcus (scenario creation)
+
+Log entries (YYYY-MM-DD: HH:MM-HH:MM name, separated, by, commas | notes):
+
+  - 2017-03-10: 12:00-14:00 Jess (replace this with an actual log) 

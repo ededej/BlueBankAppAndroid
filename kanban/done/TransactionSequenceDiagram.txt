@@ -1,0 +1,20 @@
+Title: Transaction Class Sequence Diagram
+
+Description: In order to depict the way a Transaction moves through the BlueBank system, a Sequence Diagram will need to be created. 
+If you are unsure as to how to create a sequence diagram, Google has tons of resources. Also, feel free to reach out to Jess for help 
+with this task. The diagram should depict the entire life cycle of a transaction (start to finish). Remember that sequence diagrams are 
+ordered (cascade from top to bottom). Use any tool you're comfortable with. 
+
+Time estimate(s):
+
+1h 
+
+Author(s):
+  -Jess
+  -Ashmita
+
+Assigned persons (currently working on task):
+  -Marcus
+  -Heymond
+
+Log entries (YYYY-MM-DD: HH:MM-HH:MM name, separated, by, commas | notes):

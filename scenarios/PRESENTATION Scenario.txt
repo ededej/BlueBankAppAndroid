@@ -1,0 +1,101 @@
+Title: Presentation Scenarios
+
+PRESENTATION ROLES: 
+TEAM LEADS:
+Brandon: Discuss Burndown
+Jess: Discuss overall project schedule, current state of product, product future
+Ashmita: Discuss the architecture and present diagrams
+
+Sara -Customer 3 Intellij (scenario 4)
+Sushi: Show mockups of Admin Console
+Heymond -IT Guy (demos Intellij and Android app in the background) 
+Ermal: Emcee (narrates the initial states of the scenarios) 
+Salonika: -Customer 1 Intellij (scenarios 1 and 3) 
+Marcus: -Customer 2	Intellij (scenarios 2 and 3) 
+Krishna: -Customer 4 Android (scenario 5) 
+
+
+
+
+*NOTE, ALL OF THE FOLLOWING WILL BE DEMO'D WITH INTELLIJ* 
+*THE FOLLOWING WILL DEMO CREATE ACCOUNT*
+Scenario 1: Blue Bank's newest Customer, Salonika, Creates an Account
+Initial Setup: Blue Bank is brand new banking system that recently launched. Salonika will be Blue Bank's newest customer
+			   Blue Bank has an initial income of $0 with transaction fees of 5% on all deposits, withdraws, transfers, and modifications. Salonika is prepared to open her new account with $100.
+			   
+-Salonika uses the PC version of the blue bank application to create her account
+-The first thing Salonika sees is the main menu. She sees that option 1 will allow her to create an account but she is curious as to what would happen if she tries to withdraw from the bank without an account. She selects option 4. 
+-Salonika is met with a prompt that asks her to login first but she does not have a username. It seems she is stuck so she has to restart the banking application. 
+-Salonika restarts the app and selects option 1 from the main menu to create an account 
+-Salonika is first asked to provide her first and last name. She enters "Salonika Bose" and presses enter.
+-She is then asked for the last four digits of her social security. Salonika enters "1234" and presses enter. 
+-She is then asked to enter her date of birth starting with the month. She tries to be funny and enters "69" but the bank does not allow for any months less than 1 and greater than 12. She is asked to try again. She enters "1" and presses enter.
+-She is then prompted to enter the date. She enters "22" and presses enter.
+-She is then prompted to enter the year. She enters "1995" and presses enter. 
+-The application returns her birth date as "1/22/1995" 
+-Salonika is then prompted to enter a username. She enters "salonika95" and presses enter
+-The application returns her username as salonika95()
+-Salonika is then prompted to enter a password between 8 and 16 characters. Salonika enters "123" and is reprompted. She then enters "12345678" 
+-She is then prompted to enter a starting amount. Salonika enters "100.00" 
+-The application thanks Salonika and returns her current balance of $100.00. She is then brought back to the main menu to choose another option. 
+-Salonika is now a customer at the Blue Bank. 
+
+*THE FOLLOWING WILL DEMO LOGIN, WITHDRAW, AND A TRANSACTION FEE IMPOSED*
+Scenario 2: Blue Bank's Customer, Marcus, Logs into his Account and Makes a Withdraw
+Initial Setup: Blue Bank's existing customer and Salonika's long time friend, Marcus, wishes to withdraw money from his account. Blue Bank's current income is $0 with transaction fees of 5% on all deposits, withdraws, transfers, and modifications. Marcus's current account balance is $500 and he will be looking to withdraw $475 
+-Marcus uses the PC version of the blue bank application to login to his account
+-Marcus is prompted to enter his username. He enters "marcus01" and presses enter
+-He is then prompted to enter his password. He enters "12345678" and presses enter
+-Marcus has logged into Blue Bank successfully.
+-He selects option 4 to withdraw and is prompted with an amount to withdraw. He enters "475.00" 
+-The application returns that $475.00 has been withdrawn and 1.25 remains
+-Baffled, Marcus wonders why he is not left with $25. He then remembers how awful Blue Bank is and how they impose a 5% transaction fee on everything
+-Marcus lost $23.75. Blue Bank's current income is $23.75 of Marcus's hard earned money. 
+
+*THE FOLLOWING WILL DEMO A DEPOSIT AND A TRANSFER* 
+Scenario 3: Salonika requests $500 from Marcus
+Initial Setup: Salonika needs an advance on her rent from her good friend Marcus. She requests $500 from Marcus. Salonika currently has $100.00 and Marcus currently has $1.25. The Blue Bank has currently made $23.75. There is a 5% transaction fee on all transactions
+-Salonika asks Marcus to transfer her $500. Marcus knows he has no money in the bank currently so he needs to make a deposit
+-Marcus logs into his account and selects option 3 to make a deposit of $500.00 forgetting about the terrible 5% fee
+-Marcus wants to make sure the $500.00 was deposited correctly so he selects option 5 to view his balance. His balance is at $476.25 because Blue Bank took another $25 leaving the Blue Bank at $48.75. 
+-Annoyed, Marcus deposits another $100. He views his balance which is now $571.25. The Blue Bank made another $5 totalling $53.75.
+-Marcus now has enough to transfer to Salonika. He selects option 6 to make a transfer and enters salonika's username: "salonika95" 
+-He is prompted with an amount to send. He enters "500.00" 
+-The $500.00 is sucessfully sent to Salonika. Marcus views his balance again to see that he lost another $25 to blue bank. His balance is $46.25 and Blue Bank's is $78.75
+-Salonika logs into her account and views her balance. She has successfuly received the transfer from Marcus and her balance is $600. 
+-Marcus is becoming irritated and is considering canceling his blue bank account...
+
+*THE FOLLOWING WILL DEMO AN UNDO* 
+Scenario 4: Sara, another customer at Blue Bank, accidentally deposits too much money into her account and needs to undo the transaction
+Initial Setup: Sara is an existing customer with a balance of $1000. Her username is sara01, password: pass1234. The Blue Bank currently holds $78.75 of income. Sara wants to deposit $100 to her account.  
+-Sara logs into her account with her username and password
+-Sara selects option 3 to make a deposit from the main menu
+-The deposit prompts Sara to enter an amount. She enters $1000 instead of $100. 
+-Sara views her account balance and sees that it is at $1950. The Blue Bank made $50 from the deposit totaling: $128.75
+-Sara realizes she made a mistake and selects option 7 to undo her most recent transaction. A 5% fee is also applied to the undo. The fee is applied to the total of $1000 so the Blue Bank makes another $50 totaling: 178.75. After the undo, Sara is left with $900 in her account ($1950 - $50 fee - $1000 original). -Sara's mistake cost her a lot of money.
+
+
+*THE FOLLOWING WILL DEMO THE TRANSACTION LOGGING*
+Scenario 5: Heymond, the IT guy, needs to look through the transaction logs
+Initial Setup: The Blue Bank has made a total of $178.75. Heymond, the IT Guy, has been asked to view the logs to make sure there has been no security breaches. 
+-Heymond goes to the logs section and finds several files containing transaction info
+-Heymond examines the logs and sees the transactions from Salonika, Marcus, and Sara
+
+
+*THE FOLLOWING WILL DEMO THE ANDROID FUNCTIONALITY* 
+Scenario 5: Krishna is a more advanced user at Blue Bank and was picked to beta test their new mobile app. Krishna will create an account, make a deposit, and attempt to withdraw. 
+Initial Setup: The android application is isolated from Blue Bank's main system so there are no current transaction fees and no income tracking for the bank. Krishna will create a new account starting at $500 
+-Krishna opens the mobile application on his android device and selects create account
+-Krishna fills out all of the necessary fields for the application
+	FullNAME: Krishna 
+	SSN: 1234
+	DOB: 1/1/1995
+	USERNAME: krishna01
+	PASSWORD: 1234pass
+	INITIAL DEPOSIT: $500 
+-Krishna attempts to make a deposit of $100. He selects the deposit option and enters $100. He views his account balance which is currently at $600 
+-He attempts to withdraw that $100 he just deposited. He selects the withdraw option and enters $100. He views his account balance which is currently at $500. 
+-Krishna is happy with the functionality of the app but hopes more features will be implemented such as the option to transfer money between two accounts like he can do from his PC.
+
+
+

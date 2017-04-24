@@ -1,0 +1,29 @@
+Title: Class Diagram
+
+Description:
+
+  Create draft of class diagram, based on object diagrams and classes implemented so far.
+
+Related scenario(s):
+
+  - All scenarios are related
+
+Time estimate(s):
+
+  2h
+
+Author(s):
+
+  - Ashmita
+
+Assigned persons (currently working on task):
+
+  - Ashmita
+
+Log entries (YYYY-MM-DD: HH:MM-HH:MM name, separated, by, commas | notes):
+
+  - 2017-03-10: 12:00-14:00 ulno
+
+  - 2017-03-11: 18:00-19:00 ulno, andreas (peer programming)
+
+  - 2017-03-13: 22:00-02:30 ulno

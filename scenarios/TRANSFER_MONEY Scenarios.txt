@@ -1,0 +1,54 @@
+Title: Transfer Money Scenarios
+
+Scenario 1: Sal successfully transfer $100 from her account to Sara's account.
+  - Sal needs to payback $100 that she borrowed from Sara yesterday.
+  - Sal currently has $150 in her account.
+  - She goes to the ATM, inserts her card, and enters her credentials.
+  - Sal selects the option to transfer money and the amount $100 to do.
+  - The machine checks Sal's account balance and prompts destination account info.
+  - Sal types in sara's account number as a destination.
+  - The machine checks Sara's account validity and prompts Sal Sara's name and account number.
+  - Sal presses "OK" button since the prompt info was correct.
+  - The machine withdraws $100 from Sal's account and deposits $100 to Sara's account.
+  - Sal selects to print her receipt and exits the system.
+
+Scenario 2:
+  - Sal needs to payback $100 that she borrowed from Sara yesterday.
+  - Sal currently has $50 in her account.
+  - She goes to the ATM, inserts her card, and enters her credentials.
+  - Sal selects the option to transfer money and the amount $100 to do.
+  - The machine checks Sal's account balance and prompts the amount she typed in.
+  - Sal accepts the amount.
+  - The machine prompts destination account number.
+  - Sal types in sara's account number as a destination.
+  - The machine checks Sara's account validity and prompts Sal Sara's name and account number.
+  - Sal presses "OK" button since the prompt info was correct.
+  - The machine withdraws $100 from Sal's account and deposits $100 to Sara's account.
+  - Sal has negative $50 balance in her account now.
+  - Sal selects to print her receipt and exits the system.
+  
+Scenario 3:
+  - Sara wants to transfer $100 from her checking account to her saving account.
+  - Sara currently has $150 in her checking account.
+  - She opens the bank mobile app and enters her credentials.
+  - Sara selects the option to transfer money and the amount $100 to do.
+  - Sara selects her checking account as a source and her saving account as a destination.
+  - The app prompts Sara's enquiry verification.
+  - Sara presses "OK" button since the prompt info was correct.
+  - The app withdraws $100 from her checking account and deposits $100 to her saving account.
+  - Sara recieves an email receipt and exits the app.
+  
+Author(s):
+
+  - Sara
+
+Assigned persons (currently working on task):
+
+  - Sara
+
+Log entries (YYYY-MM-DD: HH:MM-HH:MM name, separated, by, commas | notes):
+
+  - 2017-03-30: 00:09-00:11 Brandon | Merged all scenarios into one file
+  - 2017-03-27: 12:54-14:00 Sara | Wrote scenario and pushed to git
+  - 2017-03-27: 12:51-14:00 Sara | Wrote scenario and pushed to git
+  - 2017-03-27: 12:44-14:00 Sara | Wrote scenario and pushed to git

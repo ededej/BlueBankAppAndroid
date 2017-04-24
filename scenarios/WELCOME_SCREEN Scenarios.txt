@@ -1,0 +1,33 @@
+Title: Welcome Screen Scenarios
+
+Scenario 1: Brandon turns on the application and sees a welcome screen.
+  - Brandon turns on the BlueBank program
+  - Brandon gets prompted with a message "Welcome to BlueBank! Please create an account or log in!"
+  - Brandon exits by clicking the exit button (for now we can just type q).
+
+Scenario 2: Brandon turns on the application and sees a welcome screen and creates an account
+  - Brandon turns on the BlueBank program
+  - Brandon gets prompted with a message "Welcome to BlueBank! Please create an account or log in!"
+  - Brandon presses create an account (for now we can just type c).
+  - Brandon goes through the CREATE_ACCOUNT scenarios.
+  
+Scenario 3: Brandon turns on the application and sees a welcome screen and logs in.
+  - Brandon turns on the BlueBank program
+  - Brandon gets prompted with a message "Welcome to BlueBank! Please create an account or log in!"
+  - Brandon presses log in (for now we can just type l).
+  - Brandon goes through the LOG_IN scenarios.
+  
+Author(s):
+
+  - Brandon
+
+Assigned persons (currently working on task):
+
+  - Brandon
+
+Log entries (YYYY-MM-DD: HH:MM-HH:MM name, separated, by, commas | notes):
+
+  - 2017-03-30: 00:11-00:13 Brandon | Merged all scenarios into one file 
+  - 2017-03-26: 21:46-21:47 Brandon | Wrote scenario and pushed to git
+  - 2017-03-26: 21:44-21:46 Brandon | Wrote scenario and pushed to git
+  - 2017-03-26: 21:42-21:43 Brandon | Wrote scenario and pushed to git

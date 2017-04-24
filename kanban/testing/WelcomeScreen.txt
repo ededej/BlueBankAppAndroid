@@ -1,0 +1,33 @@
+Title: Create scenario, tests, develop code for user Brandon to view the welcome screen and choose 
+       either to create an account, or log in.
+
+Description:
+
+  Create scenarios that describe what Brandon sees upon viewing the welcome screen.
+  Scenarios must be extensive and cover cases as far as discussed.
+  Create tests that correlate with these scenarios.
+  Finally, implement the scenarios, this will most likely only be using console.
+
+Related scenario(s):
+
+  - Welcome_Screen Scenario 1: Brandon turns on the application and sees a welcome screen.
+  - Welcome_Screen Scenario 2: Brandon turns on the application and sees a welcome screen and creates an account
+  - Welcome_Screen Scenario 3: Brandon turns on the application and sees a welcome screen and logs in.
+
+
+Time estimate(s):
+
+  1h
+
+Author(s):
+
+  - Brandon
+
+Assigned persons (currently working on task):
+
+  - Salonika
+
+Log entries (YYYY-MM-DD: HH:MM-HH:MM name, separated, by, commas | notes):
+
+  - 2017-04-02: 12:15-12:30 Brandon | minor tweaks on the welcome screen to display money as $0.00 instead of $0.0
+  - Log by Brandon; she finished it before assigning the task sometime between Mar 24-26

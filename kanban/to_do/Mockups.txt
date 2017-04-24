@@ -1,0 +1,37 @@
+Title: Create Mockups for Android App
+Mock ups for the following functions:
+welcome screen
+create
+withdraw
+deposit
+modify
+transfer
+
+Description:
+    **Important**
+    These are simply mockups, not GUI implementation.
+    An account and user still represent one thing i.e. each user has exactly one account.
+
+Related scenario(s):
+
+  - CreateAccount, DepositMoney, ModifyTransaction, TransferMoney, WithdrawMoney
+
+Time estimate(s):
+
+  6h
+
+Author(s):
+
+  -Ashmita
+
+Assigned persons (currently working on task):
+
+  -Sushena
+  -Ermal
+
+Log entries (YYYY-MM-DD: HH:MM-HH:MM name, separated, by, commas | notes):
+
+  - 2017-04-04: 09:45-10:15 Sushena | Mockup made for transfer money and uploaded to Google Drive.
+  - 2017-04-05: 03:45-05:00 Sushena | Mockups made for withdraw, deposit, and create and uploaded to Drive.
+  - 2017-04-04: 09:45-10:15 Ermal | Started brainstorming the mockups, come up with first idea and started account managmenet.
+  - 2017-04-05: 08:00-09:00 Ermal | Finishe the account option for mockups and did the support mockup, uploaded on google drive

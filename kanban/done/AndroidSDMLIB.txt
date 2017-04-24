@@ -1,0 +1,22 @@
+Title: Android SDMLIB Debugging
+
+Description:
+Figure out how to get SDMLIB to play nice with Android development environment
+
+Time estimate: 
+~1 week (7 days) 
+
+Author: 
+-Jess 
+
+Assigned persons (currently working on task): 
+Ermal
+
+Log entries (YYYY-MM-DD: HH:MM-HH:MM name, separated, by, commas | notes):
+- 2017-03-23: 20:00-22:00 Ermal | Tried to fix the sdmLib on android app, talk to Ulno to come up with solution
+- 2017-03-24: 09:15-10:30 Ermal | Following Ulno suggestion to fix the problem without results again.
+- 2017-03-24: 19:10-20:30 Ermal | Following Ulno suggestion to fix the problem without results again.
+- 2017-03-25: 14:15-15:30 Ermal | Following Ulno suggestion to fix the problem without results again.
+- 2017-03-26: 20:15-22:40 Ermal | Trying the last Ulno suggestions and wrote to the GitHub on Issue section to ask for help
+- 2017-03-28: 17:15-18:15 Ermal | Following Stefan solution created the sdmLib app that works with a simple app
+- 2017-04-1: 20:00-21:30 Ermal | Wrote the wiki documentation on how to use sdmLib step by step from setting up the app.

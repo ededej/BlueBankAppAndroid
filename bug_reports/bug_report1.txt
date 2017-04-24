@@ -1,0 +1,140 @@
+PUT ALL BUGS/FIXES NEEDED TO BE DEALT WITH FROM CODE FROM ITERATION 1 HERE!
+FOR EVERY BUG FOUND HERE, WRITE A TEST AND THEN IMPLEMENT YOUR SOLUTION IF YOU CHOOSE TO WORK ON IT
+Create Account
+ - Name: Multiple accounts (Done in 15 mins)
+   Assigned:
+   When you create multiple accounts with the same username with different passwords,
+   you can no longer log in to that account. It just states you have the wrong password.
+   Priority: High
+   Potential Fix: Don't allow multiple accounts with the same username
+
+
+ - Name: Enforce DOB Length (Done)
+   Assigned: Marcus/Salonika
+   A user can currently input "1" when inputting their DOB. Enforce the MMDDYYYY format.
+   Priority: Low
+   Potential Fix: Use regex to enforce this. This may possibly be fixed later when we implement
+                  it with Android/Web GUI since there are ways to enforce Date.
+   Actual Fix: Input month, date, and year separately and have checks that month is between
+                1 and 12, date is between 1 and 31, and year is between 1950 and 2017.
+
+ - Name: Enforce 4 ints of SSN (Done)
+   Assigned: Marcus/Salonika
+   A user can input any int as their SSN. Enforce them to the last 4 ints of their SSN (or 4 ints).
+   Priority: Medium
+   Potential Fix: A method isValidSSN() would probably be a good idea, and check 1000 <= x <= 9999.
+ 
+ - Name: Error handling for SSN (Done)
+   Assigned: Krishna (Done)
+   If a user enters a len 4 String for SSN, the program will crash. Force them to try to re-enter if this happens.
+   Priority: Medium
+   Potential Fix: A try/catch block would probably suffice.
+
+Withdraw
+ - Name: Ensure double input on withdraw (done)
+   Assigned:
+   A user can input any random value for when they are asked how much they want to withdraw (like a string).
+   This causes an error and crashes the program.
+   Priority: Medium
+   Potential Fix: Use a try/catch block to make sure they enter a double. There's a possiblity that the
+                  the UI from Android/Web will enforce this already, so we might not need to fix this yet.
+
+ - Name: Withdraw negative value, gains money (done)
+   Assigned:
+   A user can input a negative value when they withdraw, which would make them gain money. This shouldn't
+   be possible.
+   Priority: High
+   Potential Fix: Use an if-statement to check if it's a negative value and tell them to try again.
+
+ - Name: Possibly allow more values to withdraw? (done)
+   Assigned:
+   Currently, a user is only allowed to withdraw 100, 20, or 10. Brandon believes that they should be able
+   to withdraw more values
+   Priority: Unsure
+   Potential Fix: Use conditional statements to check the amount to be withdrawn.
+
+Deposit
+ - Name: Ensure double input on deposit (done)
+   Assigned:
+   A user can input any random value for when they are asked how much they want to deposit (like a string).
+   This causes an error and crashes the program.
+   Priority: Medium
+   Potential Fix: Use a try/catch block to make sure they enter a double. There's a possibility that the
+                  the UI from Android/Web will enforce this already, so we might not need to fix this yet.
+ 
+ - Name: Negative deposit (done)
+   Assigned:
+   When a user inputs a negative value when depositing, it will throw an illegal argument exception.
+   This is the correct exception to throw, but when we are actually using the program, we probably don't
+   want it to crash.
+   Priority: High
+   Potential Fix: Use a try/catch block for the IAS. Make them try again.
+
+Transfer
+  - Name: Need to implement it to be used in the main menu ----- Fixed by Sara
+    Assigned:
+    As of right now, transfer is working as it should. If you put in a double and Account as parameters, it will transfer the money over to that
+	account. Currently, however, if we try to transfer from the main menu, it will throw a NullPointerException. We need to probably
+	write better scenarios or consult with the Mockups in order to get a better idea for implementation.
+	Priority: High
+	Potential Fix: We have to wait until we're sure about how to implement it...
+
+  - Name: Implementation v2
+    Assigned:
+    Now, it doesn't throw an NPE anymore. But it doesn't really transfer like we want it to. Right now, it transfers to an arbitrary
+    account that no one can access. It is basically the equivalent of deposit right now. For transfer, I believe we will want to
+    first ask how much money is to be transferred, and check if that is possible. Then, ask for the username of the account
+    we want to transfer to. We will need to check if that username exists or not. Afterwards, if it does exist, we will
+    then transfer that money previously asked to the user to the username they stated.
+    Priority: High
+    Potential Fix: Implement it. The create account function as code that checks to see an existing user. We need to be able
+                   to now connect a username to an actual account inside our database. From there we, we can use our already written transfer code.
+
+Welcome Screen
+ - Name: Invalid menu value ----- Fixed by Sara
+   Assigned:
+   If a user inputs a String value on the menu screen, it will crash the program.
+   Priority: Low
+   Potential Fix: Use a try/catch block to make sure they enter a valid input. There's a possiblity that the
+                  the UI from Android/Web will enforce this later on, so we might not need to fix this.
+
+FOR ALL OF THE FOLLOWING TESTS
+ - Name: Add second object diagram and format tests to create a meaningful storyboard (Example: Found in TransferTests/testTransferScenario1)
+   Assigned:
+   A single object diagram is meaningless. There's almost no reason to have only the result of the object diagram be shown in the storyboard.
+   It needs to include the initial scenario, and then at least the end result. If there are multiple steps, such as the undo tests, there should be more.
+   Fix these tests:
+     - ModifyTransactionTests/testModifyTransactionUndoDeposit
+	 - ModifyTransactionTests/testModifyTransactionUndoWithdraw
+	 - ModifyTransactionTests/testModifyTransactionUndoTransfer
+	 - TransactionTests/testDepositScenario1
+	 - TransactionTests/testDepositScenario2
+	 - TransactionTests/testDepositScenario3
+   Priority: Medium
+   Potential Fix: Have more than 1 storyboard.addObjectDiagram(...)'s. One at the very start of the test, and another storyboard for every 
+                  action that changes the state of that object we were looking at.
+
+Account initialAmount
+  - Name: Get rid of initialAmount and safely refactor
+    Assigned:
+    There's almost no reason to have this variable in our Account class. No one will care about the initialAmount you put in the Account.
+	They will just check the balance.
+	Priority: Low
+	Potential Fix: Get rid of it and refactor methods and tests that use it. IntelliJ has a good feature that allows you to check where it has
+	               been used in your project.
+				   
+Log entries (YYYY-MM-DD: HH:MM-HH:MM name, separated, by, commas | notes):
+ - 2017-04-02: 15:00-16:00 Brandon | compiled these bugs in a list while user-testing our system
+ - 2017-04-02: 16:00-16:33 Brandon | fixed bug "Welcome Screen - Showed $1.0 instead of $1.00"
+ - 2017-04-03: 03:56-04:48 Marcus | fixed bug "Withdraw over current balance"
+ - 2017-04-03: 15:55-16:00 Salonika | fixed bug "Enforce password len"
+ - 2017-04-03: 16:40-16:48 Salonika | fixed bug "Create account, nonsense name"
+ - 2017-04-04: 09:30-10:02 Marcus | fixed bug "Ensure double input on withdraw"
+ - 2017-04-04: 10:02-10:11 Marcus | fixed bug "Withdraw negative value, gains money"
+ - 2017-04-04: 10:11-10:20 Marcus | fixed bugs "Ensure double input on deposit","Negative deposit"
+ - 2017-04-04: 12:25-12:31 Brandon | added new "item", "Transfer, Implementation v2"
+ - 2017-04-06: 09:15-09:28 Marcus | fixed bug "allow more values to withdraw"
+ - 2017-04-06: 09:15 am-10:00 am Krishna | fixed bug "Error handling for SSN", catches any alphabets entered.
+
+
+

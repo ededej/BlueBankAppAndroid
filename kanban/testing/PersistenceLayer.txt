@@ -1,0 +1,56 @@
+Title: Persistence Layer - Some type of database for existing accounts
+
+Description:
+
+  Brainstorm ideas about what type of persistence layer will be used.
+  Create tests that correlate with scenarios below and persistence layer that will be used.
+  Finally, implement the scenarios.
+
+Related scenario(s):
+
+  - Welcome_Screen Scenarios:
+
+
+  - Create_Account Scenarios:
+    Scenario 1: User Sal makes an account and is saved.
+      - No account currently exists for Sal.
+      - Sal creates an account successfully like in Create Account Scenario 1.
+      - Sal's account is saved to the database.
+      - The next time Sal runs ATM program, Sal's account has been saved and
+        can be logged into without being created again.
+
+  - Log_In Scenarios: 
+    Scenario 2: User Sal logs into an account she made last time.
+
+  - Modify_Account Scenarios:
+    Scenario 3: User Sal deposits money to her account.
+    Scenario 4: User Sal withdraws money from her account.
+    Scenario 5: User Sal makes a transfer with her account.
+    Scenario 6: User Sal modifies her account information.
+
+  - Delete Account Scenario:
+    Scenario 7: User Sal's account is deleted.
+
+Time estimate(s):
+
+  5h + 3 + 3 = 11h
+
+Author(s):
+
+  - Brandon
+
+Assigned persons (currently working on task):
+
+  - Heymond
+  - Sushena
+  - Ermal
+
+Log entries (YYYY-MM-DD: HH:MM-HH:MM name, separated, by, commas | notes):
+
+  - 2017-03-30: 9:00 pm - 11:00pm | implementing json integration to retain information
+  - 2017-04-01: 10:00 pm - 11:00pm Ermal | Created a test case to create a account with persistence, figure out all the right calls to make for it.
+  - 2017-04-02: 12:19am - 2:54 am Heymond | Finished Persistence Layer
+  - 2017-04-02: 10:00 am - 11:30Am Ermal | Created 3 more test cases for the persistence layer.
+  - 2017-04-02: 14:27-14:30 Brandon | Added 3 more hours to estimation to incorporate testing
+  - 2017-04-03: 05:00pm-06:30pm Sushena | Wrote further test cases, and test cases.
+  - 2017-04-03: 19:24-19:25 Brandon | Added 3 more hours to incorporate passing these new tests

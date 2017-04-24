@@ -1,0 +1,18 @@
+Title: Object Diagrams/SDMLIB for Modify/Transfer 
+
+Description:
+Use SDMLIB to create object diagrams for the modify and transfer functionality
+This needs to be completed before Krishna/Sara work on development so we don't 
+run into any issues with SDMLIB again. 
+
+Time estimate: 
+~1 hour 
+
+Author: 
+-Jess 
+
+Assigned persons (currently working on task): 
+Heymond
+
+Log entries (YYYY-MM-DD: HH:MM-HH:MM name, separated, by, commas | notes):
+- 2017-04-02: 12:19am - 2:54 am Heymond | everything should be ready for others to use.{FINISHED}

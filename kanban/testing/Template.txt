@@ -1,0 +1,31 @@
+Title: Driver for Wemos D1 mini for receiving MQTT commands to set rgb lights
+
+Description:
+
+  Transform a simple mqtt push and pull example into the dedicated way to
+  receive rgb values, brightness, and on off status as well as publish all current
+  status values.
+
+Related scenario(s):
+
+  - [Ulno uses the command line mosquitto client to set rgb](../../scenarios/ulno_command_line_client_rgb.md)
+
+Time estimate(s):
+
+  8h
+
+Author(s):
+
+  - ulno
+
+Assigned persons (currently working on task):
+
+  - ulno
+
+Log entries (YYYY-MM-DD: HH:MM-HH:MM name, separated, by, commas | notes):
+
+  - 2017-03-10: 12:00-14:00 ulno
+
+  - 2017-03-11: 18:00-19:00 ulno, andreas (peer programming)
+
+  - 2017-03-13: 22:00-02:30 ulno

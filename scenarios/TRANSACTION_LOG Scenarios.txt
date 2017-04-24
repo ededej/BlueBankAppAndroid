@@ -1,0 +1,99 @@
+Title: Transaction Log Scenarios
+
+Scenario 1: Transaction log created after Joey deposits $100 into account
+  - Joey currently has $50 in his account at BlueBank.
+  - Joey receives a check from his job for $100.
+  - He goes to the BlueBank to deposit the check into his account.
+  - Joey deposits the check for $100 into his account.
+  - Blue Bank charges Joey a %5 fee for depositing the money into his account.
+  - $5 is deducted from the $100.
+  - A log entry is entered into his account stating "Joey - 5% deposit fee"
+  - A second log entry is entered into his account stating "Joey - deposit 95.00"
+  - Joey's current balance is $145.00.
+  - Joey exits the BlueBank.
+
+Scenario 2: Transaction log created after Joey withdraws $25 from his account
+  - Joey needs money to put gas into his car.
+  - He currently has $30 in his bank account.
+  - He goes to the Blue Bank to withdraw $25 from his account for gas and spending money.
+  - Joey requests to withdraw $25 from the bank.
+  - The bank charges Joey a 5% withdrawal fee of $1.25.
+  - A log is entered into his account stating "Joey - 5% withdraw fee".
+  - He receives the money and a transaction log is generated stating "Joey - withdraw 25.00".
+  - Joey now has $3.75 in his bank account.
+  - Joey leaves the bank.
+
+Scenario 3: Transaction log created after Joey transfers $15 to Diane
+  - Diane currently has $0 in her account.
+  - Diane asked Joey to borrow $15.
+  - Joey says yes and logs into his Blue Bank account.
+  - Joey currently has $40.00 in his account.
+  - He chooses the option to Transfer money and enters Diane's account information.
+  - Joey enters $15 to transfer to Diane.
+  - Blue Bank charges Joey a 5% fee to transfer money to Diane's account.
+  - A log is entered into Joey's account stating "Joey - 5% transfer fee".
+  - He okays the transaction and $15 is transferred to Diane's account.
+  - Another log is entered into Joey's account stating "Joey - transfer 15.00 Diane".
+  - $15.75 is deducted from Joey's account.
+  - Joey's current balance is $24.25.
+  - Diane receives the money but the bank charges her a 5% deposit fee.
+  - A log is entered in Diane's account stating "Diane - 5% deposit fee".
+  - Another log is entered stating "Diane - deposit 14.25 Joey".
+  - Diane now has 14.25 in her account.
+  - Joey logs out of his account.
+
+Scenario 4: Chris creates an Account with Blue Bank
+  - Chris decides he needs to open a bank account to save his money.
+  - Chris selects the option to open an Account with Blue Bank.
+  - He enters all of the requested information.
+  - He initially deposits $10.
+  - The bank creates a new transaction log file for Chris's transactions.
+  - The first log entered is for the initial amount and states "Chris - initial deposit 10.00"
+  - Chris logs out of his new account.
+
+ Scenario 5: Chris undoes a deposit withdrawal
+  - Chris decides to go to Blue Bank to withdraw $20.
+  - He currently has $25 in his account.
+  - He goes to the Bank and requests to to withdraw $20.
+  - Blue Bank assess a 5% fee to withdraw.
+  - A log is entered into Chris's account stating "Chris - 5% withdraw fee"
+  - He receives $20 from his account.
+  - Another log is entered into his account stating "Chris - withdraw 20.00".
+  - His account now has a balance of $4.
+  - He notices the fee and decides to undo the transaction.
+  - A log is entered stating "Chris - undo withdraw 20.00".
+  - The 20.00 and 5% is now returned back to his account.
+  - Chris's balance is back to the original $25.
+  - Chris exits the bank with no money.
+
+ Scenario 6: Chris decides to change his intial deposit of $75 to $50
+  - Chris has received $75 owed to him from a friend and decides to deposit this money into his account.
+  - Chris goes to Blue Bank with the intention fo depositing $75 into his account.
+  - His current account balance is $10.
+  - He chooses the option to deposit and enters the amount of $75.00.
+  - The bank assess a %5 fee to deposit the money.
+  - Two logs are entered. The first stating "Chris - 5% deposit fee" and
+    the second stating "Chris - deposit 75.00".
+  - He notices the fee and decides to change his amount.
+  - Chris changes the deposit amount to $50 to keep more of his money
+  - A new log is generated stating "Chris - change deposit 50.00"
+  - A new 5% fee is assessed and logged stating "Chris - 5% deposit fee".
+  - A deposit log is also entered stating "Chris - deposit 50.00".
+  - $47.50 is deposited into Chris's account.
+  - His new account balance is $57.50.
+  - Chris exits the bank.
+
+Author(s):
+
+  - Marcus
+
+Assigned persons (currently working on task):
+
+  - Marcus
+
+Log entries (YYYY-MM-DD: HH:MM-HH:MM name, separated, by, commas | notes):
+
+  - 2017-04-06: 09:40-10:10 Marcus | Wrote scenarios for transaction log (deposit, withdraw, transfer)
+  - 2017-04-09: 20:30-21:11 Marcus | Modified scenarios
+  - 2017-04-10: 01:25-01:29 Marcus | add undo transaction scenario.
+  - 2017-04-10: 01:30-01:39 Marcus | add modify tranasaction scenario.

@@ -1,0 +1,20 @@
+Title: TASK_NAME
+
+Scenario 1:
+  1) Brandon turned on his computer. 
+  2) He browsed to his "Task Scenario" folder. 
+  3) He wrote a sample scenario and saved the text file.
+
+Author(s):
+
+  - Brandon
+
+Assigned persons (currently working on task):
+
+  - Brandon
+
+Log entries (YYYY-MM-DD: HH:MM-HH:MM name, separated, by, commas | notes):
+
+  - 2017-03-22: 16:51-16:52 Brandon, himself | Wrote scenario template and pushed to git
+
+  - 2017-03-22: 16:50-16:51 Brandon

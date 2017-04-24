@@ -1,0 +1,14 @@
+Title: Update Transfer Fee Scenarios
+
+Description: Update the Transfer Fee scenarios written by Jess to properly reflect the current system.
+
+Time estimate(s):
+20-30mins
+
+Author(s):
+  -Jess
+  
+Assigned persons (currently working on task):
+  -Ashmita
+
+Log entries (YYYY-MM-DD: HH:MM-HH:MM name, separated, by, commas | notes):

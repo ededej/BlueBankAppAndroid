@@ -1,0 +1,18 @@
+Title: Create Check Balance Functionality
+
+Description:
+Add a menu option for checking the user's current account balance
+implement menu option
+
+Time estimate: 
+5-10 mins
+
+Author: 
+-Jess 
+
+Assigned persons (currently working on task): 
+Salonika
+Heymond
+
+Log entries (YYYY-MM-DD: HH:MM-HH:MM name, separated, by, commas | notes):
+- 2017-04-02: 12:19am - 2:54 am Heymond | Finished Login, Persistence, Check Balance.{FINISHED}

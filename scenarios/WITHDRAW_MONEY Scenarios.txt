@@ -1,0 +1,40 @@
+Title: Withdraw Money Scenarios
+
+Scenario 1: Sal successfully withdraws $40 from her account.
+  - Sal needs money to purchase a dress for a party she is attending.
+  - She currently has a balance of $60 in her account.
+  - She arrives at the ATM, inserts her card, and enters her credentials.
+  - Sal selects the option to withdraw money from her account.
+  - She enters an amount of $40.
+  - The machine dispenses the money, Sal prints a receipt, and exits the system.
+
+Scenario 2: Sal attempts to withdraw an incorrect denomination of money.
+  - Sal goes to the ATM to withdraw money for the week.
+  - Her current balance is is $75.
+  - Sal inserts her card and inputs her credentials.
+  - She selects the withdraw option and inputs $35.
+  - The system rejects request with an error of incorrect denomination.
+  - Sal decides to try again later and exits the system.
+  
+Scenario 3: Sal’s account has a negative balance after withdrawal from her account.
+  - Sal needs money to get a gift for her best friend.
+  - Sal currently has $30 in her account but the gift costs $40.
+  - She goes to the ATM, inserts her card, and enters her credentials.
+  - Sal selects the option to withdraw money and inputs $40.
+  - The machine dispenses $40 and her balance is updated to negative ($10).
+  - Sal prints her receipt and exits the system.
+  
+Author(s):
+
+  - Marcus
+
+Assigned persons (currently working on task):
+
+  - Marcus
+
+Log entries (YYYY-MM-DD: HH:MM-HH:MM name, separated, by, commas | notes):
+
+  - 2017-03-30: 00:13-00:15 Brandon | Merged all scenarios into one file
+  - 2017-03-26: 13:50-14:00 Marcus | Wrote scenario and pushed to git
+  - 2017-03-26: 13:30-13:40 Marcus | Wrote scenario and pushed to git
+  - 2017-03-26: 13:15-13:23 Marcus | Wrote scenario and pushed to git

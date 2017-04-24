@@ -1,0 +1,68 @@
+Title: Create Account Scenarios
+
+Scenario 1: User, Salonika, creates first account successfully.
+ User, Salonika, runs ATM program
+ Console displays: "Welcome to BlueBank! Lets create an account: Please enter your first and last name."
+ Salonika types "Salonika Bose" into the console, and hits enter.
+ Console displays: "Please enter your Social Security Number."
+ Salonika types "123-45-6789" into the console, and hits enter.
+ Console displays: "Please enter your date of birth, in the format MMDDYYYY."
+ Salonika types "01011995" into the console, and hits enter.
+ Console displays: "Please enter a username."
+ Salonika types "salonikab" into the console, and hits enter.
+ Console displays: "Please enter a password of at least four (4) characters."
+ Salonika types: "abcd" into the console, and hits enter.
+ Console displays: "Please enter the initial amount you'd like to deposit, in the format 1.00."
+ Salonika types "100.00" into the console, and hits enter.
+ Console displays: "Thank you for the information, Salonika. You currently have 100.00 dollars in your account."
+
+ Scenario 2: User, Salonika, creates first account unsuccessfully by entering incorrect password.
+ User, Salonika, runs ATM program
+ Console displays: "Welcome to BlueBank! Lets create an account: Please enter your first and last name."
+ Salonika types "Salonika Bose" into the console, and hits enter.
+ Console displays: "Please enter your Social Security Number."
+ Salonika types "123-45-6789" into the console, and hits enter.
+ Console displays: "Please enter your date of birth, in the format MMDDYYYY."
+ Salonika types "01011995" into the console, and hits enter.
+ Console displays: "Please enter a username."
+ Salonika types "salonikab" into the console, and hits enter.
+ Console displays: "Please enter a password of at least four (4) characters."
+ Salonika types: "abc" into the console, and hits enter.
+ Console displays: "The password you've entered is too short. Please enter a different password that is at least four (4) characters."
+ Salonika types "abcd" into the console, and hits enter.
+ Console displays: "Please enter the initial amount you'd like to deposit, in the format 1.00."
+ Salonika types "100.00" into the console, and hits enter.
+ Console displays: "Thank you for the information, Salonika. You currently have 100.00 dollars in your account."
+ 
+ Scenario 3: User, Salonika, creates first account unsuccessfully by entering initial amount to deposit.
+ User, Salonika, runs ATM program
+ Console displays: "Welcome to BlueBank! Lets create an account: Please enter your first and last name."
+ Salonika types "Salonika Bose" into the console, and hits enter.
+ Console displays: "Please enter your Social Security Number."
+ Salonika types "123-45-6789" into the console, and hits enter.
+ Console displays: "Please enter your date of birth, in the format MMDDYYYY."
+ Salonika types "01011995" into the console, and hits enter.
+ Console displays: "Please enter a username."
+ Salonika types "salonikab" into the console, and hits enter.
+ Console displays: "Please enter a password of at least four (4) characters."
+ Salonika types: "abcd" into the console, and hits enter.
+ Console displays: "Please enter the initial amount you'd like to deposit, in the format 1.00."
+ Salonika types "-100.00" into the console, and hits enter.
+ Console displays: "Please do not enter negative number. Please enter a positve initial amount to deposit."
+ Salonika types "100.00" into the console, and hits enter.
+ Console displays: "Thank you for the information, Salonika. You currently have 100.00 dollars in your account."
+ 
+Author(s):
+
+  - Salonika
+
+Assigned persons (currently working on task):
+
+  - Salonika
+
+Log entries (YYYY-MM-DD: HH:MM-HH:MM name, separated, by, commas | notes):
+
+  - 2017-03-30: 00:00 Brandon | merged all scenarios into one file
+  - 2017-03-25: 11:05 Salonika “started scenario, worked for 5 mins”
+  - 2017-03-25: 10:57 Salonika “started scenario, worked for 4 mins”
+  - 2017-03-25: 10:39 Salonika “started scenario, worked for 10 mins”

@@ -1,0 +1,50 @@
+Title: Create scenario, tests, for user to modify the most recent transaction that Sal made.
+
+Description:
+
+  Create scenarios that describe how user Sal can modify her most recent transaction.
+  This includes canceling the transaction, increasing, decreasing the amount withdrawn/deposited.
+  Scenarios must be extensive and cover cases as far as discussed.
+  Create tests that correlate with these scenarios. It's okay if these tests do not compile.
+  Write the tests assuming the required objects and classes.
+
+Related scenario(s):
+
+  - Deposit Money Scenario 1,
+  - Deposit Money Scenario 2,
+  - Deposit Money Scenario 3,
+  - Transfer Money scenario 1,
+  - Transfer Money scenario 2,
+  - Transfer Money scenario 3,
+  - Withdraw Money Scenario 1,
+  - Withdraw Money Scenario 2,
+  - Withdraw Money Scenario 3,
+  - Modify Transaction Scenarios
+
+Time estimate(s):
+
+  3h
+
+Author(s):
+
+  - Jess
+
+Assigned persons (currently working on task):
+
+  - Krishna
+
+Log entries (YYYY-MM-DD: HH:MM-HH:MM name, separated, by, commas | notes):
+
+  - 2017-03-27: 2:40 pm - 2:50 pm ; Krishna | wrote the scenario and pushed to git. Took about 10 mins to do so.
+
+  - 2017-03-27: 3:00 pm - 3:10 pm ; Krishna | wrote the scenario and pushed to git. Took about 10 mins to do so.
+
+  - 2017-03-27: 03:15 pm - 03:30 pm Krishna | Wrote scenario and pushed to git. Took about 15 mins to do so.
+
+  - 2017-03-27: 03:30 pm - 04:30 pm Krishna | Wrote the test cases for Modify Transaction and pushed to git.
+
+  - 2017-04-03: 10:30 am - 03:00 pm Krishna | implemented a primitive undoRecentTransaction function. works only for withdraw and deposit, have to
+                      fix for transfer. Took about 3 hrs.
+
+  - 2017-04-09: 11:00 am - 02:00 pm Krishna | moved, the undorecenttransaction functionality from account to bank class and made it
+                                             to work with transfer also. Added undo recent transaction to the menu.

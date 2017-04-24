@@ -1,0 +1,47 @@
+Title: Deposit Money Scenarios
+
+Scenario 1: Sal successfully deposits $50 into her account.
+  - Sal receives $50 from her friend as repayment for a favor.
+  - Sal currently has $0 in her account.
+  - She quickly goes to the ATM to deposit her money into the bank.
+  - Sal inserts her card and enters her credentials at the screen.
+  - She selects the option to deposit money into her account and inserts the $50 into the machine.
+  - Her current balance now reads $50.
+  - Sal prints a receipt of the transaction and exits the program.
+  
+Scenario 2: Sal deposits money to bring her account balance positive.
+  - Sal’s account currently has a negative balance of ($25).
+  - She has earned $100 at a bake sale she sales pastries on the weekend.
+  - After the fair she goes to the ATM to deposit her newly earned wages.
+  - Sal inserts her card and enters her credentials.
+  - She selects to deposit money and inserts the $100 into her account.
+  - Sal checks the balance of her account and it is now positive with $75.
+  - She prints her receipt and exits the system.
+
+Scenario 3: Sal attempts to make two deposits in one transaction.
+  - Sal needs to make another trip to the ATM to deposit $80 she received at the bake sale.
+  - She currently has $120 in her account.
+  - Sal arrives at the ATM and enters her card and credentials.
+  - She selects the option to deposit money into her account.
+  - She inputs $80 and inserts the cash into the machine.
+  - Sal now has a balance of $200.
+  - Before exiting the system she realizes that she has $40 in her purse from a previous sale.
+  - Sal goes back to the menu screen and selects deposit option.
+  - She inputs $40 and inserts the money into the machine.
+  - Her deposit is now $240.
+  - She prints the receipt and exits the system.
+  
+Author(s):
+
+  - Marcus
+
+Assigned persons (currently working on task):
+
+  - Marcus
+
+Log entries (YYYY-MM-DD: HH:MM-HH:MM name, separated, by, commas | notes):
+
+  - 2017-03-30: 00:01-00:03 Brandon | Merged all scenarios into one file
+  - 2017-03-26: 12:38-12:54 Marcus | Wrote scenario and pushed to git
+  - 2017-03-26: 12:12-12:32 Marcus | Wrote scenario and pushed to git
+  - 2017-03-26: 11:52-12:08 Marcus | Wrote scenario and pushed to git

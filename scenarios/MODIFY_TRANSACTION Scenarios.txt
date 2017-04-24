@@ -1,0 +1,50 @@
+Title: 
+
+Scenario 1: User Sal successfully undoes her recent Deposit
+
+    - Sal has logged in to her account. And she has followed the steps in the DEPOSIT_MONEY
+      scenario and has successfully deposited $50 into her account.
+    - But she suddenly remembers that she need this money to buy groceries.
+    - At the prompt, she chooses to undo her most recent transaction.
+    - The ATM gives back her $50, and updates her account accordingly.
+    - The ATM return to the initial prompt, and asks sal what she wants to do.
+    - Sal takes the cash, and prints a receipt of her transaction and exits the ATM.
+    - The receipt shows her initial balance, deposit of $50, then a deduction of $50, and her current balance.
+
+Scenario 2: User Sal successfully undoes her recent Withdrawal.
+
+    - Sal has logged in to her account. And she has followed the steps in the WITHDRAW_MONEY
+      scenario and has successfully withdrawn $50 from her account.
+    - But she suddenly remembers that she has some cash with her, and does not need the money she just withdrew.
+    - At the prompt, she chooses to undo her most recent transaction.
+    - The ATM prompts her to input $50, and she does input $50 into the machine.
+    - The ATM adds the $50 back into her account.
+    - The ATM returns to the initial prompt, and asks sal what she wants to do.
+    - Sal chooses to print a receipt of her transaction and exit the ATM.
+    - The receipt shows her initial balance, withdrawal of $50, then an addition of $50, and her current balance.
+	
+Scenario 3: User Sal successfully undoes her recent Transfer.
+  - Sal has exactly followed the steps in the TRANSFER_MONEY Scenario1.
+  - She has successfully transferred $100 from her account to Sara's account.
+  - She immediately realizes that she has already paid Sara in cash, and does not need to transfer her money.
+  - She chooses to undo her recent transaction at the prompt.
+  - The ATM automatically deducts $100 from Sara's account and puts it back into Sal's account.
+  - Since the rollback was successful, the ATM prompts Sal with the initial screen and asks her what to do.
+  - Sal chooses to print a receipt and exit the ATM.
+  - The receipt shows her initial balance, transfer amount to sara's account, cancellation of the transfer, and the
+    new balance (which is equal to the initial balance).
+
+Author(s):
+
+  - Krishna.
+
+Assigned persons (currently working on task):
+
+  - Krishna.
+
+Log entries (YYYY-MM-DD: HH:MM-HH:MM name, separated, by, commas | notes):
+
+  - 2017-03-30: 00:08-00:09 Brandon | Merged all scenarios into one file
+  - 2017-03-27: 03:15 pm -03:30 pm Krishna | Wrote scenario and pushed to git. Took about 15 mins to do so.
+  - 2017-03-27: 3:00 pm - 3:10 pm ; Krishna | wrote the scenario and pushed to git. Took about 10 mins to do so.
+  - 2017-03-27: 2:40 pm - 2:50 pm ; Krishna | wrote the scenario and pushed to git. Took about 10 mins to do so.

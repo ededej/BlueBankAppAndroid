@@ -1,0 +1,27 @@
+Title: Optimize Create Account, Deposit, Withdraw
+
+Description:
+Now that Create, Deposit, and Withdraw are bug free, there is some optimization to be done: 
+Name: User should not be able to add nonsensical values as a name (such as numbers)
+SSN: standardize this to the last 4 digits of user's SSN. Enforce the standard
+DOB: Enforce the MMDDYYYY format. Currently a user can input "1"
+Password: Enforce a password length. (Typically the minimum password should be 8-16 chars)
+Do not allow negative balance for withdraw.
+
+Time estimate: 
+~1.5 hours
+
+Author: 
+-Jess 
+
+Assigned persons (currently working on task): 
+Salonika 
+Marcus
+
+Log entries (YYYY-MM-DD: HH:MM-HH:MM name, separated, by, commas | notes):
+2017-04-03: 03:56-04:48 Marcus | update withdrawal function to prevent users from withdrawing negative amount
+2017-04-03: 03:24-3:50 Salonika | update SSN
+2017-04-03: 03:55-4:00 Salonika | update DOB
+2017-04-03: 04:33-4:39 Salonika | update password length
+2017-04-03: 04:40-4:48 Salonika | update name
+2017-04-04: 09:29-9:53 Salonika | update DOB input so its separate input of month, day, and year

@@ -1,0 +1,39 @@
+Title: Create scenario, tests, code for user Salonika to create bank account
+
+Description:
+
+  Create scenarios that describe how user Salonika can create an account.
+  Scenarios must be extensive and cover cases as far as discussed.
+  Create tests that correlate with these scenarios.
+  Finally, implement the scenarios.
+
+Related scenario(s):
+
+  - Create_Account Scenario 1: Happy path
+  - Create_Account Scenario 2: Creating account with too short of a password
+  - Create_Account Scenario 3: Creating account with a negative monetary value.
+
+Time estimate(s):
+
+  3h + 1 = 4h
+
+Author(s):
+
+  - Salonika
+
+Assigned persons (currently working on task):
+
+  - Salonika
+
+Log entries (YYYY-MM-DD: HH:MM-HH:MM name, separated, by, commas | notes):
+
+  - 2017-04-02: 17:50-17:51 Brandon | Added 1 hour to estimation of each task to incorporate SDMLib and persistence in tests
+
+  - 2017-03-25: 10:39 Salonika “CREATE_ACCOUNT Scenario1, worked for 10 mins”
+
+  - 2017-03-25: 10:57 Salonika “CREATE_ACCOUNT Scenario2, worked for 4 mins”
+
+  - 2017-03-25: 11:05 Salonika “CREATE_ACCOUNT Scenario3, worked for 5 mins”
+
+  - 2017-03-25: 11:35; 13:54 Salonika "Started working on BlueBank, Account, and User
+    at 11:35 am - 13:51 pm; started again at 13:54pm - 14:43 pm"

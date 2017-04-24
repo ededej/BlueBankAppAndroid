@@ -1,0 +1,40 @@
+Title: Create scenario, tests, and implementation for user Sal to transfer money from one account to another, // while both accounts belong to one user.
+
+Description:
+
+  Create scenarios that describe how user Sal can transfer money from one account to another, while both accounts belong to one user, Sal.
+  Scenarios must be extensive and cover cases as far as discussed.
+  Create tests that correlate with these scenarios. It's okay if these tests do not compile. Write the tests assuming the required objects and classes.
+
+Related scenario(s): **update these
+
+  - Deposit Scenario 1: Sal successfully transfer $100 from her account to Sara's account.
+  - Deposit Scenario 2: Sal’s account has a negative balance after transfer from her account to Sara's account.
+  - Deposit Scenario 3: Sara successfully transfer $100 from one of her accounts to the another one.
+
+Time estimate(s):
+
+  3h
+
+Author(s):
+
+  - Jess
+
+Assigned persons (currently working on task):
+
+  - Sara
+
+Log entries (YYYY-MM-DD: HH:MM-HH:MM name, separated, by, commas | notes): **update this @Sara!
+
+
+  - 2017-03-27: 12:44-12:50 Sara | Wrote scenario and pushed to git
+
+  - 2017-03-27: 12:51-12:54 Sara | Wrote scenario and pushed to git
+
+  - 2017-03-27: 12:54-13:15 Sara | Wrote scenario and pushed to git
+
+  - 2017-04-03: 11:00-12:20 Sara | Implement transfer, fixed tests, and pushed to git
+
+  - 2017-04-03: 13:45-14:30 Sara | Include object diagrams and pushed to git
+
+  - 2017-04-03: 22:00-22:30 Sara | Change to object diagrams and pushed to git

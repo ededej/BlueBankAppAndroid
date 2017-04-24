@@ -1,0 +1,15 @@
+Title: Mockups Draft 2
+
+Description: As the basic Android GUI is being created, new design ideas may stand out. Record these ideas as 
+a second draft of mockups.
+
+Time estimate(s):
+1h
+
+Author(s):
+  -Jess
+  
+Assigned persons (currently working on task):
+  -Sushena
+
+Log entries (YYYY-MM-DD: HH:MM-HH:MM name, separated, by, commas | notes):

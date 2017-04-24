@@ -1,0 +1,77 @@
+Title: Log In Scenarios
+
+Scenario 1: Brandon logs in successfully.
+  1) Brandon has already turned on the BlueBank program and chooses to log in.
+  2) Brandon gets prompted with a message "Please enter your username".
+  3) Brandon enters his username.
+  4) The system checks to see if there is a username existing inside its database.
+  5) The system found that existing username.
+  6) Brandon gets prompted with a message "Please enter your password".
+  7) Brandon enters his password.
+  8) The system checks to see if that password corresponds with the existing username.
+  9) The system sees that the password does correspond with that username.
+  10) The system prompts a message "Login success!"
+  11) The system prompts Brandon with several options asking what he wants to do. (don't know what we want yet).
+  
+Scenario 2: Brandon attempts to log in but enters an unexisting username and exits.
+  1) Brandon has already turned on the BlueBank program and chooses to log in.
+  2) Brandon gets prompted with a message "Please enter your username".
+  3) Brandon enters a username.
+  4) The system checks to see if there is a username existing inside its database.
+  5) The system does not find that username.
+  6) Brandon gets prompted with a message "That username does not exist, please try again".
+  7) Brandon gets prompted with a message "Please enter your username".
+  8) Brandon exits the program.
+
+Scenario 3:
+  1) Brandon has already turned on the BlueBank program and chooses to log in.
+  2) Brandon gets prompted with a message "Please enter your username".
+  3) Brandon enters a username.
+  4) The system checks to see if there is a username existing inside its database.
+  5) The system does not find that username.
+  6) Brandon gets prompted with a message "That username does not exist, please try again".
+  7) Brandon gets prompted with a message "Please enter your username".
+  8) Brandon enters a new username.
+  9) The system found that existing username.
+  10) Brandon gets prompted with a message "Please enter your password".
+  11) Brandon enters his password.
+  12) The system checks to see if that password corresponds with the existing username.
+  13) The system sees that the password does correspond with that username.
+  14) The system prompts a message "Login success!"
+  15) The system prompts Brandon with several options asking what he wants to do. (don't know what we want yet).
+  
+Scenario 4:
+  1) Brandon has already turned on the BlueBank program and chooses to log in.
+  2) Brandon gets prompted with a message "Please enter your username".
+  3) Brandon enters a username.
+  4) The system checks to see if there is a username existing inside its database.
+  5) The system does not find that username.
+  6) Brandon gets prompted with a message "That username does not exist, please try again".
+  7) Brandon gets prompted with a message "Please enter your username".
+  8) Brandon enters a new username.
+  9) The system found that existing username.
+  10) Brandon gets prompted with a message "Please enter your password".
+  11) Brandon enters a password.
+  12) The system checks to see if that password corresponds with the existing username.
+  13) The system sees that the password is incorrect.
+  14) Brandon gets prompted with a message "Incorrect password, try again."
+  15) Brandon enters the correct password.
+  13) The system sees that the password does correspond with that username.
+  14) The system prompts a message "Login success!"
+  15) The system prompts Brandon with several options asking what he wants to do. (don't know what we want yet).
+  
+Author(s):
+
+  - Brandon
+
+Assigned persons (currently working on task):
+
+  - Brandon
+
+Log entries (YYYY-MM-DD: HH:MM-HH:MM name, separated, by, commas | notes):
+
+  - 2017-03-30: 00:04-00:07 Brandon | Merged all scenarios into one file
+  - 2017-03-26: 21:59-22:01 Brandon | Wrote scenario and pushed to git
+  - 2017-03-26: 21:56-21:59 Brandon | Wrote scenario and pushed to git
+  - 2017-03-26: 21:53-21:56 Brandon | Wrote scenario and pushed to git
+  - 2017-03-26: 21:48-21:53 Brandon | Wrote scenario and pushed to git

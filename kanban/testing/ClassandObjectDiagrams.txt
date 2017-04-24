@@ -1,0 +1,23 @@
+Title: Create object diagram drafts
+
+Description:
+Split into a few task forces and create object diagrams for each of the completed scenarios. 
+After creating the object diagrams, begin drafting class diagrams. 
+These diagrams can be early sketches/drafts. Use this time to brainstorm. 
+Make sure to follow all of the usual class and object diagram syntax/structure. 
+Create the diagrams either by hand or with your favorite UML tool/powerpoint. 
+Upload diagrams to the group Google Drive in the appropriate folder. Make sure your diagrams are clearly titled. 
+
+Time estimate: 
+~2 classes (roughly 2.5 hours) 
+
+Author: 
+-Jess 
+
+Assigned persons (currently working on task): 
+-development team broken into groups
+-update the groups after class tomorrow
+
+Log entries (YYYY-MM-DD: HH:MM-HH:MM name, separated, by, commas | notes):
+- 2017-03-28: 7:00 pm - 10:00pm | Heymond, got sdmlib working so it auto-generate class/object diagram{FINISHED}
+

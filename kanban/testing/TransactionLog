@@ -1,0 +1,32 @@
+Title: Implement functionality to log transactions of each user/account
+
+Description of new functionality (transaction log):
+
+  - As soon as a new account is created, a text file "username.txt" should be created in the log folder.
+  - The log should consist of the initial balance as the first line.
+  - The following lines should represent any withdraws, deposits, transfers made by that account
+  - If a transaction was modified then those lines should be modified or removed from the log.
+  - There is a new feature of a "transaction fee" that may be charged for withdraw, deposit, transfer or modify.
+    These fees should also appear in the log
+
+Related scenario(s):
+
+  - ModifyTransaction, DepositMoney, WithdrawMoney, TransferMoney
+
+Time estimate(s):
+
+  2h - create scenarios/object diagrams
+  3h - write tests and stub class
+  3h - implement functions needed for functionality
+
+Author(s):
+  -Ashmita
+
+Assigned persons (currently working on task):
+  -Marcus (scenarios, tests)
+  -Heymond (object diagrams)
+
+Log entries (YYYY-MM-DD: HH:MM-HH:MM name, separated, by, commas | notes):
+  - 2016-04-06: 10:13-10:14 Marcus | creat folder "log" to store transaction logs
+  - 2017-04-06: 09:40-10:10 Marcus | Wrote scenarios for transaction log
+

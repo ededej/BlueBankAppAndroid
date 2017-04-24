@@ -1,0 +1,18 @@
+Title: Android Networking and Concurrency Research
+
+Description: The Android application we are creating will eventually implement networked and concurrent components. 
+Jess will lead the programming and development efforts for networking but will want a small team for help. Research networking 
+and concurrency with Android apps and make any important notes you think we may want to consider when we begin development.
+
+Time estimate(s):
+1-2h
+
+Author(s):
+  -Jess
+  
+Assigned persons (currently working on task):
+  -Jess
+  -Sara
+  -Heymond
+
+Log entries (YYYY-MM-DD: HH:MM-HH:MM name, separated, by, commas | notes):

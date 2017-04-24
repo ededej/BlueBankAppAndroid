@@ -1,0 +1,53 @@
+Title: Transaction Fee Scenario
+
+Scenario 1: Jess makes a deposit into her account at BlueBank
+  -Jess currently has $1000 in her account at BlueBank
+  -Jess receives $100 from her grandmother as a graduation gift
+  -Jess decides she wants to deposit said $100 into her BlueBank account 
+  -Jess opens up the application for BlueBank on some electronic device
+  -Jess logs into her account and selects "Deposit" on the welcome screen 
+  -Jess types $100 into the terminal to add to the account 
+  -BlueBank has decided to start charging a transaction fee of %5 for the deposit
+  -After the transaction is made Jess decides to "View account balance"
+  -Her current balance will be $1095
+  -Jess sees that she lost $5 off of the $100 she just deposited
+  -Jess thinks this is silly but assumes that's just how banks are
+  
+Scenario 2: Jess withdraws money from her account at BlueBank
+	-Jess currently has $1095 in her account at BlueBank.
+	-Jess needs $500 to pay for her monthly rent
+	-Jess opens up the application for BlueBank on some electronic device
+	-Jess logs into her account and selects "Withdraw" on the welcome screen
+	-Jess enters the number $500 into the terminal to subtract from the account 
+	-BlueBank has decided to start charging a transaction fee of %5 for the withdraw 
+	-After Jess gets her $500, she selects "View account balance" 
+	-Jess sees that he account is at $570 instead of $595
+	-Jess is getting really tired of these transaction fees
+	
+Scenario 3: Jess transfers money to Brandon 
+	-Jess currently has $570 in her account because BlueBank is basically stealing from her
+	-Brandon, friend of Jess, desperately needs to borrow $50 from Jess
+	-Jess thinks about because she knows she's going to be hit with another transaction fee from BlueBank
+	-Jess is a good friend so she opens up the application for BlueBank on some electronic device
+	-Jess logs into her account and selects "Transfer" on the welcome screen
+	-Jess enters $50 as the amount to transfer to Brandon and sends it to him 
+	-Brandon receives the $50 from Jess
+	-Jess selects "view account balance" and sees that her account is at $517.5 
+	-Surprise surprise, BlueBank charged a 5% transaction fee on her transfer to Brandon 
+	-Jess starts looking into other banks 
+	
+Scenario 4: Jess modifies a transaction after sending money to Ulno
+	-Jess currently has $517.5 in her account at BlueBank 
+	-Ulno, another friend of Jess, also desperately needs $400 from Jess 
+	-Jess, the good friend that she is, opens up the application for BlueBank on some electronic device
+	-Jess logs into her account and selects "Transfer" on the welcome screen 
+	-Jess enters $400 as the amount to transfer to Ulno and sends it to him 
+	-Ulno receives the $400 from Jess
+	-Jess realizes the horrible mistake she has made realizing that a 5% transaction fee on $400 is another $20 down the drain 
+	-Jess checks her account through "view account balance" and sees that her remaining balance is $97.5
+	-Totally annoyed, Jess makes the quick decision to modify (undo) her transfer to Ulno
+	-Jess gets her $400 back but is charged another 5% for the modify transaction 
+	-Jess views her account balance and sees that her remaining balance is $477.5. 
+	-Frustrated that she has now lost over $60 to BlueBank in under the course of a few days due to transaction fees, Jess moves all of her money out of her account (for a 5% fee) and switches to Bank of America. 
+	-Jess's BlueBank account balance is $0.00
+	

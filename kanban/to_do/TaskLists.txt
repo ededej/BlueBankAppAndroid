@@ -1,0 +1,57 @@
+Write scenarios:
+- wireframes/GUI Ashmita/Salonika/Brandon
+- mockups/GUI Ashmita/Salonika/Brandon
+
+Architecture:
+- object diagrams (Marcus/Krishna)
+- class diagrams (Marcus/Krishna)
+- 1/2 component/communication/sequence diagrams 
+- SDMLib (Heymond/Marcus/Krishna)
+
+Testing:
+- Heymond/Salonika/Sara
+
+Admin Backend: 
+- Persistant backend: Ermal/Brandon/Ashmita/Jess
+
+Android Team:
+- Sara/Jess/Heymond/Ermal/Brandon
+
+Concurrent:
+- Salonika/Heymond - Everyone who can help!!
+
+Snapshot rollback: 
+- Firebase must do that
+
+Security:
+- Jess/Ermal/Sara/Salonika/Sushena
+
+Admin:
+- authentication: firebase
+
+Usecases:
+- Jess: swipe for biometric scanner
+- Brandon: authentication 
+- Marcus: buttons to access account info
+- Heymond: single log-in
+- Sushena: modify account info
+- Ashmita: undo 1 or more actions
+- Salonika: concurrency 
+- Sara: security policies, withdraw amounts
+- Ermal: concurrency with one person
+- Krishna: freeze accounts if threats are detected
+
+Potential Scenarios Titles:
+-Administrator creates a new account for a user.
+-Administrator can delete an account.
+-Administrator can block an account, if threats are detected.
+-User requests to open an account. (Done by Salonika)
+-User logs in to the system.
+-User can view accounts,
+    -can view transactions he has made.
+    -can view balances,
+-user requests to remove/close account.
+-Users can change their account info(pw, phone#, address, etc)
+-BAnk generates a monthly statement.
+
+

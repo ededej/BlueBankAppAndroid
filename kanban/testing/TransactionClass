@@ -1,0 +1,58 @@
+Title: Stub Transaction Class and create sequence diagrams for scenarios
+
+Description of Transaction class:
+
+Attributes:
+- big int amount - value of transaction
+- enum type - withdraw, deposit, transfer
+- (omitted)boolean isMain -
+- (omitted)boolean isFee -
+- (omitted)boolean isCorrection -
+* any transaction must have exactly one boolean value==true.
+
+Methods:
+- logBuilder - builds the line to store this transaction into the account holder’s log file.
+* Right now we are focusing on the Transaction class and how it relates with itself and Account class. So don’t worry too much about the method(s).
+
+Self Relationships:
+- corresponds. Cardinality 1-1
+	- One transaction can correspond to another in two ways: one fee transaction corresponds to one *main* deposit/withdraw/transfer transaction (D/W/T). One *main* D/W/T transaction corresponds to its *corrected* D/W/T transaction (* Note that corrected transactions may not necessarily be of the same type).
+	- So every transaction always corresponds to at least one transaction (its fee transaction). But can also correspond with its correction.
+- before and after. Cardinality 1-1
+	- This relationship right now does not matter. We’ll come back to this.
+
+Relationships between Transaction and Account:
+- from. Cardinality n to 0…1
+- to. Cardinality n to 0…1
+- explanation of n to 0…1:
+	- Transaction transfer: Ash’s account transfers $100 to Jess’s account. Transaction transfer has one “to” relationship with Account Ash. Transaction transfer has one “from” relationship with Account Jess
+	- Transaction withdraw: Ash’s account withdraws $100. Transaction withdraw has zero “to” relationships with Account Ash. Transaction withdraw has one “from” relationship with Account Ash
+	- Transaction deposit: Ash’s account has a deposit of $100. Transaction deposit has one “to” relationship with Account Ash. Transaction deposit has zero “from” relationships with Account Ash.
+
+Related scenario(s):
+
+  - ModifyTransaction, DepositMoney, WithdrawMoney, TransferMoney
+
+Time estimate(s):
+
+  2h - create scenarios/object diagrams
+  3h - create sequence diagrams
+  3h - create tests that compile at least
+
+Author(s):
+  -Ashmita
+
+Assigned persons (currently working on task):
+  -Marcus (scenarios, sequence diagrams, tests)
+  -Heymond (object diagrams)
+
+Log entries (YYYY-MM-DD: HH:MM-HH:MM name, separated, by, commas | notes):
+- 2016-04-06: 10:13-10:14 Marcus | create folder "log" to store transaction logs
+- 2017-04-06: 09:40-10:10 Marcus | Wrote scenarios for transaction log
+- 2017-04-09: 20:30-21:11 Marcus | Modified scenarios
+- 2017-04-09: 01:25-01:39 Marcus | Add undo and modify scenarios
+- 2017-04-13: 00:00-02:22 Marcus | create sequence diagrams
+- 2017-04-17: 10:00-12:00 Marcus | continued implementation of TransactionClass
+- 2017-04-17: 23:00-03:07 Marcus | add Transaction Logging to Account class, test, and modify
+- 2017-04-18: 10:30-11:07 Marcus | add Transaction Logging call to undo transaction, transfer, account creation
+- 2017-04-18: 11:20-11:50 Marcus | add check for directory to Transaction Class

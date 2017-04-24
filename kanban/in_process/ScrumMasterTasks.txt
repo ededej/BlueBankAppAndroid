@@ -1,0 +1,28 @@
+Title: Scrum Master Tasks (Git management, meeting planning, burndown chart management, ensuring clean work environments)
+
+Description:
+
+  Wide variety of tasks that may or may not constitute a typical day spent by the Scrum Master.
+  Tasks include Git management, meeting planning, burndown chart management, looking for problems
+  in code, contacting other group leaders about issues team members may be having, reorganizing work
+  directories for a better work environment, etc.
+
+Related scenario(s):
+
+  - N/A
+
+Time estimate(s):
+
+  7h
+
+Author(s):
+
+  - Brandon
+
+Assigned persons (currently working on task):
+
+  - Brandon
+
+Log entries (YYYY-MM-DD: HH:MM-HH:MM name, separated, by, commas | notes):
+
+  - 2017-03-24 - 2017-04-06 Brandon | 7 hours is approximately 30 minutes a day for 14 days

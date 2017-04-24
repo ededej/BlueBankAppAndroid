@@ -1,0 +1,38 @@
+Title: Demo Ready Android Application
+
+Description:
+We would like to Demo an android application version of the Blue Bank for the presentation on Tuesday (4/25). 
+The following MINIMUM requirements for functionality must be met to be considered presentation ready: 
+-login/persistence 
+-create
+-withdraw
+-deposit
+-transfer
+-modify (undo) 
+*STRETCH GOAL (elaborated in another task)*: 
+-fully networked so that two accounts can transfer money between each other with the app open. 
+Please aim to have the minimum functionality of the application done by the weekend of 4/22, 4/23 so that Jess and Marcus and attempt to implement the networking
+components for the presentation. To avoid any merge issues, we prefer that you fully complete this task before passing it off to the network developers. 
+
+Related scenario(s):
+-Scenario needed. 
+
+Time estimate(s):
+
+  1 week (7 days)
+
+Author(s):
+-Jess
+
+Assigned persons (currently working on task):
+-Ermal 
+-Heymond
+-Sushena
+
+Log entries (YYYY-MM-DD: HH:MM-HH:MM name, separated, by, commas | notes):
+
+  - 2017-03-10: 12:00-14:00 Jess (replace this with an actual log)
+  - 2017-04-19: 9:00-10:15 Ermal  Worked with Heymond to make smdLib work with our app, create a new repo and migrate the code.
+  - 2017-04-19: 20:00-22:00 Ermal Worked on make deposit/withdraw work with a custumer that creates an account on Android App.
+  - 2017-04-18/19 (~9hr) worked on getting android app working
+

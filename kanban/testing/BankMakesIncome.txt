@@ -1,0 +1,26 @@
+Title: Bank Entity Makes Money
+
+Description:
+The bank needs to be able to make money off of its customers. After the transaction fee functionality is implemented, the bank should retain a running total of income that it has made off of all the fees it charges to its users. This running total should be a singular pool so that it does not matter who's account the fee was taken from.
+Tests need to be written for this functionality as well.
+Object diagrams need to be created for these tests
+
+Related scenario(s):
+-Need a scenario created for this task. 
+-Ex: Salonika withdraws $100.00 with a 1% fee. Salonika is charged $1 and the Bank has made $1. 
+	 Marcus withdraws $100.00 with a 1% fee. Marcus is charge $1 and the Bank has made $2.
+
+Time estimate(s):
+
+  < 1hr
+
+Author(s):
+-Jess
+
+Assigned persons (currently working on task):
+-Marcus
+-Heymond (object diagrams) 
+
+Log entries (YYYY-MM-DD: HH:MM-HH:MM name, separated, by, commas | notes):
+
+  - 2017-03-10: 12:00-14:00 Marcus (replace this with an actual log) 

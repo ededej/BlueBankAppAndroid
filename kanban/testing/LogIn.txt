@@ -1,0 +1,34 @@
+Title: Create scenario, tests, develop code for user Brandon logging in.
+
+Description:
+
+  Create scenarios that describe what Brandon sees upon attempting to log in
+  Scenarios must be extensive and cover cases as far as discussed.
+  Create tests that correlate with these scenarios.
+  Finally, implement the scenarios, this will most likely only be using console.
+
+Related scenario(s):
+
+  - Log_In Scenario 1: Brandon logs in successfully.
+  - Log_In Scenario 2: Brandon attempts to log in but enters an unexisting username and exits.
+  - Log_In Scenario 3: Brandon attempts to log in but first, enters an unexisting username then enters an existing username, then logs in successfully.
+  - Log_In Scenario 4: Brandon attempts to log in but first, enters an unexisting username then enters an existing username, then enters
+       an incorrect password, then enters a correct password, then logs in successfully.
+
+Time estimate(s):
+
+  3h
+
+Author(s):
+
+  - Brandon
+
+Assigned persons (currently working on task):
+
+  - Ermal Dedej
+
+Log entries (YYYY-MM-DD: HH:MM-HH:MM name, separated, by, commas | notes):
+
+  - 2017-03-28: 21:00-21:13 Ermal | Created a mock LogIn class to use for testcases
+  - 2017-03-28: 21:15-22:40 Ermal | Created a initial test cases for scenario 1-4, added some code to Login to make the test cases pass
+  - 2017-04-02: 12:19am - 2:54 am Heymond | Finished Login function

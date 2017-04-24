@@ -1,0 +1,107 @@
+BBANK UI CLIENT-SERVER PROTOCOL NOTES:
+
+EXAMPLES:
+
+0#1  #2      #3      #4      #5   #6       #7
+c#jlm#letmein#jess#j@g.com#4321#1/4/1995#750
+	//makes a new user "jlm" with password "letmein" and balance $750.00
+c#asd#asdasdasd#asd#asd@g.com#1212#2/4/1995#1000
+	//makes another new user "asd" with $1000
+l#jlm#letmein
+	//logs in with user jlm
+w#jlm#letmein#50.0
+	//withdraws $50 from jlm's account
+d#jlm#letmein#55.55
+	//deposits $55.55 into jlm's account
+t#jlm#letmein#asd#100.0
+	//transfers $100 from jlm's account to asd's account.
+	
+	
+PRTOCOL SPEC:
+REQUEST:       INDEX:	NOTES:
+	FIELDS:
+create account	0		each request starts with the type
+	uname		1		then auth
+	pass		2
+	realname	3
+	email		4		then data fields
+	ssn			5
+	dob			6
+	initial		7
+	
+login			0		login  = l
+	uname		1
+	pass		2
+	
+withdraw		0 ... 	etc
+	uname
+	pass
+	amt
+	
+deposit					deposit = d
+	uname
+	pass
+	amt
+	
+transfer				transfer = t ...etc
+	suname
+	pass
+	duname
+	amt
+	
+update 0			@@@ test this later
+	uname 1
+	pass 2
+	newpass 3
+	newfullname 4
+	newemail 5
+	newssn 6
+	newdob 7
+
+	
+----------------------------------------------------
+ASSORTED NOTES:
+
+Server Logic:
+stores central hashmap of uname -> account object
+transaction coming in -> spawns client
+	client parses transaction string
+	aquire lock on central hashmap
+	perform operation
+	save new user state
+	drop lock
+	return user state
+	kill connection
+	
+Client logic:
+	"block" ui thread with loading animation
+	send transaction
+	wait for response
+	replace current app state with updated state
+	return control flow to user
+
+
+Client persistence:
+sharedPrefs - save Account object?  if not, store strings
+each activity will pull this and use it as a "model"
+each activity will have an "updateUI" function that pulls the model
+
+Server persistence:
+save state to file and load in on startup
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

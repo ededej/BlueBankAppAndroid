@@ -8,23 +8,19 @@ import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.Toast;
-import bluebankapp.swe443.bluebankappandroid.myapplication.resource.Account;
-import bluebankapp.swe443.bluebankappandroid.myapplication.resource.Bank;
+import android.widget.RelativeLayout;
 
 
 public class MainActivity extends AppCompatActivity {
-    //Bank blue;
-    Account toLogin;
     EditText Username, Password, IPBox;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        //testing persistency - Just use SharedPreferences.  See below for details
 
-        //TODO:  MOVE THE IP ADDRESS FIELD
+        RelativeLayout rl = (RelativeLayout) findViewById(R.id.relativeLayout);
+        rl.bringToFront();
 
         // Unpack SharedPrefs to check for a pre-populated username.
         if (getSharedPreferences("bluebank", MODE_PRIVATE).contains("username")) {
@@ -38,13 +34,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void createAccountClick(View v){
-        /* HANDLED BY SERVER NOW
-        if(blue == null){
-            blue = new Bank();
-            blue.setBankName("Blue Bank");
-        }
-        */
-
         IPBox = (EditText) findViewById(R.id.ipAddrInput);
 
         if(TextUtils.isEmpty(IPBox.getText().toString())){
@@ -60,7 +49,6 @@ public class MainActivity extends AppCompatActivity {
 
         // Send intent to move to CreateAccountActivity.
         Intent createAccountIntent = new Intent(MainActivity.this,CreateAccountActivity.class);
-        //createAccountIntent.putExtra("bank",blue);
         startActivity(createAccountIntent);
     }
 
@@ -72,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
         IPBox = (EditText) findViewById(R.id.ipAddrInput);
 
         if(TextUtils.isEmpty(Username.getText().toString())){
-            Username.setError("Please enter username");
+            Username.setError("Please username");
             return;
         }
 
@@ -109,12 +97,7 @@ public class MainActivity extends AppCompatActivity {
         req.append(Password.getText().toString()); // PASSWORD
 
         // Send the request string and get the response.
-        new ClientLogic.LoginRequest().execute(getApplicationContext(), req.toString(), IPBox.getText().toString());
-
-        //Toast.makeText(this, blue.getBankName(), Toast.LENGTH_SHORT).show();
-        /*if (blue.getAccount_Has().filterUsername(Username.getText().toString()).getUsername().toString().equals("(" + Username.getText().toString() + ")") == false) {   //searches to see if the username exist
-            Toast.makeText(this, blue.getAccount_Has().filterUsername(Username.getText().toString()).getUsername().toString(), Toast.LENGTH_SHORT).show();
-        }*/
+        new ClientLogic.LoginRequest().execute(this, req.toString(), IPBox.getText().toString());
     }
 
 }

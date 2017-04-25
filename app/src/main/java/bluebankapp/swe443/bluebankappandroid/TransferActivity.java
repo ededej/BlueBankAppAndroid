@@ -41,17 +41,6 @@ public class TransferActivity extends AppCompatActivity {
 
             // Send the request string and get the response.
             new ClientLogic.ServerRequest().execute(this, req.toString(), ip);
-
-            /*
-            Intent goToMainIntent = new Intent(WithdrawDepositActivity.this,BankMainActivity.class);
-            double temp= current_acct.getAccountBalance() +amountDb;// to check
-            current_acct.deposit(amountDb);
-            if ((temp)==current_acct.getAccountBalance()){
-                Toast.makeText(this, "Successful Deposit", Toast.LENGTH_LONG).show();
-                goToMainIntent.putExtra("bank",blue);
-                goToMainIntent.putExtra("current_acct",current_acct);
-                startActivity(goToMainIntent);
-            }*/
         }
     }
 

@@ -14,19 +14,13 @@ public class WithdrawDepositActivity extends AppCompatActivity{
     EditText amountText;
     Switch wdSwitch;
     String mode;
-    //Bank blue;
-    //Account current_acct;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_withdraw_deposit);
-        //blue = (Bank) getIntent().getParcelableExtra("bank");
-        //current_acct = (Account) getIntent().getParcelableExtra("current_acct");
         submitBtn=(Button) findViewById(R.id.submitBtn);
         amountText=(EditText) findViewById(R.id.editAmount);
         wdSwitch=(Switch) findViewById(R.id.wdSwitch);
-        //Toast.makeText(this, "Username: "+ current_acct.getName()+ " Balance: $" + Double.toString(current_acct.getAccountBalance()), Toast.LENGTH_LONG).show();
-
         wdSwitch.setText("Withdraw");
         submitBtn.setVisibility(View.VISIBLE);
         submitBtn.setText("Withdraw");
@@ -71,17 +65,6 @@ public class WithdrawDepositActivity extends AppCompatActivity{
 
             // Send the request string and get the response.
             new ClientLogic.ServerRequest().execute(this, req.toString(), ip);
-
-            /*
-            Intent goToMainIntent = new Intent(WithdrawDepositActivity.this,BankMainActivity.class);
-            double temp= current_acct.getAccountBalance() +amountDb;// to check
-            current_acct.deposit(amountDb);
-            if ((temp)==current_acct.getAccountBalance()){
-                Toast.makeText(this, "Successful Deposit", Toast.LENGTH_LONG).show();
-                goToMainIntent.putExtra("bank",blue);
-                goToMainIntent.putExtra("current_acct",current_acct);
-                startActivity(goToMainIntent);
-            }*/
         }
     }
 

@@ -1,8 +1,13 @@
 package bluebankapp.swe443.bluebankappandroid;
 
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -21,50 +26,48 @@ public class BankMainActivity extends AppCompatActivity {
         //current_acct = (Account) getIntent().getParcelableExtra("current_acct");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bank_main);
-        //gets balances and prints it out on screen
+        // setters
         acct_amount = (TextView) findViewById(R.id.currentBalanceTxt);
         current_user= (TextView) findViewById(R.id.currentUser);
-
-        /*acct_amount = (TextView) findViewById(R.id.currentBalanceTxt);
-        current_user= (TextView) findViewById(R.id.currentUser);
-        if(blue!=null){
-            bindBalance();
-        }else{
-            Toast.makeText(this, "No Bank", Toast.LENGTH_LONG).show();
-        }*/
     }
 
     @Override
     protected void onResume(){
         super.onResume();
+        refreshValues();
+    }
+
+    public void refreshValues(){
         current_user.setText(getSharedPreferences("bluebank", MODE_PRIVATE).getString("username", ""));
         acct_amount.setText("Current Balance: $" +
                 getSharedPreferences("bluebank", MODE_PRIVATE).getFloat("balance", 0));
     }
 
+    public void BalanceClickRefresh(View v){
+        String u = getSharedPreferences("bluebank", MODE_PRIVATE).getString("username", "");
+        String p = getSharedPreferences("bluebank", MODE_PRIVATE).getString("password", "");
+        String ip = getSharedPreferences("bluebank", MODE_PRIVATE).getString("ip", "");
+
+        //Send REFRESH request to server.
+        StringBuilder req = new StringBuilder();
+
+        // Create the request string
+        // op code | username | password | amount
+        // 0  #1  #2       #3
+        // w/d#jlm#letmein0#50.00
+        req.append("r" + ClientLogic.DELIM); // OP CODE
+        req.append(u + ClientLogic.DELIM); // USERNAME
+        req.append(p); // PASSWORD
+
+        // Send the request string and get the response.
+        new ClientLogic.RefreshRequest().execute(this, req.toString(), ip);
+    }
+
     //withdraw button amount
     public void WithdrawDepositBtnClick(View v){
         Intent depositWithdrawIntent = new Intent(BankMainActivity.this,WithdrawDepositActivity.class);
-        //depositWithdrawIntent.putExtra("bank",blue);
-        //depositWithdrawIntent.putExtra("current_acct",current_acct);
         startActivity(depositWithdrawIntent);
     }
-    //getting the result back if we need to do something here
-    /*    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-
-        if (requestCode == 1) {
-            if(resultCode == BankMainActivity.RESULT_OK){
-                String result=data.getStringExtra("result");
-            }
-            if (resultCode == BankMainActivity.RESULT_CANCELED) {
-                //Write your code if there's no result
-                Toast.makeText(this, "Successful Back", Toast.LENGTH_LONG).show();
-                bindBalance();
-
-            }
-        }
-    }*/
 
     public  void transferMoneyClick(View v){
         Intent transferIntent = new Intent(BankMainActivity.this,TransferActivity.class);
@@ -78,16 +81,26 @@ public class BankMainActivity extends AppCompatActivity {
         Intent supportActivityIntent = new Intent(BankMainActivity.this,SupportActivity.class);
         startActivity(supportActivityIntent);
     }
-    public void logOutClick(View v){
-        Toast.makeText(this, blue.getAccount_Has().get(0).getUsername(), Toast.LENGTH_SHORT);
-        /*Intent logOutActivityIntent = new Intent(BankMainActivity.this,MainActivity.class);
-        logOutActivityIntent.putExtra("bank",blue);
-        startActivity(logOutActivityIntent);
-        finish();*/
-    }
 
     public void bindBalance(){
         acct_amount.setText("Balance: $" + Double.toString(current_acct.getAccountBalance()));
         current_user.setText(current_acct.getName()+"'s Account");
+    }
+
+    public void logOutClick(View v){
+        SharedPreferences.Editor editor = getSharedPreferences("bluebank", Context.MODE_PRIVATE).edit();
+        // To log out, reset all locally stored account information.
+        // Leave the username so that the field auto-populates on the login screen.
+        // Similarly, leave the IP so that the user doesnt have to re-type it.
+        editor.putString("password", "");
+        editor.putFloat("balance", 0);
+        editor.putString("ssn", "");
+        editor.putString("dob", "");
+        editor.putString("email", "");
+        editor.putString("fullname", "");
+        editor.apply();
+
+        // Go back to login.
+        finish();
     }
 }

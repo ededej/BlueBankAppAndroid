@@ -56,9 +56,9 @@ public class CreateAccountAndroidTests {
         // enter ip address in order to create account, click create account button
         ViewInteraction dummyIP = onView(withId(R.id.ipAddrInput))
                 .perform(replaceText("1"), closeSoftKeyboard());
-        ViewInteraction createAccountButtonClick = onView(
-                allOf(withText("Create Account"), isDisplayed()));
-        createAccountButtonClick.perform(click());
+        ViewInteraction signUpButton = onView(
+                allOf(withText("Sign Up"), isDisplayed()));
+        signUpButton.perform(click());
 
         // Get Views from CreateAccountActivity
         ViewInteraction nameBox = onView(withId(R.id.fullNameEdit));
@@ -70,47 +70,47 @@ public class CreateAccountAndroidTests {
         ViewInteraction initialBox = onView(withId(R.id.initialDepositEdit));
 
         // Attempt to create account without entering anything
-        ViewInteraction createAccount2 = onView(
+        ViewInteraction createAccountButton = onView(
                 allOf(withText("Create Account"), isDisplayed()));
-        createAccount2.perform(click());
+        createAccountButton.perform(click());
         // name error appears
         nameBox.check(matches(hasErrorText("Please enter name")));
 
         // Add text to Name, error should be gone
         // ssn error should appear
         nameBox.perform(typeText("Brandon"), closeSoftKeyboard());
-        createAccount2.perform(click());
+        createAccountButton.perform(click());
         ssnBox.check(matches(hasErrorText("Please enter ssn")));
 
         // Add text to ssn, error should be gone
         // dob error should appear
         // TODO ENFORCE THE SSN LEN TO 4 -- THIS PASSES
         ssnBox.perform(typeText("0"), closeSoftKeyboard());
-        createAccount2.perform(click());
+        createAccountButton.perform(click());
         dobBox.check(matches(hasErrorText("Please enter DOB")));
 
         // Add text to dob, error should be gone
         // dob error should appear
         // TODO ENFORCE THE DATE -- THIS PASSES
         dobBox.perform(typeText("0"), closeSoftKeyboard());
-        createAccount2.perform(click());
+        createAccountButton.perform(click());
         usernameBox.check(matches(hasErrorText("Please enter username")));
 
         // Add text to username, error should be gone
         // password error should appear
         usernameBox.perform(typeText("bbui"), closeSoftKeyboard());
-        createAccount2.perform(click());
+        createAccountButton.perform(click());
         passBox.check(matches(hasErrorText("Please enter password")));
 
         // Add text to password, new error appears
         // initial error should appear
         passBox.perform(typeText("1"), closeSoftKeyboard());
-        createAccount2.perform(click());
+        createAccountButton.perform(click());
         passBox.check(matches(hasErrorText("Password must be at least 8 characters")));
 
         // Add 2345678 to pass, error should disappear
         passBox.perform(typeText("2345678"), closeSoftKeyboard());
-        createAccount2.perform(click());
+        createAccountButton.perform(click());
         initialBox.check(matches(hasErrorText("Please enter initial amount")));
 
         initialBox.perform(typeText("0"), closeSoftKeyboard());

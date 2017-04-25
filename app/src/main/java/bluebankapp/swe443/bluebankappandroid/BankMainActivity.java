@@ -1,16 +1,12 @@
 package bluebankapp.swe443.bluebankappandroid;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import bluebankapp.swe443.bluebankappandroid.myapplication.resource.Account;
 import bluebankapp.swe443.bluebankappandroid.myapplication.resource.Bank;
@@ -78,7 +74,7 @@ public class BankMainActivity extends AppCompatActivity {
         startActivity(manageIntent);
     }
     public void supportClick(View v){
-        Intent supportActivityIntent = new Intent(BankMainActivity.this,SupportActivity.class);
+        Intent supportActivityIntent = new Intent(BankMainActivity.this,TransactionActivity.class);
         startActivity(supportActivityIntent);
     }
 

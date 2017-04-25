@@ -168,6 +168,11 @@ public class clientThread extends Thread{
 				res = users.get(args[1]);
 			}	
 			
+			// Check for REFRESH REQUEST
+			else if (args[0].equals("r")){
+				res = users.get(args[1]);
+			}	
+			
 			// Check for UPDATE ACCOUNT REQUEST
 			else if (args[0].equals("u")){
 				res = users.get(args[1]);

@@ -1,5 +1,6 @@
 package bluebankapp.swe443.bluebankappandroid;
 
+
 import android.support.test.espresso.ViewInteraction;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
@@ -10,6 +11,8 @@ import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+
+import java.net.InetAddress;
 
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
@@ -49,13 +52,14 @@ public class CreateAccountAndroidTests {
                 .perform(replaceText("1"), closeSoftKeyboard());
     }
 
+    // You must be hosting the server in order to pass this test
     @Test
-    public void createAccountTest(){
+    public void createAccountTest() throws Exception{
         //dummySetup();
-        String nullString = null;
+        String ipAddress = InetAddress.getLocalHost().toString();
         // enter ip address in order to create account, click create account button
         ViewInteraction dummyIP = onView(withId(R.id.ipAddrInput))
-                .perform(replaceText("1"), closeSoftKeyboard());
+                .perform(replaceText(ipAddress), closeSoftKeyboard());
         ViewInteraction signUpButton = onView(
                 allOf(withText("Sign Up"), isDisplayed()));
         signUpButton.perform(click());
@@ -114,10 +118,11 @@ public class CreateAccountAndroidTests {
         initialBox.check(matches(hasErrorText("Please enter initial amount")));
 
         initialBox.perform(typeText("0"), closeSoftKeyboard());
-//        createAccount2.perform(click());
-//        ViewInteraction toastCheck = onView(
-//                withText("Create request sent.")).
-//                check(matches(isDisplayed()));
+        createAccountButton.perform(click());
+        ViewInteraction toastCheck = onView(
+                withText("Create request sent.")).
+                inRoot(withDecorView(not(is(mActivityTestRule.getActivity().getWindow().getDecorView())))).
+                check(matches(isDisplayed()));
     }
 
 }

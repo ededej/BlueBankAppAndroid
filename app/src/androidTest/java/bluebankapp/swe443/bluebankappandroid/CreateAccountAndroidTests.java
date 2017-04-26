@@ -56,7 +56,7 @@ public class CreateAccountAndroidTests {
     @Test
     public void createAccountTest() throws Exception{
         //dummySetup();
-        String ipAddress = InetAddress.getLocalHost().toString();
+        String ipAddress = "" + InetAddress.getLocalHost();
         // enter ip address in order to create account, click create account button
         ViewInteraction dummyIP = onView(withId(R.id.ipAddrInput))
                 .perform(replaceText(ipAddress), closeSoftKeyboard());

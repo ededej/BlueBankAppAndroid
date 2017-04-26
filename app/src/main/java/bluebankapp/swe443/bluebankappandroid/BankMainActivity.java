@@ -35,8 +35,14 @@ public class BankMainActivity extends AppCompatActivity {
 
     public void refreshValues(){
         current_user.setText(getSharedPreferences("bluebank", MODE_PRIVATE).getString("username", ""));
-        acct_amount.setText("Current Balance: $" +
-                getSharedPreferences("bluebank", MODE_PRIVATE).getFloat("balance", 0));
+
+        // Show balance as $0.00 format
+        double currBalance = getSharedPreferences("bluebank", MODE_PRIVATE).getFloat("balance", 0);
+        currBalance = Math.round(currBalance * 100);
+        currBalance = currBalance / 100;
+        String balanceString = String.format("Current Balance: $%.2f", currBalance);
+
+        acct_amount.setText(balanceString);
     }
 
     public void BalanceClickRefresh(View v){

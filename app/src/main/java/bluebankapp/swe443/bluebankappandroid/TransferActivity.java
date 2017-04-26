@@ -105,7 +105,7 @@ public class TransferActivity extends AppCompatActivity implements ZXingScannerV
         alert1.show();
 
         // If you would like to resume scanning, call this method below:
-        // mScannerView.resumeCameraPreview(this);s
+        // mScannerView.resumeCameraPreview(this);
     }
 
 

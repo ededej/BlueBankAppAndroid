@@ -99,7 +99,6 @@ public class CreateAccountActivity extends AppCompatActivity {
         }
 
         if(TextUtils.isEmpty(password.getText().toString())){
-
             password.setError("Please enter password");
             return;
         } else if(password.length()<8) {

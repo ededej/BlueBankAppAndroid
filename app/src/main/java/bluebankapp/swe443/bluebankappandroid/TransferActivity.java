@@ -65,8 +65,10 @@ public class TransferActivity extends AppCompatActivity implements ZXingScannerV
 
             // Send the request string and get the response.
             new ClientLogic.ServerRequest().execute(this, req.toString(), ip);
+            //creates QR and displays on dialog box for the user to read it
+            showAlertQr(personNameEdit.getText().toString());
+
         }
-        showAlertQr(personNameEdit.getText().toString());
         //alertdialgo(personNameEdit.getText().toString() );
 
     }
@@ -173,11 +175,17 @@ public class TransferActivity extends AppCompatActivity implements ZXingScannerV
     }
 
     public boolean validateInput(){
+        boolean check=true;
+        if(personNameEdit.getText().toString().isEmpty()){
+            personNameEdit.setError("Insert Username to transfer" );
+            check= false;
+        }
         if(TextUtils.isEmpty(editAmount.getText().toString())){
             editAmount.setError("Insert Amount");
-            return false;
+            check= false;
         }
-        return true;
+
+        return check;
     }
 
 }

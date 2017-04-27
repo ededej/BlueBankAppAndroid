@@ -36,81 +36,83 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:layout_constraintTop_creator="1" />
+        tools:layout_constraintTop_creator="1"
+        app:layout_constraintVertical_bias="0.428"
+        app:layout_constraintHorizontal_bias="0.421" />
 
     <Button
         android:id="@+id/withDrawDepositBtn"
         style="@style/Widget.AppCompat.Button.Colored"
-        android:layout_width="0dp"
-        android:layout_height="60dp"
+        android:layout_width="392dp"
+        android:layout_height="59dp"
         android:background="@android:color/holo_blue_light"
         android:lineSpacingExtra="8sp"
         android:onClick="WithdrawDepositBtnClick"
         android:text="Withdraw &amp; Deposit"
         android:textSize="24sp"
         android:typeface="sans"
+        tools:layout_editor_absoluteX="-2dp"
         app:layout_constraintBottom_toTopOf="@+id/transferMoneyBtn"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/currentBalanceTxt" />
+        android:layout_marginBottom="14dp" />
 
     <Button
         android:id="@+id/transferMoneyBtn"
         style="@style/Widget.AppCompat.Button.Colored"
-        android:layout_width="0dp"
-        android:layout_height="60dp"
+        android:layout_width="392dp"
+        android:layout_height="57dp"
         android:background="@android:color/holo_blue_light"
         android:lineSpacingExtra="8sp"
         android:onClick="transferMoneyClick"
         android:text="Transfer Money"
         android:textSize="24sp"
         android:typeface="sans"
+        tools:layout_editor_absoluteX="-2dp"
         app:layout_constraintBottom_toTopOf="@+id/button4"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/withDrawDepositBtn"
-        tools:layout_constraintLeft_creator="1"
-        tools:layout_constraintRight_creator="1" />
+        android:layout_marginBottom="14dp" />
 
     <Button
         android:id="@+id/supportBtn"
         style="@style/Widget.AppCompat.Button.Colored"
-        android:layout_width="0dp"
-        android:layout_height="60dp"
+        android:layout_width="388dp"
+        android:layout_height="63dp"
+        android:background="@android:color/holo_blue_light"
+        android:lineSpacingExtra="8sp"
+        android:text="QR"
+        android:textSize="24sp"
+        android:typeface="sans"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="384dp"
+        android:onClick="qrClick"/>
+
+    <Button
+        android:id="@+id/button2"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="388dp"
+        android:layout_height="63dp"
         android:background="@android:color/holo_blue_light"
         android:lineSpacingExtra="8sp"
         android:onClick="supportClick"
         android:text="View Statement"
         android:textSize="24sp"
         android:typeface="sans"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button4"
-        tools:layout_constraintLeft_creator="1"
-        tools:layout_constraintRight_creator="1" />
+        tools:layout_editor_absoluteX="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/supportBtn"
+        android:layout_marginBottom="15dp" />
 
     <Button
         android:id="@+id/button4"
         style="@style/Widget.AppCompat.Button.Colored"
-        android:layout_width="0dp"
-        android:layout_height="60dp"
+        android:layout_width="384dp"
+        android:layout_height="56dp"
         android:background="@android:color/holo_blue_light"
         android:lineSpacingExtra="8sp"
         android:onClick="manageAccountClick"
         android:text="Manage Account"
         android:textSize="24sp"
         android:typeface="sans"
-        app:layout_constraintBottom_toTopOf="@+id/supportBtn"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/transferMoneyBtn"
-        tools:layout_constraintLeft_creator="1"
-        tools:layout_constraintRight_creator="1" />
+        tools:layout_editor_absoluteX="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/button2"
+        android:layout_marginBottom="14dp" />
 
     <android.support.constraint.Guideline
         android:id="@+id/guideline3"
@@ -126,6 +128,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView"
-        tools:layout_editor_absoluteX="19dp"
-        tools:layout_editor_absoluteY="30dp" />
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="3dp" />
 </android.support.constraint.ConstraintLayout>

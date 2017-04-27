@@ -102,7 +102,7 @@
         android:id="@+id/textView14"
         android:layout_width="188dp"
         android:layout_height="45dp"
-        android:layout_marginTop="27dp"
+        android:layout_marginTop="16dp"
         android:text="Transfer"
         android:textAppearance="@style/TextAppearance.AppCompat.Title"
         android:textSize="36sp"
@@ -111,8 +111,7 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:layout_constraintLeft_creator="1"
         tools:layout_constraintRight_creator="1"
-        tools:layout_constraintTop_creator="1"
-        app:layout_constraintHorizontal_bias="0.497" />
+        tools:layout_constraintTop_creator="1" />
 
     <Button
         android:id="@+id/submitBtn"

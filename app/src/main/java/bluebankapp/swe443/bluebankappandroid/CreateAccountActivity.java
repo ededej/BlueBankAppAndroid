@@ -58,9 +58,11 @@ public class CreateAccountActivity extends AppCompatActivity {
         acct = new Account();
         new_user = new User();
         //boolean valid = false;
-        String regexSSN = "^(?!000|666)[0-8][0-9]{2}-(?!00)[0-9]{2}-(?!0000)[0-9]{4}$";
+        //String regexSSN = "^(?!000|666)[0-8][0-9]{2}-(?!00)[0-9]{2}-(?!0000)[0-9]{4}$";
+        String regexSSN = "^[0-9]{4}";
         String regexDOB = "^(1[0-2]|0[1-9])/(3[01]|[12][0-9]|0[1-9])/[0-9]{4}$";
         String regexNOTNAME = ".*\\d+.*";
+        String regexPASS = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=!])(?=\\S+$).{8,}$";
 
         Pattern pattern = Pattern.compile(regexNOTNAME);
         Matcher matcher = pattern.matcher(name.getText().toString());
@@ -76,18 +78,30 @@ public class CreateAccountActivity extends AppCompatActivity {
             acct.setName(name.getText().toString());
             new_user.setUserName(name.getText().toString());
         }
-
+        pattern = Pattern.compile(regexSSN);
+        matcher = pattern.matcher(ssn.getText().toString());
         if(TextUtils.isEmpty(ssn.getText().toString())){
             ssn.setError("Please enter ssn");
             return;
-        } else {
+        }
+        else if(!matcher.matches()) {
+            ssn.setError("SSN is invalid");
+            return;
+        }
+        else {
             acct.setSsn(Integer.parseInt(ssn.getText().toString()));
         }
-
+        pattern = Pattern.compile(regexDOB);
+        matcher = pattern.matcher(dob.getText().toString());
         if(TextUtils.isEmpty(dob.getText().toString())){
             dob.setError("Please enter DOB");
             return;
-        } else {
+        }
+        else if(!matcher.matches()) {
+            dob.setError("Invalid DOB format");
+            return;
+        }
+        else {
             acct.setDob(dob.getText().toString());
         }
 
@@ -98,11 +112,13 @@ public class CreateAccountActivity extends AppCompatActivity {
             acct.setUsername(username.getText().toString());
         }
 
+        pattern = Pattern.compile(regexPASS);
+        matcher = pattern.matcher(password.getText().toString());
         if(TextUtils.isEmpty(password.getText().toString())){
             password.setError("Please enter password");
             return;
-        } else if(password.length()<8) {
-            password.setError("Password must be at least 8 characters");
+        } else if(!matcher.matches()) {
+            password.setError("Password must be between 8 and 16 characters, have an uppercase letter, and contain a special character.");
             return;
         } else {
             acct.setPassword(password.getText().toString());

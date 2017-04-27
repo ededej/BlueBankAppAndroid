@@ -1,0 +1,170 @@
+Compilation of all Security related tasks
+-----------------------------------------
+Title: Password blackout so actual characters are not visible.
+
+Description:
+
+  Blackout/star out password characters as user enters them so the actual characters of password
+  are not visible.
+
+Related scenario(s):
+
+  - Security Scenario - Scenario 1: Password Blackout.
+
+Time estimate(s):
+
+  ~30 mins
+
+Author(s):
+
+  - Salonika
+
+Assigned persons (currently working on task):
+
+  - Salonika
+
+Log entries (YYYY-MM-DD: HH:MM-HH:MM name, separated, by, commas | notes):
+
+  -
+-------------------------------------------------------------------------------------------------------------------
+
+Title: Enforce Strong Password format for increased security.
+
+Description:
+
+  Enforce a strong password format such as 8-16 chars, one capital letter,
+  and at least one number or special character. This will provide increased security.
+
+Related scenario(s):
+
+  - Security Scenario - Scenario 2: Enforce Strong Password.
+
+Time estimate(s):
+
+  ~1 hr
+
+Author(s):
+
+  - Salonika
+
+Assigned persons (currently working on task):
+
+  - Salonika
+
+Log entries (YYYY-MM-DD: HH:MM-HH:MM name, separated, by, commas | notes):
+
+  - 2017-04-23: 6:30PM-7:00PM Salonika
+-------------------------------------------------------------------------------------------------------------------
+
+Title: Enforce Time Out.
+
+Description:
+
+  Enforce a time out so that after a certain amount of idle time (15 seconds), the
+  user is logged out.
+
+Related scenario(s):
+
+  - Security Scenario - Scenario 3: Enforce Time Out.
+
+Time estimate(s):
+
+  ~1 hr
+
+Author(s):
+
+  - Salonika
+
+Assigned persons (currently working on task):
+
+  - Salonika
+
+Log entries (YYYY-MM-DD: HH:MM-HH:MM name, separated, by, commas | notes):
+
+  -
+ -------------------------------------------------------------------------------------------------------------------
+
+Title: Biometric Authentication
+
+Description:
+
+  Allow user to log in with biometric credentials, specifically fingerprint,
+  in place of password.
+
+Related scenario(s):
+
+  - Security Scenario - Scenario 4: Biometric Authentication.
+
+Time estimate(s):
+
+  ~2/3 hrs
+
+Author(s):
+
+  - Salonika
+
+Assigned persons (currently working on task):
+
+  - Salonika
+
+Log entries (YYYY-MM-DD: HH:MM-HH:MM name, separated, by, commas | notes):
+
+  -
+Note: This will require some research, so any links that help implement this should please be documented.
+ -------------------------------------------------------------------------------------------------------------------
+
+Title: Store passwords as encrypted hash.
+
+Description:
+
+  Store the passwords as encrypted hash on the backend to improve security.
+
+Related scenario(s):
+
+  - Security Scenario - Scenario 5: Passwords to Encrypted Hash.
+
+Time estimate(s):
+
+  ~3/4 hrs
+
+Author(s):
+
+  - Salonika
+
+Assigned persons (currently working on task):
+
+  - Salonika
+
+Log entries (YYYY-MM-DD: HH:MM-HH:MM name, separated, by, commas | notes):
+
+  -
+Note: Difficult task, so any links that help implement this should please be documented.
+ -------------------------------------------------------------------------------------------------------------------
+
+Title: Two-Factor Authentication.
+
+Description:
+
+  Allow two-factor authentication for improved security. For example, user enters correct password for
+  their account and then needs to enter 4 digit PIN from an email sent by BlueBank to log in to their account.
+
+Related scenario(s):
+
+  - Security Scenario - Scenario 6: Two-Factor Authentication.
+
+Time estimate(s):
+
+  ~3/4 hrs
+
+Author(s):
+
+  - Salonika
+
+Assigned persons (currently working on task):
+
+  - Salonika
+
+Log entries (YYYY-MM-DD: HH:MM-HH:MM name, separated, by, commas | notes):
+
+  -
+Note: Difficult task, so any links that help implement this should please be documented.

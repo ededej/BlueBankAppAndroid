@@ -1,9 +1,5 @@
 package bluebankapp.swe443.bluebankappandroid;
 
-import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
@@ -11,12 +7,6 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintStream;
-import java.net.Socket;
-import java.net.UnknownHostException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -60,24 +50,27 @@ public class CreateAccountActivity extends AppCompatActivity {
         //boolean valid = false;
         //String regexSSN = "^(?!000|666)[0-8][0-9]{2}-(?!00)[0-9]{2}-(?!0000)[0-9]{4}$";
         String regexSSN = "^[0-9]{4}";
-        String regexDOB = "^(1[0-2]|0[1-9])/(3[01]|[12][0-9]|0[1-9])/[0-9]{4}$";
-        String regexNOTNAME = ".*\\d+.*";
-        String regexPASS = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=!])(?=\\S+$).{8,}$";
+        String regexDOB = "^(1[0-2]|0[1-9]|[1-9])/(3[01]|[12][0-9]|0[1-9]|[1-9])/[0-9]{4}$";
+        String regexNAME = "^[a-z ,.'-]+$";
+        String regexPASS = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@$%^&+=!])(?=\\S+$)(?!#).{8,}$";
 
-        Pattern pattern = Pattern.compile(regexNOTNAME);
+
+        Pattern pattern = Pattern.compile(regexNAME);
         Matcher matcher = pattern.matcher(name.getText().toString());
         if(TextUtils.isEmpty(name.getText().toString())){
             name.setError("Please enter name");
             return;
         }
-        else if (matcher.matches()){
-            name.setError("Name contains decimals, Please enter name without decimals.");
+        else if (!matcher.matches()){
+            name.setError("Invalid. Please enter your first and last name.");
             return;
         }
         else {
             acct.setName(name.getText().toString());
             new_user.setUserName(name.getText().toString());
         }
+
+
         pattern = Pattern.compile(regexSSN);
         matcher = pattern.matcher(ssn.getText().toString());
         if(TextUtils.isEmpty(ssn.getText().toString())){
@@ -91,6 +84,8 @@ public class CreateAccountActivity extends AppCompatActivity {
         else {
             acct.setSsn(Integer.parseInt(ssn.getText().toString()));
         }
+
+
         pattern = Pattern.compile(regexDOB);
         matcher = pattern.matcher(dob.getText().toString());
         if(TextUtils.isEmpty(dob.getText().toString())){
@@ -105,12 +100,23 @@ public class CreateAccountActivity extends AppCompatActivity {
             acct.setDob(dob.getText().toString());
         }
 
+
         if(TextUtils.isEmpty(username.getText().toString())){
             username.setError("Please enter username");
             return;
-        } else {
+        }
+/*        String un = username.getText().toString();
+        String dbUn = blue.getAccount_Has().filterUsername(un).getUsername().toString();
+        // adding the parentheses satisfies SDMLibs filtering check, without it, it won't be able to filter the username
+        un = "(" + un + ")";
+        if(un.equals(dbUn)){
+            username.setError("That username is already taken.");
+            return;
+        }*/
+        else {
             acct.setUsername(username.getText().toString());
         }
+
 
         pattern = Pattern.compile(regexPASS);
         matcher = pattern.matcher(password.getText().toString());
@@ -124,10 +130,16 @@ public class CreateAccountActivity extends AppCompatActivity {
             acct.setPassword(password.getText().toString());
         }
 
+
         if(TextUtils.isEmpty(initial.getText().toString())){
             initial.setError("Please enter initial amount");
             return;
-        } else {
+        }
+        else if(Double.compare(Double.parseDouble(initial.getText().toString()), 0) == 0) {
+            initial.setError("Please enter a value greater than 0.");
+            return;
+        }
+        else {
             acct.setInitialAmount(Double.parseDouble(initial.getText().toString()));
             acct.setAccountBalance(Double.parseDouble(initial.getText().toString()));
         }

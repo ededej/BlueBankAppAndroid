@@ -149,7 +149,7 @@
             android:layout_alignRight="@+id/passwordEdit"
             android:layout_alignStart="@+id/usernameEdit"
             android:ems="10"
-            android:hint="xxx-xx-xxxx"
+            android:hint="xxxx"
             android:inputType="number"
             android:maxLength="4"
             android:textAppearance="@style/TextAppearance.AppCompat.Body2"

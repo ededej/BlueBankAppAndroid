@@ -1,15 +1,29 @@
 package bluebankapp.swe443.bluebankappandroid;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Gravity;
 import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.google.zxing.BarcodeFormat;
+import com.google.zxing.MultiFormatWriter;
+import com.google.zxing.WriterException;
+import com.google.zxing.common.BitMatrix;
 
 import bluebankapp.swe443.bluebankappandroid.myapplication.resource.Account;
 import bluebankapp.swe443.bluebankappandroid.myapplication.resource.Bank;
+
+import static android.graphics.Color.BLACK;
+import static android.graphics.Color.WHITE;
 
 public class BankMainActivity extends AppCompatActivity {
     Bank blue;
@@ -89,6 +103,10 @@ public class BankMainActivity extends AppCompatActivity {
         current_user.setText(current_acct.getName()+"'s Account");
     }
 
+    public void qrClick(View v){
+        showAlertQr(current_user.getText().toString());
+    }
+
     public void logOutClick(View v){
         SharedPreferences.Editor editor = getSharedPreferences("bluebank", Context.MODE_PRIVATE).edit();
         // To log out, reset all locally stored account information.
@@ -105,4 +123,66 @@ public class BankMainActivity extends AppCompatActivity {
         // Go back to login.
         finish();
     }
+
+    private Bitmap generateQR(String s) throws WriterException {
+        BitMatrix result;
+        int width=700;
+        int height=700;
+        try {
+            result = new MultiFormatWriter().encode(s, BarcodeFormat.QR_CODE, width, height, null);
+        } catch (IllegalArgumentException iae) {
+            // Unsupported format
+            return null;
+        }
+        int w = result.getWidth();
+        int h = result.getHeight();
+        int[] pixels = new int[w * h];
+        for (int y = 0; y < h; y++) {
+            int offset = y * w;
+            for (int x = 0; x < w; x++) {
+                pixels[offset + x] = result.get(x, y) ? BLACK : WHITE;
+            }
+        }
+        Bitmap bitmap = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888);
+        bitmap.setPixels(pixels, 0, width, 0, 0, w, h);
+        return bitmap;
+    }
+
+    private void showAlertQr(String transactionId) {
+        ImageView imageForQr = new ImageView(this);
+        try {
+            imageForQr.setImageBitmap(generateQR(transactionId));
+        } catch (WriterException e) {
+            e.printStackTrace();
+        }
+
+        AlertDialog builder =
+                new AlertDialog.Builder(this).
+                        setNeutralButton("Done", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                dialog.dismiss();
+                            }
+                        }).
+                        setView(imageForQr).create();
+        TextView title = new TextView(this);
+        title.setText("SCAN QR CODE ABOVE");
+        title.setTextColor(BLACK);
+        title.setTextSize(20);
+        title.setPadding(10, 10, 10, 10);
+        title.setGravity(Gravity.CENTER);
+        builder.setCustomTitle(title);
+        //trying to put the done button on center
+        builder.setOnShowListener(new DialogInterface.OnShowListener() {
+            @Override
+            public void onShow(DialogInterface dialog) {                    //
+                Button positiveButton = ((AlertDialog) dialog)
+                        .getButton(AlertDialog.BUTTON_POSITIVE);
+                positiveButton.setGravity(Gravity.CENTER_HORIZONTAL);
+                positiveButton.setTextSize(50);
+            }
+        });
+        builder.show();
+
+    }
+
 }

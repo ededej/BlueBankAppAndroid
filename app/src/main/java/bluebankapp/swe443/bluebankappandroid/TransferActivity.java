@@ -66,7 +66,7 @@ public class TransferActivity extends AppCompatActivity implements ZXingScannerV
             // Send the request string and get the response.
             new ClientLogic.ServerRequest().execute(this, req.toString(), ip);
             //creates QR and displays on dialog box for the user to read it
-            showAlertQr(personNameEdit.getText().toString());
+            //showAlertQr(personNameEdit.getText().toString());
 
         }
         //alertdialgo(personNameEdit.getText().toString() );

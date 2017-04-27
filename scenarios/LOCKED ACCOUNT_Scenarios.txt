@@ -1,0 +1,27 @@
+Title: Lock Scenarios
+
+Scenario 1: Sara's account locks due to three failure attempt. 
+  1) Sara has already openned the BlueBank app on her phone and chooses to log in.
+  2) Sara enters her username and password.
+  4) The system checks to see if there is a username associated with this password inside of its database.
+  5) The system didn't find that combination.
+  6) The system prompts "Wrong Username/Password!" 
+  7) Sara enters her username and password one more time. 
+  8) Again the system rejects her input data. 
+  9) For third time Sara enters her login username and password. 
+  10) The system rejects the login and prints a message "Your account has been locked!"
+    
+Scenario 2: Sara left her account idle for more than its idle's setting time so the account log out automatically. 
+  ???
+  
+Author(s):
+
+  - Sara
+
+Assigned persons (currently working on task):
+
+  - Sara
+
+Log entries (YYYY-MM-DD: HH:MM-HH:MM name, separated, by, commas | notes):
+
+  - 2017-04-26: 07:44-08:08 Sara | Wrote scenario and pushed to git

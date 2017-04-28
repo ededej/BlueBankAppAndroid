@@ -17,6 +17,6 @@ Assigned persons (currently working on task):
 
 Log entries (YYYY-MM-DD: HH:MM-HH:MM name, separated, by, commas | notes):
 
-  - 2017-03-25: 09:30-10:13 Ermal | Started the implementation of QR
-  - 2017-03-26: 18:30-20:30 Ermal | Implemented the QR to generate the code
-  - 2017-03-27: 09:30-10:13 Ermal | Fixed some stuff to meet requriments
+  - 2017-04-25: 09:30-10:13 Ermal | Started the implementation of QR. Pairprograming with Heymond
+  - 2017-04-26: 18:30-20:30 Ermal | Implemented the QR to generate the code
+  - 2017-04-27: 09:30-10:13 Ermal | Fixed some stuff to meet requriments. Pairprograming with Heymond

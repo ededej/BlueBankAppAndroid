@@ -1,0 +1,21 @@
+Title: Implement transaction list into Android
+
+Description:
+We need to implement what we have on console part for the transaction, that we are going to
+displayed as list.
+
+Time estimate(s):
+
+  3-4h
+
+Author(s):
+
+  - Ermal
+
+Assigned persons (currently working on task):
+
+  - Marcus
+  - Heymond
+
+Log entries (YYYY-MM-DD: HH:MM-HH:MM name, separated, by, commas | notes):
+

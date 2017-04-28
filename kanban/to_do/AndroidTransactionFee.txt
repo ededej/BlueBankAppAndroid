@@ -1,0 +1,18 @@
+Title: Implement transacation fee
+
+Description:
+We need to make sure that transaction fee is reflected on transaction
+
+Time estimate(s):
+
+  2h
+
+Author(s):
+
+  - Ermal
+
+Assigned persons (currently working on task):
+
+  - Krishna
+
+Log entries (YYYY-MM-DD: HH:MM-HH:MM name, separated, by, commas | notes):

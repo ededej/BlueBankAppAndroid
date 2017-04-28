@@ -1,0 +1,20 @@
+Title: Android Admin GUI
+
+Description:
+ Need to create a different view for admin when it logs in, since it has more permittion than a regular user.
+
+Time estimate(s):
+
+  4h
+
+Author(s):
+
+  - Ermal
+
+Assigned persons (currently working on task):
+
+  - Ermal
+
+Log entries (YYYY-MM-DD: HH:MM-HH:MM name, separated, by, commas | notes):
+
+  -

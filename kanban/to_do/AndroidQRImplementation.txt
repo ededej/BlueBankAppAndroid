@@ -1,0 +1,22 @@
+Title: Android QR Implemtation
+
+Description:
+Implemented QR part into our app, with generating the QR code bitmap and reading functionalits of QR.
+Time estimate(s):
+
+  3-4h
+
+Author(s):
+
+  - Ermal
+
+Assigned persons (currently working on task):
+
+  - Ermal
+  - Heymond
+
+Log entries (YYYY-MM-DD: HH:MM-HH:MM name, separated, by, commas | notes):
+
+  - 2017-03-25: 09:30-10:13 Ermal | Started the implementation of QR
+  - 2017-03-26: 18:30-20:30 Ermal | Implemented the QR to generate the code
+  - 2017-03-27: 09:30-10:13 Ermal | Fixed some stuff to meet requriments

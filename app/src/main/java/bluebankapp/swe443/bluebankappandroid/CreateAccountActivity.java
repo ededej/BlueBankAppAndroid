@@ -53,6 +53,7 @@ public class CreateAccountActivity extends AppCompatActivity {
         String regexDOB = "^(1[0-2]|0[1-9]|[1-9])/(3[01]|[12][0-9]|0[1-9]|[1-9])/[0-9]{4}$";
         String regexNAME = "^[a-z ,.'-]+$";
         String regexPASS = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@$%^&+=!])(?=\\S+$)(?!#).{8,}$";
+        String regexEmail = "^[a-z0-9,.'-]+@[a-z0-9.]+(.com|.org|.net|.gov|.edu)$";
 
 
         Pattern pattern = Pattern.compile(regexNAME);
@@ -74,11 +75,11 @@ public class CreateAccountActivity extends AppCompatActivity {
         pattern = Pattern.compile(regexSSN);
         matcher = pattern.matcher(ssn.getText().toString());
         if(TextUtils.isEmpty(ssn.getText().toString())){
-            ssn.setError("Please enter ssn");
+            ssn.setError("Please enter SSN");
             return;
         }
         else if(!matcher.matches()) {
-            ssn.setError("SSN is invalid");
+            ssn.setError("Please enter the last 4 digits of your SSN");
             return;
         }
         else {
@@ -100,17 +101,23 @@ public class CreateAccountActivity extends AppCompatActivity {
             acct.setDob(dob.getText().toString());
         }
 
+        //If email isn't given, no issue. If provided, then checks against regex.
+        if(!TextUtils.isEmpty(email.getText().toString())) {
+            pattern = Pattern.compile(regexEmail);
+            matcher = pattern.matcher(email.getText().toString());
+            if(!matcher.matches()) {
+                email.setError("Please enter a valid email.");
+                return;
+            }
+        }
 
         if(TextUtils.isEmpty(username.getText().toString())){
             username.setError("Please enter username");
             return;
         }
-/*        String un = username.getText().toString();
-        String dbUn = blue.getAccount_Has().filterUsername(un).getUsername().toString();
-        // adding the parentheses satisfies SDMLibs filtering check, without it, it won't be able to filter the username
-        un = "(" + un + ")";
-        if(un.equals(dbUn)){
-            username.setError("That username is already taken.");
+/*
+        if(){
+            username.setError("That username is already taken, please choose another one.");
             return;
         }*/
         else {

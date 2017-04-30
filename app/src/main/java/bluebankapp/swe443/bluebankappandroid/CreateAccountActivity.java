@@ -173,7 +173,7 @@ public class CreateAccountActivity extends AppCompatActivity {
         // Send the request string and get the response.
         new ClientLogic.CreateAccountRequest().execute(this, req.toString(), ip);
 
-        Toast.makeText(getBaseContext(), "Create request sent.", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Create request sent.", Toast.LENGTH_SHORT).show();
 
         /*
         blue.withAccount_Has(acct);

@@ -134,6 +134,10 @@ public class clientThread extends Thread{
 				// Make a new Transaction.
 				// Say that user $args[1] withdrew $args[3] from their account.
 				// Save to transaction log, etc.
+
+				//log the withdraw transaction for this account
+				new Transaction().writeLog(Transaction.Type.withdraw,args[1],null,amt,0,false);
+
 			}	
 			
 			// Check for DEPOSIT REQUEST
@@ -144,6 +148,9 @@ public class clientThread extends Thread{
 				
 				users.put(args[1], res);
 				// Put Transaction logging here.
+
+				//log the deposit transaction for this account
+				new Transaction().writeLog(Transaction.Type.deposit,args[1],null,amt,0,false);
 			}
 			
 			// Check for TRANSFER REQUEST
@@ -164,6 +171,9 @@ public class clientThread extends Thread{
 						users.put(args[1], res);
 						users.put(args[3], dest);
 						// Put Transaction logging here.
+
+						//log the transfer transaction for this account
+						new Transaction().writeLog(Transaction.Type.transfer,args[1],dest,amt,0,false);
 					}
 				}
 			}

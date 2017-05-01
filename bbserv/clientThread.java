@@ -62,7 +62,6 @@ public class clientThread extends Thread{
 	// Authenticate users based on a username and password.  Query into the main HashTable of users.
 	public boolean authUser(String u, String p){
         String hashp = hashPass(p);
-        System.out.println(hashp);
 		if (!users.containsKey(u) || !users.get(u).password.equals(hashp)){
 			error = true;
 			errMsg = "Authentication failed. Invalid username or password";
@@ -97,7 +96,6 @@ public class clientThread extends Thread{
 					res.username = args[1];
 					//res.password = args[2];
                     res.password = hashPass(args[2]);
-                    System.out.println(res.password);
 					res.fullname = args[3];
 					res.email = args[4];
 					res.ssn = args[5];				

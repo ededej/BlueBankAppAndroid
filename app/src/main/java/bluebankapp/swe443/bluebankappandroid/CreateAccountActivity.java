@@ -51,7 +51,7 @@ public class CreateAccountActivity extends AppCompatActivity {
         //String regexSSN = "^(?!000|666)[0-8][0-9]{2}-(?!00)[0-9]{2}-(?!0000)[0-9]{4}$";
         String regexSSN = "^[0-9]{4}";
         String regexDOB = "^(1[0-2]|0[1-9]|[1-9])/(3[01]|[12][0-9]|0[1-9]|[1-9])/[0-9]{4}$";
-        String regexNAME = "^[a-z ,.'-]+$";
+        String regexNAME = "^[A-Z a-z ,.'-]+$";
         String regexPASS = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@$%^&+=!])(?=\\S+$)(?!#).{8,}$";
         String regexEmail = "^[a-z0-9,.'-]+@[a-z0-9.]+(.com|.org|.net|.gov|.edu)$";
 
@@ -63,7 +63,7 @@ public class CreateAccountActivity extends AppCompatActivity {
             return;
         }
         else if (!matcher.matches()){
-            name.setError("Invalid. Please enter your first and last name.");
+            name.setError("Invalid. Please enter your first and last name. In here");
             return;
         }
         else {

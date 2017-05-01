@@ -5,6 +5,9 @@ import java.io.PrintStream;
 import java.net.Socket;
 import java.util.HashMap;
 import java.io.FileWriter;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+
 
 public class clientThread extends Thread{
 	private BufferedReader is = null;
@@ -58,7 +61,9 @@ public class clientThread extends Thread{
 	
 	// Authenticate users based on a username and password.  Query into the main HashTable of users.
 	public boolean authUser(String u, String p){
-		if (!users.containsKey(u) || !users.get(u).password.equals(p)){
+        String hashp = hashPass(p);
+        System.out.println(hashp);
+		if (!users.containsKey(u) || !users.get(u).password.equals(hashp)){
 			error = true;
 			errMsg = "Authentication failed. Invalid username or password";
 			return false;
@@ -90,7 +95,9 @@ public class clientThread extends Thread{
 				else {
 					res = new Dude();
 					res.username = args[1];
-					res.password = args[2];
+					//res.password = args[2];
+                    res.password = hashPass(args[2]);
+                    System.out.println(res.password);
 					res.fullname = args[3];
 					res.email = args[4];
 					res.ssn = args[5];				
@@ -176,7 +183,8 @@ public class clientThread extends Thread{
 			// Check for UPDATE ACCOUNT REQUEST
 			else if (args[0].equals("u")){
 				res = users.get(args[1]);
-				res.password = args[2];
+				//res.password = args[2];
+                res.password = hashPass(args[2]);
 				res.fullname = args[4];
 				res.email = args[5];
 				res.ssn = args[6];				
@@ -217,4 +225,24 @@ public class clientThread extends Thread{
 			System.out.println("ERROR WHILE WRITING USER TABLE");
 		}
 	}
+    
+    public String hashPass(String pass) {
+        String resPass = "";
+        try {
+            MessageDigest md = MessageDigest.getInstance("MD5");
+            md.update(pass.getBytes());
+            byte[] mdMD5 = md.digest();
+            StringBuffer sb = new StringBuffer();
+            for (byte bytes : mdMD5) {
+                sb.append(String.format("%02x", bytes & 0xff));
+            }
+            resPass = sb.toString();
+            return resPass;
+        } catch (NoSuchAlgorithmException exception) {
+            System.out.println("Error with Hashing Password!!!");
+            return resPass;
+        }
+        
+    }
 }
+

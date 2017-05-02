@@ -119,7 +119,7 @@ public class clientThread extends Thread{
 			}
 		
 			// If not create or admin, authenticate the request.
-			if (!authUser(args[1],(args[2]))){ return; }
+			if (!authUser(args[1],args[2])){ return; }
 			
 			// Check for WITHDRAW REQUEST
 			if (args[0].equals("w")){

@@ -83,6 +83,7 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences.Editor editor = getApplicationContext()
                 .getSharedPreferences("bluebank", Context.MODE_PRIVATE).edit();
         editor.putString("ip", IPBox.getText().toString());
+        editor.putString("password", Password.getText().toString());
         editor.apply();
 
         //Send LOGIN request to server.

@@ -87,7 +87,7 @@ public class ClientLogic {
             // USERNAME | PASSWORD | BALANCE | SSN | DOB | EMAIL | FULL NAME
             // 0        | 1        | 2       | 3   | 4   | 5     | 6
             editor.putString("username", fields[0]);
-            editor.putString("password", fields[1]);
+            //editor.putString("password", fields[1]);
             editor.putFloat("balance", (float) Double.parseDouble(fields[2]));
             editor.putString("ssn", fields[3]);
             editor.putString("dob", fields[4]);
@@ -153,7 +153,7 @@ public class ClientLogic {
             // USERNAME | PASSWORD | BALANCE | SSN | DOB | EMAIL | FULL NAME
             // 0        | 1        | 2       | 3   | 4   | 5     | 6
             editor.putString("username", fields[0]);
-            editor.putString("password", fields[1]);
+            //editor.putString("password", fields[1]);
             editor.putFloat("balance", (float) Double.parseDouble(fields[2]));
             editor.putString("ssn", fields[3]);
             editor.putString("dob", fields[4]);
@@ -224,7 +224,7 @@ public class ClientLogic {
             // USERNAME | PASSWORD | BALANCE | SSN | DOB | EMAIL | FULL NAME
             // 0        | 1        | 2       | 3   | 4   | 5     | 6
             editor.putString("username", fields[0]);
-            editor.putString("password", fields[1]);
+            //editor.putString("password", fields[1]);
             editor.putFloat("balance", (float) Double.parseDouble(fields[2]));
             editor.putString("ssn", fields[3]);
             editor.putString("dob", fields[4]);
@@ -290,7 +290,7 @@ public class ClientLogic {
             // USERNAME | PASSWORD | BALANCE | SSN | DOB | EMAIL | FULL NAME
             // 0        | 1        | 2       | 3   | 4   | 5     | 6
             editor.putString("username", fields[0]);
-            editor.putString("password", fields[1]);
+            //editor.putString("password", fields[1]);
             editor.putFloat("balance", (float) Double.parseDouble(fields[2]));
             editor.putString("ssn", fields[3]);
             editor.putString("dob", fields[4]);

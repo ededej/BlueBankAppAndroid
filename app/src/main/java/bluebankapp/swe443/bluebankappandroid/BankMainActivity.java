@@ -31,7 +31,7 @@ public class BankMainActivity extends AppCompatActivity {
     Bank blue;
     Account current_acct;
     TextView acct_amount,current_user;
-
+    public final static String adminUser="ulno443Admin";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         //blue = (Bank) getIntent().getParcelableExtra("bank");

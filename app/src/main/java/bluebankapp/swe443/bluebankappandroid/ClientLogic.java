@@ -77,6 +77,11 @@ public class ClientLogic {
 
             // Check for errors and Toast accordingly.  Return.
             if (fields[0].equals("Error")){
+                if(fields[1].toLowerCase().contains("already exists")) {
+                    EditText username = (EditText) ((Activity) c).findViewById(R.id.usernameEdit);
+                    username.setError("Username already in use.");
+                    return;
+                }
                 Toast.makeText(c, "Errors on account creation: "+fields[1], Toast.LENGTH_SHORT).show();
                 return;
             }

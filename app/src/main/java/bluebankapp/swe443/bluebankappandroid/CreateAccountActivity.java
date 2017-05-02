@@ -115,11 +115,6 @@ public class CreateAccountActivity extends AppCompatActivity {
             username.setError("Please enter username");
             return;
         }
-/*
-        if(){
-            username.setError("That username is already taken, please choose another one.");
-            return;
-        }*/
         else {
             acct.setUsername(username.getText().toString());
         }

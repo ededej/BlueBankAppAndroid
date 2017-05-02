@@ -9,6 +9,8 @@ import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Gravity;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -39,6 +41,12 @@ public class BankMainActivity extends AppCompatActivity {
         // setters
         acct_amount = (TextView) findViewById(R.id.currentBalanceTxt);
         current_user= (TextView) findViewById(R.id.currentUser);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+        getMenuInflater().inflate(R.menu.bankmain_menu, menu);
+        return true;
     }
 
     @Override
@@ -183,6 +191,35 @@ public class BankMainActivity extends AppCompatActivity {
         });
         builder.show();
 
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item){
+        int id = item.getItemId();
+
+        if(id == R.id.menu1){ //logout
+            SharedPreferences.Editor editor = getSharedPreferences("bluebank", Context.MODE_PRIVATE).edit();
+            // To log out, reset all locally stored account information.
+            // Leave the username so that the field auto-populates on the login screen.
+            // Similarly, leave the IP so that the user doesnt have to re-type it.
+            editor.putString("password", "");
+            editor.putFloat("balance", 0);
+            editor.putString("ssn", "");
+            editor.putString("dob", "");
+            editor.putString("email", "");
+            editor.putString("fullname", "");
+            editor.apply();
+            // Go back to login.
+            finish();
+
+            return true;
+
+        } else if(id == R.id.menu2){ //admin
+
+            return true;
+
+        }
+        return super.onOptionsItemSelected(item);
     }
 
 }

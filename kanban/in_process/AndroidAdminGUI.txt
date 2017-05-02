@@ -14,7 +14,8 @@ Author(s):
 Assigned persons (currently working on task):
 
   - Ermal
+  - Heymond
 
 Log entries (YYYY-MM-DD: HH:MM-HH:MM name, separated, by, commas | notes):
 
-  -
+  - 2017-05-2: 09:25-10:15 Ermal | Pair-programming Worked with Heymond to put the menu for adimin and log out

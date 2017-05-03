@@ -125,11 +125,12 @@ public class clientThread extends Thread{
 			if (args[0].equals("w")){
 				res = users.get(args[1]);
 				Double amt = Double.parseDouble(args[3]);
-				if (res.balance < amt){
+				Double fee_amt = amt * Server.wfee;
+				if (res.balance < (amt + fee_amt)){
 					error = true;
 					errMsg = "Withdraw failed: Not enough cash in the balance";
 				} else {
-					res.balance = (res.balance - amt);
+					res.balance = (res.balance - (amt + fee_amt));
 				}
 				
 				users.put(args[1], res);
@@ -139,7 +140,7 @@ public class clientThread extends Thread{
 				// Save to transaction log, etc.
 
 				//log the withdraw transaction for this account
-				new Transaction().writeLog(Transaction.Type.withdraw,args[1],null,amt,0,false);
+				new Transaction().writeLog(Transaction.Type.withdraw,args[1],null,amt,fee_amt,false);
 
 			}	
 			
@@ -147,13 +148,14 @@ public class clientThread extends Thread{
 			else if (args[0].equals("d")){
 				res = users.get(args[1]);
 				Double amt = Double.parseDouble(args[3]);
-				res.balance = (res.balance + amt);
+				Double fee_amt = amt * Server.dfee;
+				res.balance = (res.balance + (amt - fee_amt ));
 				
 				users.put(args[1], res);
 				// Put Transaction logging here.
 
 				//log the deposit transaction for this account
-				new Transaction().writeLog(Transaction.Type.deposit,args[1],null,amt,0,false);
+				new Transaction().writeLog(Transaction.Type.deposit,args[1],null,amt,fee_amt,false);
 			}
 			
 			// Check for TRANSFER REQUEST
@@ -165,18 +167,19 @@ public class clientThread extends Thread{
 				} else {
 					Dude dest = users.get(args[3]);
 					Double amt = Double.parseDouble(args[4]);
-					if (res.balance < amt){
+					Double fee_amt = amt * Server.tfee;
+					if (res.balance < (amt + fee_amt)){
 						error = true;
 						errMsg = "Withdraw failed: Not enough cash in the balance";
 					} else {
-						res.balance = (res.balance - amt);
+						res.balance = (res.balance - (amt + fee_amt));
 						dest.balance = (dest.balance + amt);
 						users.put(args[1], res);
 						users.put(args[3], dest);
 						// Put Transaction logging here.
 
 						//log the transfer transaction for this account
-						new Transaction().writeLog(Transaction.Type.transfer,args[1],dest,amt,0,false);
+						new Transaction().writeLog(Transaction.Type.transfer,args[1],dest,amt,fee_amt,false);
 					}
 				}
 			}

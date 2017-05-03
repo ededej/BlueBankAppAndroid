@@ -19,6 +19,11 @@ public class Server{
  // User table & synch lock.
  private static HashMap<String,Dude> users;
  private static Object lock = new Object();
+
+ //Bank fees (these are % s).
+ public static double wfee = 0.05;
+ public static double dfee = 0.05;
+ public static double tfee = 0.05;
  
  public static void main(String[] args) throws Exception{
   int portnum = 1337;

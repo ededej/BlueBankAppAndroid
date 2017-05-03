@@ -13,11 +13,17 @@ import java.io.InputStreamReader;
 import java.io.PrintStream;
 import java.net.Socket;
 import java.net.UnknownHostException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+import static android.content.Context.MODE_PRIVATE;
 
 public class ClientLogic {
 
     public static int PORT = 1337;
     public static String DELIM = "#";
+    public static int LOCKOUT_THRESHOLD = 5;
+    public static long LOCKOUT_DURATION = 30000; //360000;  // 60min * 60s/min * 1000 ms/s = 360,000 ms lockout
 
     // Method to toast if network errors occur.
     public static boolean errorToast(Context c, Exception e, String SERVER) {
@@ -87,7 +93,7 @@ public class ClientLogic {
             }
 
             // Otherwise, unpack the server response and save to SharedPrefs.
-            SharedPreferences.Editor editor = c.getSharedPreferences("bluebank", Context.MODE_PRIVATE).edit();
+            SharedPreferences.Editor editor = c.getSharedPreferences("bluebank", MODE_PRIVATE).edit();
             // Response syntax:
             // USERNAME | PASSWORD | BALANCE | SSN | DOB | EMAIL | FULL NAME
             // 0        | 1        | 2       | 3   | 4   | 5     | 6
@@ -148,12 +154,34 @@ public class ClientLogic {
 
             // Check for errors and Toast accordingly.  Return.
             if (fields[0].equals("Error")){
-                Toast.makeText(c, "Error: "+fields[1], Toast.LENGTH_SHORT).show();
+
+                // Check for error other than invalid login attempt
+                if (!fields[1].contains("Invalid username or password")){
+                    Toast.makeText(c, "Error: "+fields[1], Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                // This is an invalid login attempt. Pull invalid attempt data and get time delta.
+                int numInvalid = 0;
+                SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy/HH/mm/ss");
+                try {
+                    numInvalid = c.getSharedPreferences("bluebank", MODE_PRIVATE).getInt("numInvalid", 0) + 1;
+                } catch (Exception e){}
+
+                // Save values and notify user of remaining tries.
+                SharedPreferences.Editor editor = c.getSharedPreferences("bluebank", Context.MODE_PRIVATE).edit();
+                editor.putInt("numInvalid", numInvalid);
+                editor.putString("lastInvalid", sdf.format(new Date()));
+                editor.apply();
+
+                Toast.makeText(c,
+                        "Invalid login attempt: "+numInvalid+" of "+ClientLogic.LOCKOUT_THRESHOLD+".",
+                        Toast.LENGTH_LONG).show();
                 return;
             }
 
             // Otherwise, unpack the server response and save to SharedPreferences.
-            SharedPreferences.Editor editor = c.getSharedPreferences("bluebank", Context.MODE_PRIVATE).edit();
+            SharedPreferences.Editor editor = c.getSharedPreferences("bluebank", MODE_PRIVATE).edit();
             // Response syntax:
             // USERNAME | PASSWORD | BALANCE | SSN | DOB | EMAIL | FULL NAME
             // 0        | 1        | 2       | 3   | 4   | 5     | 6
@@ -164,6 +192,7 @@ public class ClientLogic {
             editor.putString("dob", fields[4]);
             editor.putString("email", fields[5]);
             editor.putString("fullname", fields[6]);
+            editor.putInt("numInvalid", 0); // Kill all stored failed attempts
             editor.apply();
 
             EditText Password = (EditText) ((Activity) c).findViewById(R.id.passwordInput);
@@ -224,7 +253,7 @@ public class ClientLogic {
             }
 
             // Otherwise, unpack the server response and save to SharedPreferences.
-            SharedPreferences.Editor editor = c.getSharedPreferences("bluebank", Context.MODE_PRIVATE).edit();
+            SharedPreferences.Editor editor = c.getSharedPreferences("bluebank", MODE_PRIVATE).edit();
             // Response syntax:
             // USERNAME | PASSWORD | BALANCE | SSN | DOB | EMAIL | FULL NAME
             // 0        | 1        | 2       | 3   | 4   | 5     | 6
@@ -290,7 +319,7 @@ public class ClientLogic {
             }
 
             // Otherwise, unpack the server response and save to SharedPreferences.
-            SharedPreferences.Editor editor = c.getSharedPreferences("bluebank", Context.MODE_PRIVATE).edit();
+            SharedPreferences.Editor editor = c.getSharedPreferences("bluebank", MODE_PRIVATE).edit();
             // Response syntax:
             // USERNAME | PASSWORD | BALANCE | SSN | DOB | EMAIL | FULL NAME
             // 0        | 1        | 2       | 3   | 4   | 5     | 6

@@ -9,10 +9,15 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 
 public class MainActivity extends AppCompatActivity {
     EditText Username, Password, IPBox;
+    SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy/HH/mm/ss");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,6 +90,33 @@ public class MainActivity extends AppCompatActivity {
         editor.putString("ip", IPBox.getText().toString());
         editor.putString("password", Password.getText().toString());
         editor.apply();
+
+        // Pull invalid attempt data and do a calculation to get the time delta.
+        int numInvalid = 0;
+        Date lastInvalid = new Date();
+        try {
+            numInvalid = getSharedPreferences("bluebank", MODE_PRIVATE).getInt("numInvalid", 0);
+            lastInvalid = sdf.parse(getSharedPreferences("bluebank", MODE_PRIVATE).getString("lastInvalid", "01/01/1970/00/00/00"));
+        } catch (Exception e){
+            Toast.makeText(this, "Something may have gone wrong.", Toast.LENGTH_LONG).show();
+        }
+        long delta = new Date().getTime() - lastInvalid.getTime();
+
+        // Check if the client is locked out because of failed logins.
+        if ((numInvalid >= ClientLogic.LOCKOUT_THRESHOLD) && (delta < ClientLogic.LOCKOUT_DURATION)) {
+            // Client is locked out.  Toast with info.
+            Toast.makeText(this,
+                    "Client is locked due to an excess of failed logins. Please try back later."+
+                            "The lockout duration is: " + ClientLogic.LOCKOUT_DURATION,
+                    Toast.LENGTH_LONG).show();
+            return;
+        } else if (delta >= ClientLogic.LOCKOUT_DURATION) {
+            // If we've gone past the duration, reset the counter.  Then send the request.
+            numInvalid = 0;
+            editor = getSharedPreferences("bluebank", Context.MODE_PRIVATE).edit();
+            editor.putInt("numInvalid", numInvalid);
+            editor.apply();
+        }
 
         //Send LOGIN request to server.
         StringBuilder req = new StringBuilder();

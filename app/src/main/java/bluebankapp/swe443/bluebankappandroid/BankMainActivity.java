@@ -46,6 +46,11 @@ public class BankMainActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu){
         getMenuInflater().inflate(R.menu.bankmain_menu, menu);
+        if((current_user.getText().toString().equals(adminUser))||(current_user.getText().toString().equals(""))){
+            menu.getItem(1).setVisible(true);
+        }else{
+            menu.getItem(1).setVisible(false);
+        }
         return true;
     }
 
@@ -63,8 +68,9 @@ public class BankMainActivity extends AppCompatActivity {
         currBalance = Math.round(currBalance * 100);
         currBalance = currBalance / 100;
         String balanceString = String.format("Current Balance: $%.2f", currBalance);
-
         acct_amount.setText(balanceString);
+        invalidateOptionsMenu();
+
     }
 
     public void BalanceClickRefresh(View v){

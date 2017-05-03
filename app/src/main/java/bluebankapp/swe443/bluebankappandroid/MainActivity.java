@@ -107,7 +107,7 @@ public class MainActivity extends AppCompatActivity {
             // Client is locked out.  Toast with info.
             Toast.makeText(this,
                     "Client is locked due to an excess of failed logins. Please try back later."+
-                            "The lockout duration is: " + ClientLogic.LOCKOUT_DURATION,
+                            "The lockout duration is: " + ClientLogic.LOCKOUT_DURATION/1000 + " seconds.",
                     Toast.LENGTH_LONG).show();
             return;
         } else if (delta >= ClientLogic.LOCKOUT_DURATION) {

@@ -31,6 +31,7 @@ public class CreateAccountActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        setTitle("Create Account");
         blue = (Bank) getIntent().getParcelableExtra("bank");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_account);

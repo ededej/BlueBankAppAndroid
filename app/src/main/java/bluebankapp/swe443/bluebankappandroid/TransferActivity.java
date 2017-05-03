@@ -36,6 +36,7 @@ public class TransferActivity extends AppCompatActivity implements ZXingScannerV
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        setTitle("Transfer");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_transfer);
         //personNameEdit.setText(getIntent().getExtras().getString("user"));

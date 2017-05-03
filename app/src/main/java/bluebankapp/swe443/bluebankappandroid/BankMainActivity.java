@@ -215,7 +215,8 @@ public class BankMainActivity extends AppCompatActivity {
             return true;
 
         } else if(id == R.id.menu2){ //admin
-
+            Intent AdminIntent = new Intent(BankMainActivity.this, AdminConsoleActivity.class);
+            startActivity(AdminIntent);
             return true;
 
         }

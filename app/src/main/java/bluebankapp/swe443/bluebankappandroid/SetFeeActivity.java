@@ -1,14 +1,14 @@
 package bluebankapp.swe443.bluebankappandroid;
 
-import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 
-public class TransactionActivity extends AppCompatActivity {
+public class SetFeeActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        setTitle("Transactions");
+        setTitle("Set Fees");
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_transaction);
+        setContentView(R.layout.activity_set_fee);
     }
 }

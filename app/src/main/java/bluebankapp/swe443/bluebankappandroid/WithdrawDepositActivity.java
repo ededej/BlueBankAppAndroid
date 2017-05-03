@@ -16,6 +16,7 @@ public class WithdrawDepositActivity extends AppCompatActivity{
     String mode;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        setTitle("Withdraw/Deposit");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_withdraw_deposit);
         submitBtn=(Button) findViewById(R.id.submitBtn);

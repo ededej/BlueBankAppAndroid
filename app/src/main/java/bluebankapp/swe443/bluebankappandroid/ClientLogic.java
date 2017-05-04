@@ -20,17 +20,17 @@ import static android.content.Context.MODE_PRIVATE;
 
 public class ClientLogic {
 
-    public static int PORT = 1337;
-    public static String DELIM = "#";
-    public static int LOCKOUT_THRESHOLD = 5;
-    public static long LOCKOUT_DURATION = 30000; //360000;  // 60min * 60s/min * 1000 ms/s = 360,000 ms lockout
+    static int PORT = 1337;
+    static String DELIM = "#";
+    static int LOCKOUT_THRESHOLD = 5;
+    static long LOCKOUT_DURATION = 30000; //360000;  // 60min * 60s/min * 1000 ms/s = 360,000 ms lockout
 
     // Method to toast if network errors occur.
-    public static boolean errorToast(Context c, Exception e, String SERVER) {
+    static boolean errorToast(Context c, Exception e, String SERVER) {
         if (e != null) {
             if (e instanceof UnknownHostException) {
                 Toast.makeText(c, "Could not establish connection to host: " + SERVER + ", " + PORT, Toast.LENGTH_LONG).show();
-            } else if (e instanceof UnknownHostException) {
+            } else if (e instanceof IOException) {
                 Toast.makeText(c, "IO Error: The hamsters are on strike." + e.toString(), Toast.LENGTH_LONG).show();
             } else {
                 Toast.makeText(c, "Something went wrong: " + e.toString(), Toast.LENGTH_LONG).show();
@@ -40,7 +40,7 @@ public class ClientLogic {
         return false;
     }
 
-    public static class CreateAccountRequest extends AsyncTask<Object, Void, String> {
+    static class CreateAccountRequest extends AsyncTask<Object, Void, String> {
 
         Context c;
         Exception ex;
@@ -111,7 +111,7 @@ public class ClientLogic {
         }
     }
 
-    public static class LoginRequest extends AsyncTask<Object, Void, String> {
+    static class LoginRequest extends AsyncTask<Object, Void, String> {
 
         Context c;
         Exception ex;
@@ -166,7 +166,7 @@ public class ClientLogic {
                 SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy/HH/mm/ss");
                 try {
                     numInvalid = c.getSharedPreferences("bluebank", MODE_PRIVATE).getInt("numInvalid", 0) + 1;
-                } catch (Exception e){}
+                } catch (Exception e){ System.out.println("Something bad happened here."); }
 
                 // Save values and notify user of remaining tries.
                 SharedPreferences.Editor editor = c.getSharedPreferences("bluebank", Context.MODE_PRIVATE).edit();
@@ -205,7 +205,7 @@ public class ClientLogic {
         }
     }
 
-    public static class ServerRequest extends AsyncTask<Object, Void, String> {
+    static class ServerRequest extends AsyncTask<Object, Void, String> {
 
         Context c;
         Exception ex;
@@ -271,7 +271,7 @@ public class ClientLogic {
         }
     }
 
-    public static class RefreshRequest extends AsyncTask<Object, Void, String> {
+    static class RefreshRequest extends AsyncTask<Object, Void, String> {
 
         Context c;
         Exception ex;
@@ -334,6 +334,64 @@ public class ClientLogic {
 
             // Trigger refresh
             ((BankMainActivity) c).refreshValues();
+        }
+    }
+
+    static class TransactionRefreshRequest extends AsyncTask<Object, Void, String> {
+
+        Context c;
+        Exception ex;
+        String SERVER;
+
+        protected String doInBackground(Object... req) {
+            // Server response string and socket vars.
+            String res = "";
+            Socket clientSocket;
+            PrintStream os;
+            BufferedReader is;
+            c = (Context) req[0];
+            SERVER = (String) req[2];
+
+            try { // Init socket variables.
+                clientSocket = new Socket(SERVER, PORT);
+                os = new PrintStream(clientSocket.getOutputStream());
+                is = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
+
+                // Send the request.
+                os.println((String) req[1]);
+
+                // Read the server's response.
+                res = is.readLine();
+
+            } catch (Exception e){
+                ex = e;
+            }
+
+            return res;
+        }
+
+        // Callback that happens in the UI thread once the async op/server call is done.
+        protected void onPostExecute(String res) {
+            // Check for network exceptions.
+            if (errorToast(c, ex, SERVER)) { return; }
+
+            // Parse the state.
+            String[] fields = res.split("#");
+
+            // Check for errors and Toast accordingly.  Return.
+            if (fields[0].equals("Error")) {
+                Toast.makeText(c, "Error: "+fields[1], Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            // Otherwise, unpack the transactions and save to SharedPreferences.
+            SharedPreferences.Editor editor = c.getSharedPreferences("bluebank", Context.MODE_PRIVATE).edit();
+            editor.putFloat("balance", (float) Double.parseDouble(fields[0]));
+            editor.putString("transactions", res.substring(fields[0].length()+1));
+            editor.apply();
+
+            // Trigger refresh
+            ((TransactionActivity) c).refreshPage();
         }
     }
 }

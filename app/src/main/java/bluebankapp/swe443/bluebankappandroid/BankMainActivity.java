@@ -21,15 +21,10 @@ import com.google.zxing.MultiFormatWriter;
 import com.google.zxing.WriterException;
 import com.google.zxing.common.BitMatrix;
 
-import bluebankapp.swe443.bluebankappandroid.myapplication.resource.Account;
-import bluebankapp.swe443.bluebankappandroid.myapplication.resource.Bank;
-
 import static android.graphics.Color.BLACK;
 import static android.graphics.Color.WHITE;
 
 public class BankMainActivity extends AppCompatActivity {
-    Bank blue;
-    Account current_acct;
     TextView acct_amount,current_user;
     public final static String adminUser="ulno443Admin";
     @Override
@@ -113,8 +108,7 @@ public class BankMainActivity extends AppCompatActivity {
     }
 
     public void bindBalance(){
-        acct_amount.setText("Balance: $" + Double.toString(current_acct.getAccountBalance()));
-        current_user.setText(current_acct.getName()+"'s Account");
+
     }
 
     public void qrClick(View v){

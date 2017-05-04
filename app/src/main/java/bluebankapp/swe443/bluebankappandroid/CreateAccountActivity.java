@@ -10,10 +10,6 @@ import android.widget.Toast;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import bluebankapp.swe443.bluebankappandroid.myapplication.resource.Account;
-import bluebankapp.swe443.bluebankappandroid.myapplication.resource.Bank;
-import bluebankapp.swe443.bluebankappandroid.myapplication.resource.User;
-
 
 public class CreateAccountActivity extends AppCompatActivity {
 
@@ -24,15 +20,11 @@ public class CreateAccountActivity extends AppCompatActivity {
     private EditText username;
     private EditText password;
     private EditText initial;
-    Bank blue;
-    Account acct;
-    User new_user;
     String res;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         setTitle("Create Account");
-        blue = (Bank) getIntent().getParcelableExtra("bank");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_account);
         name = (EditText) findViewById(R.id.fullNameEdit);
@@ -46,8 +38,6 @@ public class CreateAccountActivity extends AppCompatActivity {
 
     public void CreateAccountBtn(View v){
         Toast error;
-        acct = new Account();
-        new_user = new User();
         //boolean valid = false;
         //String regexSSN = "^(?!000|666)[0-8][0-9]{2}-(?!00)[0-9]{2}-(?!0000)[0-9]{4}$";
         String regexSSN = "^[0-9]{4}";
@@ -67,10 +57,6 @@ public class CreateAccountActivity extends AppCompatActivity {
             name.setError("Invalid. Please enter your first and last name. In here");
             return;
         }
-        else {
-            acct.setName(name.getText().toString());
-            new_user.setUserName(name.getText().toString());
-        }
 
 
         pattern = Pattern.compile(regexSSN);
@@ -83,9 +69,6 @@ public class CreateAccountActivity extends AppCompatActivity {
             ssn.setError("Please enter the last 4 digits of your SSN");
             return;
         }
-        else {
-            acct.setSsn(Integer.parseInt(ssn.getText().toString()));
-        }
 
 
         pattern = Pattern.compile(regexDOB);
@@ -97,9 +80,6 @@ public class CreateAccountActivity extends AppCompatActivity {
         else if(!matcher.matches()) {
             dob.setError("Invalid DOB format");
             return;
-        }
-        else {
-            acct.setDob(dob.getText().toString());
         }
 
         //If email isn't given, no issue. If provided, then checks against regex.
@@ -116,9 +96,6 @@ public class CreateAccountActivity extends AppCompatActivity {
             username.setError("Please enter username");
             return;
         }
-        else {
-            acct.setUsername(username.getText().toString());
-        }
 
 
         pattern = Pattern.compile(regexPASS);
@@ -129,10 +106,7 @@ public class CreateAccountActivity extends AppCompatActivity {
         } else if(!matcher.matches()) {
             password.setError("Password must be between 8 and 16 characters, have an uppercase letter, and contain a special character.");
             return;
-        } else {
-            acct.setPassword(password.getText().toString());
         }
-
 
         if(TextUtils.isEmpty(initial.getText().toString())){
             initial.setError("Please enter initial amount");
@@ -141,10 +115,6 @@ public class CreateAccountActivity extends AppCompatActivity {
         else if(Double.compare(Double.parseDouble(initial.getText().toString()), 0) == 0) {
             initial.setError("Please enter a value greater than 0.");
             return;
-        }
-        else {
-            acct.setInitialAmount(Double.parseDouble(initial.getText().toString()));
-            acct.setAccountBalance(Double.parseDouble(initial.getText().toString()));
         }
 
         // Unpack SharedPrefs to get the IP of the server.

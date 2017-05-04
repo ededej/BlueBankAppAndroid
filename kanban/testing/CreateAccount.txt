@@ -37,3 +37,21 @@ Log entries (YYYY-MM-DD: HH:MM-HH:MM name, separated, by, commas | notes):
 
   - 2017-03-25: 11:35; 13:54 Salonika "Started working on BlueBank, Account, and User
     at 11:35 am - 13:51 pm; started again at 13:54pm - 14:43 pm"
+    
+  - 2017-04-18: 09:15-10:15 Sushena | Further work done on validation for Create Account.
+  
+  - 2017-04-18: 08:30-09:15 Sushena | Small bug fixes done in create account.
+  
+  - 2017-04-18: 09:15-09:45 Sushena | Added a logout button to the GUI.
+  
+  - 2017-04-19: 05:00-06:00 Sushena | Several changes to the Transfer GUI (no functionality changes***).
+  
+  - 2017-04-25: 09:45-10:15 Sushena | Worked on validation for create account
+  
+  - 2017-04-26: 05:30-06:30 Sushena | Further work on validation
+  
+  - 2017-04-27: 03:30-05:00 Sushena | Validation done except for Username
+  
+  - 2017-04-29: 09:00-09:30 Sushena | Working still on Username
+  
+  - 2017-05-02: 09:30-10:15 Sushena | Username validation working, create account GUI fully functional

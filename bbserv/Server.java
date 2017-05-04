@@ -28,7 +28,7 @@ public class Server{
  public static double wfee = 0.05;
  public static double dfee = 0.05;
  public static double tfee = 0.05;
- 
+
  public static void main(String[] args) throws Exception{
   int portnum = 1337;
   if (args.length == 0){
@@ -116,4 +116,10 @@ public class Server{
 		}
 		return trans;
 	}
+
+	public static void setFees(double w, double d, double t){
+        wfee = w;
+        dfee = d;
+        tfee = t;
+    }
 }

@@ -26,11 +26,11 @@ Log entries (YYYY-MM-DD: HH:MM-HH:MM name, separated, by, commas | notes):
 - 2017-04-13: 19:45-20:45 Ermal | Finished main activity with the Log In screen.
 - 2017-04-15: 10:45-12:45 Ermal | Added create account form, for new custumer to register.
 - 2017-04-16: 8:30-11:40 Ermal | Linked togother the Login form,create account and the main bank screen after Login. Create the Main screen Gui
-- 2017-04-16: 14:00-15:30 Ermal | Added withdrawDeposit activity and created the gui for it, added button that will be trigger by the type of transaction.
+- 2017-04-16: 14:00-15:30 Ermal | Added withdrawDeposit activity and created the gui for it, added drawable.button that will be trigger by the type of transaction.
 - 2017-04-16: 20:00-20:30 Ermal | Added transfer activity and created the gui for it.
-- 2017-04-16: 21:30-22:30 Ermal | Added manage account and support, linked those with the button from bank menu.
+- 2017-04-16: 21:30-22:30 Ermal | Added manage account and support, linked those with the drawable.button from bank menu.
 - 2017-04-16: 10:15-12:00 Sushena | Started on validation for Create Account in app and pushed to Git.
 - 2017-04-18: 09:15-10:15 Sushena | Further work done on validation for Create Account.
 - 2017-04-18: 08:30-09:15 Sushena | Small bug fixes done in create account.
-- 2017-04-18: 09:15-09:45 Sushena | Added a logout button to the GUI.
+- 2017-04-18: 09:15-09:45 Sushena | Added a logout drawable.button to the GUI.
 - 2017-04-19: 05:00-06:00 Sushena | Several changes to the Transfer GUI (no functionality changes***).

@@ -6,13 +6,13 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.Switch;
 
 public class WithdrawDepositActivity extends AppCompatActivity{
 
     Button submitBtn;
     EditText amountText;
-    Switch wdSwitch;
     String mode;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,29 +21,31 @@ public class WithdrawDepositActivity extends AppCompatActivity{
         setContentView(R.layout.activity_withdraw_deposit);
         submitBtn=(Button) findViewById(R.id.submitBtn);
         amountText=(EditText) findViewById(R.id.editAmount);
-        wdSwitch=(Switch) findViewById(R.id.wdSwitch);
-        wdSwitch.setText("Withdraw");
-        submitBtn.setVisibility(View.VISIBLE);
-        submitBtn.setText("Withdraw");
-        mode="Withdraw";
+        submitBtn.setVisibility(View.GONE);
     }
 
-    public void onSwitchToggle(View view){
-        boolean withdraw = ((Switch) view).isChecked();
+    public void onCheckedButton(View v){
 
-        if (withdraw){
-            ((Switch) view).setText("Withdraw");
-            submitBtn.setVisibility(View.VISIBLE);
-            submitBtn.setText("Withdraw");
-            mode="Withdraw";
-        } else {
-            ((Switch) view).setText("Deposit");
-            submitBtn.setVisibility(View.VISIBLE);
-            submitBtn.setText("Deposit");
-            mode="Deposit";
+    }
+
+    public void onRadioButtonClicked(View view) {
+        // Is the drawable.button now checked?
+        boolean checked = ((RadioButton) view).isChecked();
+
+        // Check which radio drawable.button was clicked
+        switch(view.getId()) {
+            case R.id.withDrawBtn:
+                if (checked)
+                    submitBtn.setText("Withdraw");
+                    submitBtn.setVisibility(View.VISIBLE);
+                    break;
+            case R.id.depositBtn:
+                if (checked)
+                    submitBtn.setText("Deposit");
+                    submitBtn.setVisibility(View.VISIBLE);
+                    break;
         }
     }
-
     public void doTransactionClick(View v){
         if(validateInput()){
             Double amountDb= Double.parseDouble(amountText.getText().toString());

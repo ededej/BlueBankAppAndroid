@@ -88,7 +88,7 @@ public class BankMainActivity extends AppCompatActivity {
         new ClientLogic.RefreshRequest().execute(this, req.toString(), ip);
     }
 
-    //withdraw button amount
+    //withdraw drawable.button amount
     public void WithdrawDepositBtnClick(View v){
         Intent depositWithdrawIntent = new Intent(BankMainActivity.this,WithdrawDepositActivity.class);
         startActivity(depositWithdrawIntent);
@@ -179,7 +179,7 @@ public class BankMainActivity extends AppCompatActivity {
         title.setPadding(10, 10, 10, 10);
         title.setGravity(Gravity.CENTER);
         builder.setCustomTitle(title);
-        //trying to put the done button on center
+        //trying to put the done drawable.button on center
         builder.setOnShowListener(new DialogInterface.OnShowListener() {
             @Override
             public void onShow(DialogInterface dialog) {                    //

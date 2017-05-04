@@ -46,7 +46,7 @@ There are two ways of doing this.  For both ways, basic connection information s
 	- If the server is not running, none of the above features will work.
 		- If this is the case, or for just seeing the internal screens, use the dummy credentials "dummy" and "Password1".  These will bypass the network login and allow access to the Bank Main screen.
 	- When transferring, withdrawing, or depositing, the balance will update as soon as you return to the main screen.  
-		- When someone is transferring money to you, go to your bank main screen and hit the back button once the money has been transferred.  Then log in using your credentials that are saved in the login screen.  This is a quick process and it will refresh your account's balance to reflect the most up-to-date total on the server.
+		- When someone is transferring money to you, go to your bank main screen and hit the back drawable.button once the money has been transferred.  Then log in using your credentials that are saved in the login screen.  This is a quick process and it will refresh your account's balance to reflect the most up-to-date total on the server.
 	
 2) Run "java Client" from another cmd line on the same computer as the Server (LEAVE THE SERVER RUNNING!)
 	- This connects on the localhost, and you need to manually form your request strings using the protocol described in notes.txt

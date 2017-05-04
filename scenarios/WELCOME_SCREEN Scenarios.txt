@@ -3,7 +3,7 @@ Title: Welcome Screen Scenarios
 Scenario 1: Brandon turns on the application and sees a welcome screen.
   - Brandon turns on the BlueBank program
   - Brandon gets prompted with a message "Welcome to BlueBank! Please create an account or log in!"
-  - Brandon exits by clicking the exit button (for now we can just type q).
+  - Brandon exits by clicking the exit drawable.button (for now we can just type q).
 
 Scenario 2: Brandon turns on the application and sees a welcome screen and creates an account
   - Brandon turns on the BlueBank program

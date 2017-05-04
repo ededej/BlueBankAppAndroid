@@ -23,10 +23,10 @@ public class ManageAccountActivity extends AppCompatActivity {
     }
 
     public void onRadioButtonClicked(View view) {
-        // Is the button now checked?
+        // Is the drawable.button now checked?
         boolean checked = ((RadioButton) view).isChecked();
 
-        // Check which radio button was clicked
+        // Check which radio drawable.button was clicked
         switch (view.getId()) {
             case R.id.nameRadio:
                 if (checked) {

@@ -8,7 +8,7 @@ Scenario 1: Sal successfully transfer $100 from her account to Sara's account.
   - The machine checks Sal's account balance and prompts destination account info.
   - Sal types in sara's account number as a destination.
   - The machine checks Sara's account validity and prompts Sal Sara's name and account number.
-  - Sal presses "OK" button since the prompt info was correct.
+  - Sal presses "OK" drawable.button since the prompt info was correct.
   - The machine withdraws $100 from Sal's account and deposits $100 to Sara's account.
   - Sal selects to print her receipt and exits the system.
 
@@ -22,7 +22,7 @@ Scenario 2:
   - The machine prompts destination account number.
   - Sal types in sara's account number as a destination.
   - The machine checks Sara's account validity and prompts Sal Sara's name and account number.
-  - Sal presses "OK" button since the prompt info was correct.
+  - Sal presses "OK" drawable.button since the prompt info was correct.
   - The machine withdraws $100 from Sal's account and deposits $100 to Sara's account.
   - Sal has negative $50 balance in her account now.
   - Sal selects to print her receipt and exits the system.
@@ -34,7 +34,7 @@ Scenario 3:
   - Sara selects the option to transfer money and the amount $100 to do.
   - Sara selects her checking account as a source and her saving account as a destination.
   - The app prompts Sara's enquiry verification.
-  - Sara presses "OK" button since the prompt info was correct.
+  - Sara presses "OK" drawable.button since the prompt info was correct.
   - The app withdraws $100 from her checking account and deposits $100 to her saving account.
   - Sara recieves an email receipt and exits the app.
   

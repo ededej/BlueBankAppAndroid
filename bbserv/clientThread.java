@@ -7,23 +7,28 @@ import java.util.HashMap;
 import java.io.FileWriter;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-
+import java.util.LinkedList;
+import java.util.ArrayList;
 
 public class clientThread extends Thread{
 	private BufferedReader is = null;
 	private PrintStream os = null;
 	private Socket clientSocket = null;
 	private HashMap<String,Dude> users;
+	private LinkedList<Transaction> trans;
 	private clientThread[] room;
 	private Object lock;
-	private Dude res;
+	private Response res;
 	private boolean error = false;
 	private String errMsg = "Something went wrong!";
+	private boolean isDude = true;
+	private String transactions;
 	
 	// Constructor.  Takes refs to all relevant fields from main server thread.
-	public clientThread(Socket socket, HashMap<String,Dude> users, Object lock, clientThread[] room) {
+	public clientThread(Socket socket, HashMap<String,Dude> users, LinkedList<Transaction> trans, Object lock, clientThread[] room) {
 		this.clientSocket = socket;
 		this.users = users;
+		this.trans = trans;
 		this.lock = lock;
 		this.room = room;
 	}
@@ -41,13 +46,18 @@ public class clientThread extends Thread{
 			
 			synchronized(lock){
 				writeTable();
+				writeLog();
 			}
 			
 			// Release common server resources.
 			roomRelease(room);
 			
 			// Return user state.
-			os.println(error ? "Error"+Dude.DELIM+errMsg : res.toString());
+			if (isDude){
+				os.println(error ? "Error"+Response.DELIM+errMsg : ((Dude) res).toString());			
+			} else {
+				os.println(Double.toString(((Dude)res).balance)+transactions);
+			}
 			
 			// Close sockets and streams.
 			is.close();
@@ -95,17 +105,18 @@ public class clientThread extends Thread{
 				// If not, make a new one, add it to HashTable.
 				else {
 					res = new Dude();
-					res.username = args[1];
+					((Dude) res).username = args[1];
 					//res.password = args[2];
-                    res.password = hashPass(args[2]);
+                    ((Dude) res).password = hashPass(args[2]);
 					//System.out.println(res.password);
-					res.fullname = args[3];
-					res.email = args[4];
-					res.ssn = args[5];				
-					res.dob = args[6];
-					res.balance = Double.parseDouble(args[7]);
-					users.put(args[1], res);
-				}				
+					((Dude) res).fullname = args[3];
+					((Dude) res).email = args[4];
+					((Dude) res).ssn = args[5];				
+					((Dude) res).dob = args[6];
+					((Dude) res).balance = Double.parseDouble(args[7]);
+					users.put(args[1], ((Dude) res));
+					trans.add(new Transaction("Create",((Dude) res).username,"",0.0,((Dude) res).balance));
+				}
 				return;
 			}
 			
@@ -129,19 +140,13 @@ public class clientThread extends Thread{
 				if (res.balance < (amt + fee_amt)){
 					error = true;
 					errMsg = "Withdraw failed: Not enough cash in the balance";
+					return;
 				} else {
-					res.balance = (res.balance - (amt + fee_amt));
+					((Dude) res).balance = (((Dude) res).balance - (amt + fee_amt));
 				}
 				
-				users.put(args[1], res);
-				// Put Transaction logging here.
-				// Make a new Transaction.
-				// Say that user $args[1] withdrew $args[3] from their account.
-				// Save to transaction log, etc.
-
-				//log the withdraw transaction for this account
-				new Transaction().writeLog(Transaction.Type.withdraw,args[1],null,amt,fee_amt,false);
-
+				users.put(args[1], ((Dude) res));
+				trans.add(new Transaction("Withdraw",args[1],"",fee_amt,amt));
 			}	
 			
 			// Check for DEPOSIT REQUEST
@@ -149,13 +154,10 @@ public class clientThread extends Thread{
 				res = users.get(args[1]);
 				Double amt = Double.parseDouble(args[3]);
 				Double fee_amt = amt * Server.dfee;
-				res.balance = (res.balance + (amt - fee_amt ));
+				((Dude) res).balance = (((Dude) res).balance + (amt - fee_amt ));
 				
-				users.put(args[1], res);
-				// Put Transaction logging here.
-
-				//log the deposit transaction for this account
-				new Transaction().writeLog(Transaction.Type.deposit,args[1],null,amt,fee_amt,false);
+				users.put(args[1], ((Dude) res));
+				trans.add(new Transaction("Deposit",args[1],"",fee_amt,amt));
 			}
 			
 			// Check for TRANSFER REQUEST
@@ -164,22 +166,21 @@ public class clientThread extends Thread{
 				if (!users.containsKey(args[3])){
 					error = true;
 					errMsg = "Transfer failed: Receiving user does not exist.";
+					return;
 				} else {
 					Dude dest = users.get(args[3]);
 					Double amt = Double.parseDouble(args[4]);
 					Double fee_amt = amt * Server.tfee;
-					if (res.balance < (amt + fee_amt)){
+					if (((Dude) res).balance < (amt + fee_amt)){
 						error = true;
 						errMsg = "Withdraw failed: Not enough cash in the balance";
+						return;
 					} else {
-						res.balance = (res.balance - (amt + fee_amt));
+						((Dude) res).balance = (((Dude) res).balance - (amt + fee_amt));
 						dest.balance = (dest.balance + amt);
-						users.put(args[1], res);
+						users.put(args[1], ((Dude) res));
 						users.put(args[3], dest);
-						// Put Transaction logging here.
-
-						//log the transfer transaction for this account
-						new Transaction().writeLog(Transaction.Type.transfer,args[1],dest,amt,fee_amt,false);
+						trans.add(new Transaction("Transfer",args[1],args[3],fee_amt,amt));
 					}
 				}
 			}
@@ -197,13 +198,20 @@ public class clientThread extends Thread{
 			// Check for UPDATE ACCOUNT REQUEST
 			else if (args[0].equals("u")){
 				res = users.get(args[1]);
-				//res.password = args[2];
-                res.password = hashPass(args[2]);
-				res.fullname = args[4];
-				res.email = args[5];
-				res.ssn = args[6];				
-				res.dob = args[7];
-				users.put(args[1], res);
+			}
+			
+			// Check for TRANSACTION HISTORY REQUEST
+			else if (args[0].equals("h")){
+				res = users.get(args[1]);
+				String user = args[1];
+				String output = "";
+				for (Transaction t : trans) {
+					if (t.acc1.equals(user) || t.acc2.equals(user)){
+						output = Response.DELIM + t.toString() + output;
+					}
+				}
+				transactions = output;
+				isDude = false;
 			}
 			
 			// Check for BAD REQUEST
@@ -211,11 +219,6 @@ public class clientThread extends Thread{
 				error = true;
 				errMsg = "Invalid Operation Type: "+args[0]+" is not a valid operation code";
 			}
-			
-			// Commit the current user change back to the db.
-			//if (!error) {
-			//	users.put(args[1], res);
-			//}
 		}
 	}
 	
@@ -230,16 +233,30 @@ public class clientThread extends Thread{
 	// Prints the user table to a file (SAVES PROGRESS!)
 	public void writeTable(){
 		try {
-			FileWriter fw = new FileWriter(Server.FILENAME);
+			FileWriter fw = new FileWriter(Server.U_FILENAME);
 			for (Dude d : users.values()) {
 				fw.write(d.toString()+"\n");
 			}
 			fw.close();
 		} catch (Exception e){
-			System.out.println("ERROR WHILE WRITING USER TABLE");
+			System.out.println("ERROR WHILE WRITING USER TABLE!");
+		}
+	}
+	
+	// Prints the transaction log to a file (SAVES PROGRESS!)
+	public void writeLog(){
+		try {
+			FileWriter fw = new FileWriter(Server.T_FILENAME);
+			for (Transaction t : trans) {
+				fw.write(t.toString()+"\n");
+			}
+			fw.close();
+		} catch (Exception e){
+			System.out.println("ERROR WHILE WRITING TRANSACTION TABLE!");
 		}
 	}
     
+	// Password hashing function.
     public String hashPass(String pass) {
         String resPass = "";
         try {

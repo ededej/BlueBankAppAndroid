@@ -1,4 +1,5 @@
-public class Dude{
+public class Dude extends Response {
+	public boolean isDude = true;
 	public String username;
 	public String password;
 	public Double balance;
@@ -6,8 +7,6 @@ public class Dude{
 	public String dob;
 	public String email;
 	public String fullname;
-	
-	public static String DELIM = "#";
 	
 	public Dude(){
 		username = "NEW";

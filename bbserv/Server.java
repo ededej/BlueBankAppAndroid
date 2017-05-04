@@ -7,6 +7,8 @@ import java.net.Socket;
 import java.net.ServerSocket;
 import java.net.InetAddress;
 import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.ArrayList;
 
 public class Server{
  
@@ -14,12 +16,14 @@ public class Server{
  private static Socket clientSocket = null;
  private static final int serverCap = 10;
  private static final clientThread[] threads = new clientThread[serverCap];
- public static String FILENAME = "users.data";
+ public static String U_FILENAME = "users.data";
+ public static String T_FILENAME = "transaction.data";
  
  // User table & synch lock.
  private static HashMap<String,Dude> users;
  private static Object lock = new Object();
-
+ private static LinkedList<Transaction> trans;
+ 
  //Bank fees (these are % s).
  public static double wfee = 0.05;
  public static double dfee = 0.05;
@@ -37,6 +41,7 @@ public class Server{
   
   // Load in users from file.
   users = readTable();
+  trans = readLog();
   
   // Server logic.
   try{
@@ -58,7 +63,7 @@ public class Server{
     for (i = 0; i < threads.length; i++){
      // If so, make a new client thread an run it.
      if (threads[i] == null){
-      (threads[i] = new clientThread(clientSocket, users, lock, threads)).start();
+      (threads[i] = new clientThread(clientSocket, users, trans, lock, threads)).start();
       break;
      }
     }
@@ -75,22 +80,40 @@ public class Server{
   }
  }
  
- // Server persistence function.
- public static HashMap<String,Dude> readTable(){
-  HashMap<String,Dude> hash = new HashMap<String,Dude>();
-  try {
-   FileInputStream fis = new FileInputStream(FILENAME);
-   BufferedReader br = new BufferedReader(new InputStreamReader(fis));
-   System.out.println("LOADING USER LINES!");
-   String line;
-   while ((line = br.readLine()) != null)   {
-    hash.put(line.split(Dude.DELIM)[0],
-     new Dude(line));
-   }
-   br.close();
-  } catch (Exception e){
-   System.out.println("No table file found or properly loaded.");
-  }
-  return hash;
- }
+	// Server persistence function.
+	public static HashMap<String,Dude> readTable(){
+		HashMap<String,Dude> hash = new HashMap<String,Dude>();
+		try {
+			FileInputStream fis = new FileInputStream(U_FILENAME);
+			BufferedReader br = new BufferedReader(new InputStreamReader(fis));
+			System.out.println("Loading user lines.");
+			String line;
+			while ((line = br.readLine()) != null) {
+				hash.put(line.split(Dude.DELIM)[0], new Dude(line));
+			}
+			br.close();
+		} catch (Exception e){
+			System.out.println("User file DNE or was improperly loaded.");
+		}
+		return hash;
+	}
+
+	// Transaction persistence function.
+	public static LinkedList<Transaction> readLog(){
+		LinkedList<Transaction> trans = new LinkedList<Transaction>();
+		try {
+			FileInputStream fis = new FileInputStream(T_FILENAME);
+			BufferedReader br = new BufferedReader(new InputStreamReader(fis));
+			System.out.println("Loading transaction lines.");
+			String line;
+			while ((line = br.readLine()) != null)   {
+				trans.add(new Transaction(line));
+			}
+			br.close();
+		} catch (Exception e){
+			System.out.println("Transaction file DNE or was improperly loaded.");
+			System.out.println(e.toString());
+		}
+		return trans;
+	}
 }

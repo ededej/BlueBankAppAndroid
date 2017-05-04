@@ -6,26 +6,58 @@ import java.io.FileWriter;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class Transaction{
-    public enum Type{deposit,withdraw,transfer,account};  //enum to compare type of transaction
-    private String acct1 = null; //primary account involved in transaction
-    private Dude acct2 = null; //secondary account involved in transaction
-    private Double fee; //fee of the transaction
-    private boolean undo = false; //the type of transaction to undo
-    private double amount;
+public class Transaction extends Response {
 
-    /**
-     * Builds the log to be written to the primary and/or secondary account
-     * @param type String containing the type of transaction (deposit,withdraw,transfer,account,modiyf)
-     * @return String object of the log to be written to the file.
-     */
+	public boolean isDude = false;
+    public String type = ""; //u?[d|w|t|a] - string type of transaction
+    public String acc1 = null; //primary account involved in transaction
+    public String acc2 = null; //secondary account involved in transaction
+    public Double fee; //fee of the transaction
+    public Double amount;
+	
+	private String TDELIM = "%";
+	
+	public Transaction(){
+		amount = 0.0;
+	}
+	
+	public Transaction(String t, String a1, String a2, Double f, Double a){
+		type = t;
+		acc1 = a1;
+		acc2 = a2;
+		fee = f;
+		amount = a;
+	}
+	
+	public Transaction(String s){
+		String[] fields = s.split(TDELIM);
+		type = fields[0];
+		acc1 = fields[1];
+		acc2 = fields[2];
+		fee = Double.parseDouble(fields[3]);
+		amount = Double.parseDouble(fields[4]);
+	}
+	
+	public String toString(){
+		StringBuilder s = new StringBuilder();
+		s.append(type + TDELIM);
+		s.append(acc1 + TDELIM);
+		s.append(acc2 + TDELIM);
+		s.append(fee.toString() + TDELIM);
+		s.append(amount.toString());
+		return s.toString();
+	}
+	
+	
+	
+	/*
     private String logbuilder(Type type)
     {
         Date currentDate = new Date();
-        SimpleDateFormat formatDate = new SimpleDateFormat("MM-dd-yyyy HH:mm");
+        SimpleDateFormat formatDate = new SimpleDateFormat("yyyy/MM/dd/HH/mm/ss");
 
         StringBuilder log = new StringBuilder();
-        if(undo==false){
+        if (undo==false) {
             switch (type){
                 case deposit:
                     log.append(acct1+" Deposited "+getAmount()+" /"+formatDate.format(currentDate));
@@ -34,42 +66,35 @@ public class Transaction{
                     log.append(acct1+" Withdrew "+getAmount()+" /"+formatDate.format(currentDate));
                     break;
                 case transfer:
-                    log.append(acct1+" Transfer "+getAmount()+" to "+acct2.username+"'s account /"+formatDate.format(currentDate));
+                    log.append(acct1+" Transferred "+getAmount()+" to "+acct2.username+" /"+formatDate.format(currentDate));
                     break;
                 case account:
-                    log.append(acct1+" opened an account.\n");
-                    log.append("INITIAL DEPOSIT "+getAmount()+" /"+formatDate.format(currentDate));
+                    log.append(acct1+" Created Account");
+                    log.append(acct1+" Deposited "+getAmount()+" /"+formatDate.format(currentDate));
                     break;
             }
-        }else{ //add undo transaction to the log
+        } else { //add undo transaction to the log
             switch (type) {
                 case deposit:
-                    log.append("UNDONE - DEPOSIT " + this.getAmount() + "/" + formatDate.format(currentDate));
+                    log.append(" Undo Deposit " + getAmount() + "/" + formatDate.format(currentDate));
                     break;
                 case withdraw:
-                    log.append("UNDONE - WITHDRAW " + this.getAmount() + "/" + formatDate.format(currentDate));
+                    log.append(" Undo Withdraw " + getAmount() + "/" + formatDate.format(currentDate));
                     break;
                 case transfer:
-                    log.append("UNDONE - TRANSFER " + this.getAmount() + " to account " + this.acct2 + "/" + formatDate.format(currentDate));
+                    log.append(" Undo Transfer " + getAmount() + " to " + acct2 + "/" + formatDate.format(currentDate));
                     break;
             }
         }
 
         if((this.fee > 0) && (undo==true)){ //log for fee reversal
-            log.append("\nUNDONE FEE "+this.fee);
+            log.append("\n Undo Fee "+this.fee);
         }else if(this.fee >0){ //log for fee associated with transaction
-            log.append("\nFee for "+type+":"+this.fee);
+            log.append("\n Fee "+type+":"+this.fee);
         }
         return log.toString(); //return log string
     }
 
-    /**
-     * Writes the transaction type to the logfile of a specified account or accounts in the case of a transfer.
-     * @param type specifies the type of transaction (deposit,withdraw,transfer,account,modify)
-     * @param acct1 Account object one for the primary account to write the log
-     * @param acct2 Account object two (can be null) to specify the account to write the log in the event of a transfer
-     * @param amt int specify the amount of money involved in the transaction
-     */
     public void writeLog(Type type,String acct1,Dude acct2,double amt,double fee,boolean undo){
         this.acct1 = acct1; //set the primary account
         this.acct2 = acct2; //set the secondary account
@@ -79,20 +104,10 @@ public class Transaction{
 
         String log = this.logbuilder(type); //call the logbuilder to build the log
 
-        /**
-         * TODO perform file directory check
-         */
         //File dir =  new File("src/logs/"); //directory to store logs
         //File dir  = new File("bbserv"+File.separator+"logs"); //directory to store logs
         //File file = new File(dir+File.separator+this.acct1.toString()+"_log"); //set file name
         File file = new File("bbserv_transaction_log");
-
-        //check if directory exists; create directory if not
-        /*if(!dir.exists()){
-            if(!file.mkdir()){
-                System.out.println("Error: unable to create directory to store logs."); //print error if unable to mkdir
-            }
-        }*/
 
         //log transaction in account's log file
         try(BufferedWriter write2file = new BufferedWriter(new FileWriter(file,true))){
@@ -120,20 +135,5 @@ public class Transaction{
                 System.out.print("Exception during file write 2 in writeLog function:"+e);
             }
         }
-    }
-
-    private void setAmount(double value)
-    {
-        if (this.amount != value) {
-
-            double oldValue = this.amount;
-            this.amount = value;
-            //this.firePropertyChange(PROPERTY_AMOUNT, oldValue, value);
-        }
-    }
-
-    private double getAmount()
-    {
-        return this.amount;
-    }
+    } //*/
 }

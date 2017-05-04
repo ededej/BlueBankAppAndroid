@@ -29,6 +29,7 @@ Log entries (YYYY-MM-DD: HH:MM-HH:MM name, separated, by, commas | notes):
 - 2017-04-16: 14:00-15:30 Ermal | Added withdrawDeposit activity and created the gui for it, added button that will be trigger by the type of transaction.
 - 2017-04-16: 20:00-20:30 Ermal | Added transfer activity and created the gui for it.
 - 2017-04-16: 21:30-22:30 Ermal | Added manage account and support, linked those with the button from bank menu.
+- 2017-04-16: 21:30-22:30 Heymond | Finished all of the sdmlib implementations
 - 2017-04-16: 10:15-12:00 Sushena | Started on validation for Create Account in app and pushed to Git.
 - 2017-04-18: 09:15-10:15 Sushena | Further work done on validation for Create Account.
 - 2017-04-18: 08:30-09:15 Sushena | Small bug fixes done in create account.

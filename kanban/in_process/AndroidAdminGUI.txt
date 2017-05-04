@@ -18,4 +18,5 @@ Assigned persons (currently working on task):
 
 Log entries (YYYY-MM-DD: HH:MM-HH:MM name, separated, by, commas | notes):
 
-  - 2017-05-2: 09:25-10:15 Ermal | Pair-programming Worked with Heymond to put the menu for adimin and log out
+  - 2017-05-2: 09:25-10:15 Ermal & Heymond| Pair-programming Worked with Heymond to put the menu for adimin and log out
+  - 2017-05-2: 04:30-7:00 Heymond | added more activities for the admin console and got it ready for other things

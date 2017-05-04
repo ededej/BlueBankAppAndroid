@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.Button;
 
 public class AdminConsoleActivity extends AppCompatActivity {
-    Button fees, dispute;
+    Button fees, dispute, trans;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -15,11 +15,18 @@ public class AdminConsoleActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_console);
         fees = (Button) findViewById(R.id.setFee);
-        dispute = (Button) findViewById(R.id.disputeTrans);
+        dispute = (Button) findViewById(R.id.DisputeTrans);
+        trans = (Button) findViewById(R.id.Transaction);
     }
 
     public void feeClick(View view){
         Intent feeIntent = new Intent(AdminConsoleActivity.this, SetFeeActivity.class);
         startActivity(feeIntent);
+    }
+
+    public void transClick(View view){
+        Intent transIntent = new Intent(AdminConsoleActivity.this, TransactionActivity.class);
+        startActivity(transIntent);
+
     }
 }

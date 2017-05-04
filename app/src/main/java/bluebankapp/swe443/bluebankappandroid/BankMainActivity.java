@@ -94,7 +94,7 @@ public class BankMainActivity extends AppCompatActivity {
         startActivity(depositWithdrawIntent);
     }
 
-    public  void transferMoneyClick(View v){
+    public void transferMoneyClick(View v){
         Intent transferIntent = new Intent(BankMainActivity.this,TransferActivity.class);
         startActivity(transferIntent);
     }
@@ -102,7 +102,7 @@ public class BankMainActivity extends AppCompatActivity {
         Intent manageIntent = new Intent(BankMainActivity.this,ManageAccountActivity.class);
         startActivity(manageIntent);
     }
-    public void supportClick(View v){
+    public void TransActionClick(View v){
         Intent supportActivityIntent = new Intent(BankMainActivity.this,TransactionActivity.class);
         startActivity(supportActivityIntent);
     }

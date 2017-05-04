@@ -4,44 +4,68 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="bluebankapp.swe443.bluebankappandroid.AdminConsoleActivity">
+    tools:context="bluebankapp.swe443.bluebankappandroid.AdminConsoleActivity"
+    tools:layout_editor_absoluteY="81dp"
+    tools:layout_editor_absoluteX="0dp">
 
 
     <Button
-        android:id="@+id/disputeTrans"
+        android:id="@+id/DisputeTrans"
         style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="0dp"
-        android:layout_height="60dp"
+        android:layout_height="62dp"
         android:background="@android:color/holo_blue_light"
         android:lineSpacingExtra="8sp"
         android:text="Dispute Transaction"
         android:textSize="24sp"
         android:typeface="sans"
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintBottom_creator="1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        tools:layout_constraintLeft_creator="1"
+        android:layout_marginBottom="186dp"
+        app:layout_constraintLeft_toLeftOf="parent" />
+
+    <Button
+        android:id="@+id/Transaction"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="0dp"
+        android:layout_height="61dp"
+        android:background="@android:color/holo_blue_light"
+        android:lineSpacingExtra="8sp"
+        android:text="Transaction"
+        android:textSize="24sp"
+        android:typeface="sans"
         tools:layout_constraintTop_creator="1"
         tools:layout_constraintRight_creator="1"
-        app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginTop="38dp"
+        tools:layout_constraintBottom_creator="1"
+        app:layout_constraintBottom_toTopOf="@+id/DisputeTrans"
+        android:layout_marginEnd="4dp"
+        app:layout_constraintRight_toRightOf="@+id/setFee"
+        android:layout_marginTop="37dp"
         app:layout_constraintTop_toBottomOf="@+id/setFee"
         tools:layout_constraintLeft_creator="1"
-        app:layout_constraintLeft_toLeftOf="parent" />
+        android:layout_marginBottom="38dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginRight="4dp"
+        android:onClick="transClick"/>
 
     <Button
         android:id="@+id/setFee"
         style="@style/Widget.AppCompat.Button.Colored"
-        android:layout_width="0dp"
-        android:layout_height="55dp"
+        android:layout_width="402dp"
+        android:layout_height="58dp"
         android:background="@android:color/holo_blue_light"
         android:lineSpacingExtra="8sp"
         android:text="Set Fees"
         android:textSize="24sp"
         android:typeface="sans"
+        android:onClick="feeClick"
         tools:layout_constraintTop_creator="1"
-        tools:layout_constraintRight_creator="1"
-        app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginTop="72dp"
+        android:layout_marginTop="69dp"
         tools:layout_constraintLeft_creator="1"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:onClick="feeClick"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
 </android.support.constraint.ConstraintLayout>

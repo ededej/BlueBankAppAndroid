@@ -38,11 +38,13 @@ public class WithdrawDepositActivity extends AppCompatActivity{
                 if (checked)
                     submitBtn.setText("Withdraw");
                     submitBtn.setVisibility(View.VISIBLE);
+                    mode = "Withdraw";
                     break;
             case R.id.depositBtn:
                 if (checked)
                     submitBtn.setText("Deposit");
                     submitBtn.setVisibility(View.VISIBLE);
+                    mode = "Deposit";
                     break;
         }
     }

@@ -26,7 +26,7 @@ import static android.graphics.Color.WHITE;
 
 public class BankMainActivity extends AppCompatActivity {
     TextView acct_amount,current_user;
-    public final static String adminUser="ulno443Admin";
+    public final static String adminUser="ulno443Admin"; //Password: Pass@word1
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         //blue = (Bank) getIntent().getParcelableExtra("bank");

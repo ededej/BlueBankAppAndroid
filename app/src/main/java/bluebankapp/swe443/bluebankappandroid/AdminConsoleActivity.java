@@ -8,6 +8,7 @@ import android.widget.Button;
 
 public class AdminConsoleActivity extends AppCompatActivity {
     Button fees, dispute, trans;
+    boolean isAdmin = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,7 +27,13 @@ public class AdminConsoleActivity extends AppCompatActivity {
 
     public void transClick(View view){
         Intent transIntent = new Intent(AdminConsoleActivity.this, TransactionActivity.class);
+        transIntent.putExtra("isAdmin", isAdmin);
         startActivity(transIntent);
+    }
 
+    public void disputeClick(View view){
+        Intent transIntent = new Intent(AdminConsoleActivity.this, TransactionActivity.class);
+        transIntent.putExtra("isAdmin", isAdmin);
+        startActivity(transIntent);
     }
 }

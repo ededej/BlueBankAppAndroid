@@ -9,11 +9,21 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 public class TransactionActivity extends AppCompatActivity {
+    boolean isAdmin;
+    TextView balance;
+    TextView header;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_transaction);
+        isAdmin = getIntent().getBooleanExtra("isAdmin", false);
+        balance = (TextView) findViewById(R.id.balanceString);
+        header = (TextView) findViewById(R.id.listHeader);
+        if(isAdmin == true){
+            balance.setVisibility(View.GONE);
+            header.setText("All Transaction");
+        }
     }
 
     @Override
@@ -86,7 +96,12 @@ public class TransactionActivity extends AppCompatActivity {
         // op code | username | password | amount
         // 0  #1  #2       #3
         // r#jlm#letmein0#50.00
-        req.append("h" + ClientLogic.DELIM); // OP CODE
+
+        if(isAdmin == false){
+            req.append("h" + ClientLogic.DELIM); // OP CODE
+        } else {
+            req.append("a" + ClientLogic.DELIM); // OP CODE
+        }
         req.append(u + ClientLogic.DELIM); // USERNAME
         req.append(p); // PASSWORD
 

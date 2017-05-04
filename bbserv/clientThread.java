@@ -213,6 +213,17 @@ public class clientThread extends Thread{
 				transactions = output;
 				isDude = false;
 			}
+
+			else if (args[0].equals("a")){
+				res = users.get(args[1]);
+				String user = args[1];
+				String output = "";
+				for (Transaction t : trans) {
+					output = Response.DELIM + t.toString() + output;
+				}
+				transactions = output;
+				isDude = false;
+			}
 			
 			// Check for BAD REQUEST
 			else {

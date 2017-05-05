@@ -78,10 +78,11 @@ Author(s):
 Assigned persons (currently working on task):
 
   - Salonika
+  - Sara
 
 Log entries (YYYY-MM-DD: HH:MM-HH:MM name, separated, by, commas | notes):
 
-  -
+  - 2017-05-05: 12:30PM-3:00PM Sara
  -------------------------------------------------------------------------------------------------------------------
 
 Title: Biometric Authentication

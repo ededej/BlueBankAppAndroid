@@ -24,7 +24,7 @@ public class IdleActivity extends Activity {
             SharedPreferences.Editor editor = getSharedPreferences("bluebank", Context.MODE_PRIVATE).edit();
             // To log out, reset all locally stored account information.
             // Leave the username so that the field auto-populates on the login screen.
-            // Similarly, leave the IP so that the user doesnt have to re-type it.
+            // Similarly, leave the IP so that the user doesn't have to re-type it.
             editor.putString("password", "");
             editor.putFloat("balance", 0);
             editor.putString("ssn", "");
@@ -33,7 +33,7 @@ public class IdleActivity extends Activity {
             editor.putString("fullname", "");
             editor.apply();
 
-            // Go back to login.
+            // back to login.
             finish();
         }
     };

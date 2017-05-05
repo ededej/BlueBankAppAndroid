@@ -231,6 +231,15 @@ public class clientThread extends Thread {
                 isDude = false;
             }
 
+            else if (args[0].equals("f")){
+                res = users.get(args[1]);
+                String user = args[1];
+                Server.dfee = Double.parseDouble(args[3]);
+                Server.wfee = Double.parseDouble(args[4]);
+                Server.tfee = Double.parseDouble(args[5]);
+                isDude = false;
+            }
+
             // Check for BAD REQUEST
             else {
                 error = true;

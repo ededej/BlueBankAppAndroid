@@ -10,7 +10,7 @@ import android.os.Handler;
 import android.support.v4.app.NotificationCompat;
 
 public class IdleActivity extends Activity {
-    public static final long DISCONNECT_TIMEOUT = 300000; // 5 min = 5 * 60 * 1000 ms
+    public static final long DISCONNECT_TIMEOUT = 900000; // 15 min = 15 * 60 * 1000 ms
 
     private static Handler disconnectHandler = new Handler(){
         public void handleMessage(NotificationCompat.MessagingStyle.Message msg) {

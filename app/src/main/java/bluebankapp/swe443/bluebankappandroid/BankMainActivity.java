@@ -26,7 +26,8 @@ import static android.graphics.Color.WHITE;
 
 public class BankMainActivity extends AppCompatActivity {
     TextView acct_amount,current_user;
-    public final static String adminUser="ulno443Admin";
+    Boolean isAdmin = false;
+    public final static String adminUser="ulno443Admin"; //Password: Pass@word1
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         //blue = (Bank) getIntent().getParcelableExtra("bank");
@@ -88,13 +89,13 @@ public class BankMainActivity extends AppCompatActivity {
         new ClientLogic.RefreshRequest().execute(this, req.toString(), ip);
     }
 
-    //withdraw button amount
+    //withdraw drawable.button amount
     public void WithdrawDepositBtnClick(View v){
         Intent depositWithdrawIntent = new Intent(BankMainActivity.this,WithdrawDepositActivity.class);
         startActivity(depositWithdrawIntent);
     }
 
-    public  void transferMoneyClick(View v){
+    public void transferMoneyClick(View v){
         Intent transferIntent = new Intent(BankMainActivity.this,TransferActivity.class);
         startActivity(transferIntent);
     }
@@ -102,9 +103,10 @@ public class BankMainActivity extends AppCompatActivity {
         Intent manageIntent = new Intent(BankMainActivity.this,ManageAccountActivity.class);
         startActivity(manageIntent);
     }
-    public void supportClick(View v){
-        Intent supportActivityIntent = new Intent(BankMainActivity.this,TransactionActivity.class);
-        startActivity(supportActivityIntent);
+    public void TransActionClick(View v){
+        Intent TransActivityIntent = new Intent(BankMainActivity.this,TransactionActivity.class);
+        TransActivityIntent.putExtra("isAdmin", isAdmin);
+        startActivity(TransActivityIntent);
     }
 
     public void bindBalance(){
@@ -179,7 +181,7 @@ public class BankMainActivity extends AppCompatActivity {
         title.setPadding(10, 10, 10, 10);
         title.setGravity(Gravity.CENTER);
         builder.setCustomTitle(title);
-        //trying to put the done button on center
+        //trying to put the done drawable.button on center
         builder.setOnShowListener(new DialogInterface.OnShowListener() {
             @Override
             public void onShow(DialogInterface dialog) {                    //

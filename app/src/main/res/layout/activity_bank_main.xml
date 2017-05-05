@@ -93,7 +93,7 @@
         android:layout_height="63dp"
         android:background="@android:color/holo_blue_light"
         android:lineSpacingExtra="8sp"
-        android:onClick="supportClick"
+        android:onClick="TransActionClick"
         android:text="View Statement"
         android:textSize="24sp"
         android:typeface="sans"

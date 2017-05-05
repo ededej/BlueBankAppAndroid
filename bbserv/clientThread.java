@@ -137,7 +137,7 @@ public class clientThread extends Thread{
 				res = users.get(args[1]);
 				Double amt = Double.parseDouble(args[3]);
 				Double fee_amt = amt * Server.wfee;
-				if (res.balance < (amt + fee_amt)){
+				if (((Dude)res).balance < (amt + fee_amt)){
 					error = true;
 					errMsg = "Withdraw failed: Not enough cash in the balance";
 					return;
@@ -209,6 +209,17 @@ public class clientThread extends Thread{
 					if (t.acc1.equals(user) || t.acc2.equals(user)){
 						output = Response.DELIM + t.toString() + output;
 					}
+				}
+				transactions = output;
+				isDude = false;
+			}
+
+			else if (args[0].equals("a")){
+				res = users.get(args[1]);
+				String user = args[1];
+				String output = "";
+				for (Transaction t : trans) {
+					output = Response.DELIM + t.toString() + output;
 				}
 				transactions = output;
 				isDude = false;

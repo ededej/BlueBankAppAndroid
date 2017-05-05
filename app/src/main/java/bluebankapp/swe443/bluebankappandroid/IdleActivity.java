@@ -4,6 +4,8 @@
 package bluebankapp.swe443.bluebankappandroid;
 
 import android.app.Activity;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Handler;
 import android.support.v4.app.NotificationCompat;
 
@@ -16,10 +18,23 @@ public class IdleActivity extends Activity {
         }
     };
 
-    private static Runnable disconnectCallback = new Runnable() {
+    private Runnable disconnectCallback = new Runnable() {
         @Override
         public void run() {
-            // TODO: logout the account
+            SharedPreferences.Editor editor = getSharedPreferences("bluebank", Context.MODE_PRIVATE).edit();
+            // To log out, reset all locally stored account information.
+            // Leave the username so that the field auto-populates on the login screen.
+            // Similarly, leave the IP so that the user doesnt have to re-type it.
+            editor.putString("password", "");
+            editor.putFloat("balance", 0);
+            editor.putString("ssn", "");
+            editor.putString("dob", "");
+            editor.putString("email", "");
+            editor.putString("fullname", "");
+            editor.apply();
+
+            // Go back to login.
+            finish();
         }
     };
 
@@ -49,4 +64,3 @@ public class IdleActivity extends Activity {
         stopDisconnectTimer();
     }
 }
-

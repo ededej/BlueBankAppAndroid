@@ -1,10 +1,15 @@
 package bluebankapp.swe443.bluebankappandroid;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -12,7 +17,8 @@ public class TransactionActivity extends AppCompatActivity {
     boolean isAdmin;
     TextView balance;
     TextView header;
-
+    ListView transList;
+    ArrayList<Transaction> recentTransactions;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,10 +26,47 @@ public class TransactionActivity extends AppCompatActivity {
         isAdmin = getIntent().getBooleanExtra("isAdmin", false);
         balance = (TextView) findViewById(R.id.balanceString);
         header = (TextView) findViewById(R.id.listHeader);
+        transList = (ListView) findViewById(R.id.transactionList);
+
         if(isAdmin == true){
             balance.setVisibility(View.GONE);
             header.setText("All Transaction");
         }
+            //This listens for disput long pres and does the dispute
+            transList.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+                @Override
+                public boolean onItemLongClick(AdapterView<?> arg0, View arg1,
+                                               int pos, long id) {
+                    // TODO Auto-generated method stub
+
+                    Log.v("long clicked", "pos: " + pos);
+//                if(recentTransactions.size()!=0) {
+//
+//                    Toast.makeText(getApplicationContext(), "You pressed long" +recentTransactions.get(pos), Toast.LENGTH_SHORT).show();
+//                }
+                    AlertDialog.Builder builder = new AlertDialog.Builder(TransactionActivity.this);
+                    builder.setMessage("Do you want to dispute this transaction, amount")
+                            .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    // We need to delete this here
+                                    //TODO: Delete this tranasaction and update list
+
+                                    Toast.makeText(getApplicationContext(), "You pressed long transaction with amount " + recentTransactions.get(pos).amount, Toast.LENGTH_SHORT).show();
+                                }
+                            })
+                            .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    // User cancelled the dialog
+                                    dialog.cancel();
+                                }
+                            });
+                    // Create the AlertDialog object and return it
+                    AlertDialog alert1 = builder.create();
+                    alert1.show();
+                    return true;
+                }
+            });
+
     }
 
     @Override
@@ -38,8 +81,8 @@ public class TransactionActivity extends AppCompatActivity {
     // It is called from the refresh button callback, and from the onResume.
     public void refreshPage(){
         TextView balanceText = (TextView) findViewById(R.id.balanceString);
-        ListView transList = (ListView) findViewById(R.id.transactionList);
-        ArrayList<Transaction> recentTransactions = new ArrayList<>();
+        //ListView transList = (ListView) findViewById(R.id.transactionList);
+        recentTransactions = new ArrayList<>();
 
         // Unpack SharedPrefs to check for a pre-populated username.
         if (getSharedPreferences("bluebank", MODE_PRIVATE).contains("balance")) {

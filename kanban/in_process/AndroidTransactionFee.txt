@@ -16,3 +16,4 @@ Assigned persons (currently working on task):
   - Krishna
 
 Log entries (YYYY-MM-DD: HH:MM-HH:MM name, separated, by, commas | notes):
+ - 2017-05-6: 11:00-12:15 Ermal| Helped Krishna to figure out where the set fee was failing on Client logic

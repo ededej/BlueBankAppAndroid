@@ -20,4 +20,7 @@ Log entries (YYYY-MM-DD: HH:MM-HH:MM name, separated, by, commas | notes):
 
   - 2017-05-2: 09:25-10:15 Ermal & Heymond| Pair-programming Worked with Heymond to put the menu for adimin and log out
   - 2017-05-2: 04:30-7:00 Heymond | added more activities for the admin console and got it ready for other things
+  - 2017-05-3: 22:00-23:00 Ermal | Fixed and add the radio button with picture on deposit/transfer
   - 2017-05-4: 03:00-7:00 Heymond | got transaction working for admin
+  - 2017-05-4: 09:25-10:05 Ermal & Heymond| Pair-programming Worked with Heymond to do the transaction list view
+  - 2017-05-5: 23:25-01:35 Ermal | Fixed error checking confirm button and add dispute long press option for a transaction.

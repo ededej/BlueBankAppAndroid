@@ -394,4 +394,47 @@ public class ClientLogic {
             ((TransactionActivity) c).refreshPage();
         }
     }
+
+    static class FeeSetRequest extends AsyncTask<Object, Void, String> {
+        Context c;
+        Exception ex;
+        String SERVER;
+
+        protected String doInBackground(Object... req) {
+            // Server response string and socket vars.
+            String res = "";
+            Socket clientSocket;
+            PrintStream os;
+            BufferedReader is;
+            c = (Context) req[0];
+            SERVER = (String) req[2];
+
+            try { // Init socket variables.
+                clientSocket = new Socket(SERVER, PORT);
+                os = new PrintStream(clientSocket.getOutputStream());
+                is = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
+
+                // Send the request.
+                os.println((String) req[1]);
+
+                // Read the server's response.
+                res = is.readLine();
+
+            } catch (Exception e){
+                ex = e;
+            }
+
+            return res;
+        }
+
+        // Callback that happens in the UI thread once the async op/server call is done.
+        protected void onPostExecute(String res) {
+            // Check for network exceptions.
+            if (errorToast(c, ex, SERVER)) { return; }
+
+            Toast.makeText(c, "Fees updated" , Toast.LENGTH_SHORT).show();
+
+            ((Activity) c).finish();
+        }
+    }
 }

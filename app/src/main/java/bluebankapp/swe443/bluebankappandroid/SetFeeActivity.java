@@ -26,14 +26,6 @@ public class SetFeeActivity extends AppCompatActivity {
         tfText=(EditText) findViewById(R.id.TranPercent);
     }
 
-//    @Override
-//    protected void onResume(){
-//        super.onResume();
-//
-//        // This will be called every time the app reaches this screen to refresh the transaction list.
-//        PageRefresh(null);
-//    }
-
     public void doMakeChanges(View v){
         Double dfee=0.0;
         Double wfee=0.0;
@@ -61,15 +53,6 @@ public class SetFeeActivity extends AppCompatActivity {
             StringBuilder req = new StringBuilder();
 
             // Create the request string
-            // op code | username | password | amount
-            // 0  #1  #2       #3
-            // r#jlm#letmein0#50.00
-
-//        if(isAdmin == false){
-//            req.append("h" + ClientLogic.DELIM); // OP CODE
-//        } else {
-//            req.append("a" + ClientLogic.DELIM); // OP CODE
-//        }
             req.append("f" + ClientLogic.DELIM);
             req.append(u + ClientLogic.DELIM); // USERNAME
             req.append(p); // PASSWORD
@@ -82,11 +65,11 @@ public class SetFeeActivity extends AppCompatActivity {
             req.append(ClientLogic.DELIM);
 
 
-            // Send the request string and get the response.
-            new ClientLogic.TransactionRefreshRequest().execute(this, req.toString(), ip);
-        }else{
-            Toast.makeText(this, "You need to change one of the fees before confirm!!!", Toast.LENGTH_SHORT).show();
+            // Send the request string.  No response string needed for this request.
+            new ClientLogic.FeeSetRequest().execute(this, req.toString(), ip);
 
+        } else {
+            Toast.makeText(this, "You need to change one of the fees.", Toast.LENGTH_SHORT).show();
         }
     }
 }

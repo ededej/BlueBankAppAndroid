@@ -18,17 +18,19 @@ public class Server{
  private static final clientThread[] threads = new clientThread[serverCap];
  public static String U_FILENAME = "users.data";
  public static String T_FILENAME = "transaction.data";
+ public static String D_FILENAME = "disputed.data";
  
  // User table & synch lock.
- private static HashMap<String,Dude> users;
  private static Object lock = new Object();
+ private static HashMap<String,Dude> users;
  private static LinkedList<Transaction> trans;
+ private static LinkedList<Transaction> disputed;
  
  //Bank fees (these are % s).
  public static double wfee = 0.05;
  public static double dfee = 0.05;
  public static double tfee = 0.05;
-
+ 
  public static void main(String[] args) throws Exception{
   int portnum = 1337;
   if (args.length == 0){
@@ -40,8 +42,9 @@ public class Server{
   }
   
   // Load in users from file.
-  users = readTable();
-  trans = readLog();
+  users = readTable(U_FILENAME);
+  trans = readLog(T_FILENAME);
+  disputed = readLog(D_FILENAME);
   
   // Server logic.
   try{
@@ -63,7 +66,7 @@ public class Server{
     for (i = 0; i < threads.length; i++){
      // If so, make a new client thread an run it.
      if (threads[i] == null){
-      (threads[i] = new clientThread(clientSocket, users, trans, lock, threads)).start();
+      (threads[i] = new clientThread(clientSocket, users, trans, disputed, lock, threads)).start();
       break;
      }
     }
@@ -81,10 +84,10 @@ public class Server{
  }
  
 	// Server persistence function.
-	public static HashMap<String,Dude> readTable(){
+	public static HashMap<String,Dude> readTable(String filename){
 		HashMap<String,Dude> hash = new HashMap<String,Dude>();
 		try {
-			FileInputStream fis = new FileInputStream(U_FILENAME);
+			FileInputStream fis = new FileInputStream(filename);
 			BufferedReader br = new BufferedReader(new InputStreamReader(fis));
 			System.out.println("Loading user lines.");
 			String line;
@@ -99,10 +102,10 @@ public class Server{
 	}
 
 	// Transaction persistence function.
-	public static LinkedList<Transaction> readLog(){
+	public static LinkedList<Transaction> readLog(String filename){
 		LinkedList<Transaction> trans = new LinkedList<Transaction>();
 		try {
-			FileInputStream fis = new FileInputStream(T_FILENAME);
+			FileInputStream fis = new FileInputStream(filename);
 			BufferedReader br = new BufferedReader(new InputStreamReader(fis));
 			System.out.println("Loading transaction lines.");
 			String line;
@@ -116,10 +119,4 @@ public class Server{
 		}
 		return trans;
 	}
-
-	public static void setFees(double w, double d, double t){
-        wfee = w;
-        dfee = d;
-        tfee = t;
-    }
 }

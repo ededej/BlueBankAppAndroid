@@ -26,3 +26,7 @@ Assigned persons (currently working on task):
 Log entries (YYYY-MM-DD: HH:MM-HH:MM name, separated, by, commas | notes):
 
   - 2017-03-24 - 2017-04-06 Brandon | 7 hours is approximately 30 minutes a day for 14 days
+  - 2017-04-07 - 2017-04-20 Brandon | 7 hours is approximately 30 minutes a day for 14 days
+  - 2017-04-21 - 2017-05-04 Brandon | 7 hours is approximately 30 minutes a day for 14 days
+  - 2017-05-05 - 2017-05-12 Brandon | 3.5 hours is approximately 30 minutes a day for 7 days
+  

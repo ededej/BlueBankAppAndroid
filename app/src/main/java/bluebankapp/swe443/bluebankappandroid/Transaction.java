@@ -23,11 +23,7 @@ public class Transaction
     }
 
     public Transaction(String s){
-        System.out.println("STRING: "+s);
         String[] fields = s.split(DELIM);
-        for (String field : fields){
-            System.out.println("FIELD: "+field);
-        }
         type = fields[0];
         acc1 = fields[1];
         acc2 = fields[2];
@@ -43,5 +39,14 @@ public class Transaction
         s.append(fee.toString() + DELIM);
         s.append(amount.toString());
         return s.toString();
+    }
+
+    public boolean equals(Object o){
+        Transaction t = (Transaction) o;
+        if (!this.type.equals(t.type)){ return false; }
+        if (!this.acc1.equals(t.acc1)){ return false; }
+        if (!this.acc2.equals(t.acc2)){ return false; }
+        if (this.amount.equals(t.amount)){ return false; }
+        return true;
     }
 }

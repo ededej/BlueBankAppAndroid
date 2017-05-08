@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#d5d7e2"
-    tools:context="bluebankapp.swe443.bluebankappandroid.TransactionActivity">
+    tools:context="bluebankapp.swe443.bluebankappandroid.DisputeActivity">
 
     <RelativeLayout
         android:id="@+id/relativeLayout"

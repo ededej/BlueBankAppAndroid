@@ -16,7 +16,7 @@
         android:layout_height="62dp"
         android:background="@android:color/holo_blue_light"
         android:lineSpacingExtra="8sp"
-        android:text="Dispute Transaction"
+        android:text="Disputed Transactions"
         android:textSize="24sp"
         android:textAlignment="center"
         android:typeface="sans"

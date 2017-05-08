@@ -40,6 +40,50 @@ public class ClientLogic {
         return false;
     }
 
+    // GENERALIZED SERVER REQUEST
+    static class GenericRequest extends AsyncTask<Object, Void, String> {
+        Context c;
+        Exception ex;
+        String SERVER;
+
+        protected String doInBackground(Object... req) {
+            // Server response string and socket vars.
+            String res = "";
+            Socket clientSocket;
+            PrintStream os;
+            BufferedReader is;
+            c = (Context) req[0];
+            SERVER = (String) req[2];
+
+            try { // Init socket variables.
+                clientSocket = new Socket(SERVER, PORT);
+                os = new PrintStream(clientSocket.getOutputStream());
+                is = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
+
+                // Send the request.
+                os.println((String) req[1]);
+
+                // Read the server's response.
+                res = is.readLine();
+
+            } catch (Exception e){
+                ex = e;
+            }
+
+            return res;
+        }
+
+        // Callback that happens in the UI thread once the async op/server call is done.
+        protected void onPostExecute(String res) {
+            // Check for network exceptions.
+            if (errorToast(c, ex, SERVER)) { return; }
+
+            Toast.makeText(c, "Request Completed Successfully." , Toast.LENGTH_SHORT).show();
+
+            ((Activity) c).finish();
+        }
+    }
+
     static class CreateAccountRequest extends AsyncTask<Object, Void, String> {
 
         Context c;
@@ -395,7 +439,48 @@ public class ClientLogic {
         }
     }
 
-    static class FeeSetRequest extends AsyncTask<Object, Void, String> {
+    static class DisputeRequest extends AsyncTask<Object, Void, String> {
+        Context c;
+        Exception ex;
+        String SERVER;
+
+        protected String doInBackground(Object... req) {
+            // Server response string and socket vars.
+            String res = "";
+            Socket clientSocket;
+            PrintStream os;
+            BufferedReader is;
+            c = (Context) req[0];
+            SERVER = (String) req[2];
+
+            try { // Init socket variables.
+                clientSocket = new Socket(SERVER, PORT);
+                os = new PrintStream(clientSocket.getOutputStream());
+                is = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
+
+                // Send the request.
+                os.println((String) req[1]);
+
+                // Read the server's response.
+                res = is.readLine();
+
+            } catch (Exception e){
+                ex = e;
+            }
+
+            return res;
+        }
+
+        // Callback that happens in the UI thread once the async op/server call is done.
+        protected void onPostExecute(String res) {
+            // Check for network exceptions.
+            if (errorToast(c, ex, SERVER)) { return; }
+            Toast.makeText(c, "Dispute action successful." , Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    static class DisputeRefreshRequest extends AsyncTask<Object, Void, String> {
+
         Context c;
         Exception ex;
         String SERVER;
@@ -432,9 +517,23 @@ public class ClientLogic {
             // Check for network exceptions.
             if (errorToast(c, ex, SERVER)) { return; }
 
-            Toast.makeText(c, "Fees updated" , Toast.LENGTH_SHORT).show();
+            // Parse the state.
+            String[] fields = res.split("#");
 
-            ((Activity) c).finish();
+            // Check for errors and Toast accordingly.  Return.
+            if (fields[0].equals("Error")) {
+                Toast.makeText(c, "Error: "+fields[1], Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            // Otherwise, unpack the transactions and save to SharedPreferences.
+            SharedPreferences.Editor editor = c.getSharedPreferences("bluebank", Context.MODE_PRIVATE).edit();
+            editor.putFloat("balance", (float) Double.parseDouble(fields[0]));
+            editor.putString("transactions", res.substring(fields[0].length()+1));
+            editor.apply();
+
+            // Trigger refresh
+            ((DisputeActivity) c).refreshPage();
         }
     }
 }

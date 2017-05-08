@@ -45,11 +45,10 @@ public class TransactionAdapter extends ArrayAdapter<Transaction> {
         }
 
         // Populate the fields of the holder/row.
-        // THIS IS WHERE YOU NEED TO ADD LOGIC TO GO FROM A TRANSACTION OBJECT TO THESE FOUR FIELDS!
         Transaction t = data[position];
         holder.date.setText(t.type);
         holder.otherparty.setText(t.acc1 + " --> ");
-        System.out.println("AMOUNT: "+Double.toString(t.amount));
+        //System.out.println("AMOUNT: "+Double.toString(t.amount));
         holder.amount.setText(String.format("$%.2f", t.amount));
         holder.balance.setText((t.acc2.equals("") ? t.acc1 : t.acc2));
         return row;

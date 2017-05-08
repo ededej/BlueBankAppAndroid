@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class TransactionActivity extends AppCompatActivity {
+public class DisputeActivity extends AppCompatActivity {
     boolean isAdmin;
     TextView balance;
     TextView header;
@@ -23,7 +23,7 @@ public class TransactionActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_transaction);
+        setContentView(R.layout.activity_dispute);
         isAdmin = getIntent().getBooleanExtra("isAdmin", false);
         balance = (TextView) findViewById(R.id.balanceString);
         header = (TextView) findViewById(R.id.listHeader);
@@ -35,7 +35,7 @@ public class TransactionActivity extends AppCompatActivity {
 
         if(isAdmin){
             balance.setVisibility(View.GONE);
-            header.setText("All Transactions (incl. disputed)");
+            header.setText("Disputed Transactions");
         }
 
         // This listens for dispute long press and does the dispute.
@@ -43,21 +43,26 @@ public class TransactionActivity extends AppCompatActivity {
             @Override
             public boolean onItemLongClick(AdapterView<?> arg0, View arg1,
                                            int pos, long id) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(TransactionActivity.this);
-                builder.setMessage("Do you want to dispute this transaction, amount")
-                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                AlertDialog.Builder builder = new AlertDialog.Builder(DisputeActivity.this);
+                builder.setMessage("Action:")
+                        .setPositiveButton("Confirm", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
-                                // Send a dispute request.
-                                // x|uname|pass|type|acc1|acc2|fee|amount
-                                Transaction t = recentTransactions.get(pos);
-                                String req = "x#" + u +"#"+ p +"#"+ t.type +"#"+ t.acc1 +"#"+ t.acc2
-                                        +"#"+ Double.toString(t.fee) +"#"+ Double.toString(t.amount);
+                                // Confirm: j|uname|pass|type|acc1|acc2|fee|amount|confirm
+                                        Transaction t = recentTransactions.get(pos);
+                                String req = "j#" + u +"#"+ p +"#"+ t.type +"#"+ t.acc1 +"#"+ t.acc2
+                                        +"#"+ Double.toString(t.fee) +"#"+ Double.toString(t.amount)
+                                        +"#confirm";
                                 new ClientLogic.DisputeRequest().execute(c, req, ip);
                             }
                         })
-                        .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                        .setNegativeButton("Reject", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
-                                dialog.cancel();
+                                // Reject: j|uname|pass|type|acc1|acc2|fee|amount|reject
+                                Transaction t = recentTransactions.get(pos);
+                                String req = "j#" + u +"#"+ p +"#"+ t.type +"#"+ t.acc1 +"#"+ t.acc2
+                                        +"#"+ Double.toString(t.fee) +"#"+ Double.toString(t.amount)
+                                        +"#reject";
+                                new ClientLogic.DisputeRequest().execute(c, req, ip);
                             }
                         });
                 // Create the AlertDialog object and return it
@@ -71,7 +76,6 @@ public class TransactionActivity extends AppCompatActivity {
     @Override
     protected void onResume(){
         super.onResume();
-
         // This will be called every time the app reaches this screen to refresh the transaction list.
         PageRefresh(null);
     }
@@ -114,19 +118,15 @@ public class TransactionActivity extends AppCompatActivity {
         StringBuilder req = new StringBuilder();
 
         // Create the request string
-        // op code | username | password | amount
-        // 0  #1  #2       #3
-        // r#jlm#letmein0#50.00
+        // op code | username | password
+        // 0       #1         #2
+        // o#jlm#letmein0
 
-        if(!isAdmin){
-            req.append("h" + ClientLogic.DELIM); // OP CODE
-        } else {
-            req.append("a" + ClientLogic.DELIM); // OP CODE
-        }
+        req.append("o" + ClientLogic.DELIM); // OP CODE
         req.append(u + ClientLogic.DELIM); // USERNAME
         req.append(p); // PASSWORD
 
         // Send the request string and get the response.
-        new ClientLogic.TransactionRefreshRequest().execute(this, req.toString(), ip);
+        new ClientLogic.DisputeRefreshRequest().execute(this, req.toString(), ip);
     }
 }

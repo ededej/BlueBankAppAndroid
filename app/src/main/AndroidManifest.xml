@@ -32,6 +32,7 @@
         <activity android:name=".TransferActivity" />
         <activity android:name=".ManageAccountActivity" />
         <activity android:name=".TransactionActivity" />
+        <activity android:name=".DisputeActivity" />
         <activity android:name=".AdminConsoleActivity" />
         <activity android:name=".SetFeeActivity" />
     </application>

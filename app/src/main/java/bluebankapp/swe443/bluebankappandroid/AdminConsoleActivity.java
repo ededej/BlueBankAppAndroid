@@ -32,7 +32,7 @@ public class AdminConsoleActivity extends AppCompatActivity {
     }
 
     public void disputeClick(View view){
-        Intent transIntent = new Intent(AdminConsoleActivity.this, TransactionActivity.class);
+        Intent transIntent = new Intent(AdminConsoleActivity.this, DisputeActivity.class);
         transIntent.putExtra("isAdmin", isAdmin);
         startActivity(transIntent);
     }

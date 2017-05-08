@@ -74,7 +74,7 @@
         android:layout_height="63dp"
         android:background="@android:color/holo_blue_light"
         android:lineSpacingExtra="8sp"
-        android:text="QR"
+        android:text="Request Payment"
         android:textSize="24sp"
         android:typeface="sans"
         android:onClick="qrClick"

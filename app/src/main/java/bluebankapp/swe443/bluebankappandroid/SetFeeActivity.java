@@ -66,7 +66,7 @@ public class SetFeeActivity extends AppCompatActivity {
 
 
             // Send the request string.  No response string needed for this request.
-            new ClientLogic.FeeSetRequest().execute(this, req.toString(), ip);
+            new ClientLogic.GenericRequest().execute(this, req.toString(), ip);
 
         } else {
             Toast.makeText(this, "You need to change one of the fees.", Toast.LENGTH_SHORT).show();

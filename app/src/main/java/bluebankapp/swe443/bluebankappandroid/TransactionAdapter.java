@@ -2,6 +2,7 @@ package bluebankapp.swe443.bluebankappandroid;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -46,7 +47,14 @@ public class TransactionAdapter extends ArrayAdapter<Transaction> {
 
         // Populate the fields of the holder/row.
         Transaction t = data[position];
+
         holder.date.setText(t.type);
+        //if type is withdraw, red.  if deposit, green.  if transfer, blue.  if undo, grey.
+        if (t.type.equals("Withdraw")){ holder.date.setTextColor(Color.RED); }
+        else if (t.type.equals("Deposit")){ holder.date.setTextColor(Color.GREEN); }
+        else if (t.type.equals("Transfer")){ holder.date.setTextColor(Color.BLACK); }
+        else { holder.date.setTextColor(Color.GRAY); }
+
         holder.otherparty.setText(t.acc1 + " --> ");
         //System.out.println("AMOUNT: "+Double.toString(t.amount));
         holder.amount.setText(String.format("$%.2f", t.amount));

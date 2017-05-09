@@ -297,7 +297,7 @@ public class clientThread extends Thread {
 					errMsg = "Transaction type unknown. Cannot undo.";
 					return;
 				}
-				Transaction tr = new Transaction("Undo "+t.type, t.acc1, t.acc2, t.fee, t.amount);
+				Transaction tr = new Transaction("Dispute "+t.type, t.acc1, t.acc2, t.fee, t.amount);
 				trans.add(tr);
 			}
 			res = users.get(args[1]);

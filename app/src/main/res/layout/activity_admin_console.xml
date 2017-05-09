@@ -1,72 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="bluebankapp.swe443.bluebankappandroid.AdminConsoleActivity"
-    tools:layout_editor_absoluteY="81dp"
-    tools:layout_editor_absoluteX="0dp">
-
-
-    <Button
-        android:id="@+id/DisputeTrans"
-        style="@style/Widget.AppCompat.Button.Colored"
-        android:layout_width="0dp"
-        android:layout_height="62dp"
-        android:background="@android:color/holo_blue_light"
-        android:text="Disputed Transactions"
-        android:textSize="24sp"
-        android:textAlignment="center"
-        android:typeface="sans"
-        tools:layout_constraintRight_creator="1"
-        tools:layout_constraintBottom_creator="1"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        tools:layout_constraintLeft_creator="1"
-        android:layout_marginBottom="186dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:onClick="disputeClick"/>
-
-    <Button
-        android:id="@+id/Transaction"
-        style="@style/Widget.AppCompat.Button.Colored"
-        android:layout_width="0dp"
-        android:layout_height="61dp"
-        android:background="@android:color/holo_blue_light"
-        android:text="Transaction"
-        android:textAlignment="center"
-        android:textSize="24sp"
-        android:typeface="sans"
-        tools:layout_constraintTop_creator="1"
-        tools:layout_constraintRight_creator="1"
-        tools:layout_constraintBottom_creator="1"
-        app:layout_constraintBottom_toTopOf="@+id/DisputeTrans"
-        android:layout_marginEnd="4dp"
-        app:layout_constraintRight_toRightOf="@+id/setFee"
-        android:layout_marginTop="37dp"
-        app:layout_constraintTop_toBottomOf="@+id/setFee"
-        tools:layout_constraintLeft_creator="1"
-        android:layout_marginBottom="38dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginRight="4dp"
-        android:onClick="transClick"/>
+    android:paddingTop="25dp"
+    android:paddingBottom="25dp"
+    tools:context="bluebankapp.swe443.bluebankappandroid.AdminConsoleActivity" >
 
     <Button
         android:id="@+id/setFee"
         style="@style/Widget.AppCompat.Button.Colored"
-        android:layout_width="402dp"
-        android:layout_height="58dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
         android:background="@android:color/holo_blue_light"
         android:text="Set Fees"
         android:textAlignment="center"
         android:textSize="24sp"
         android:typeface="sans"
-        android:onClick="feeClick"
-        tools:layout_constraintTop_creator="1"
-        android:layout_marginTop="69dp"
-        tools:layout_constraintLeft_creator="1"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:onClick="feeClick"/>
 
-</android.support.constraint.ConstraintLayout>
+    <Button
+        android:id="@+id/Transaction"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/setFee"
+        android:layout_marginTop="30dp"
+        android:background="@android:color/holo_blue_light"
+        android:text="Transaction"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        android:typeface="sans"
+        android:onClick="transClick"/>
+
+    <Button
+        android:id="@+id/DisputeTrans"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/Transaction"
+        android:layout_marginTop="30dp"
+        android:background="@android:color/holo_blue_light"
+        android:text="Disputed Transactions"
+        android:textSize="24sp"
+        android:textAlignment="center"
+        android:typeface="sans"
+        android:onClick="disputeClick"/>
+
+</RelativeLayout>

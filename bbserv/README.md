@@ -53,7 +53,7 @@ There are two ways of doing this.  For both ways, basic connection information s
 	
 2. Run "java Client" from another cmd line on the same computer as the Server (LEAVE THE SERVER RUNNING!)
 	1. This connects on the localhost, and you need to manually form your request strings using the protocol described in notes.txt
-	2. # is the divider character between fields
+	2. "#" is the divider character between fields
 	3. ex: to send a login request for user "jess" with password "pass", you would run "java Client" and then type "l#jess#pass"
 	4. Run the command "ppp" from Client to dump the user table to the server console. This is extremely helpful for debugging transfers and account creation.
 	
@@ -90,11 +90,11 @@ This is a distributed architecture, so changes must be made to
 
 Server side only is for changes that only affect the user data storage. An example of this would be storing passwords as a cryptgraphic hash.  This would be done by going into the "Check for CREATE ACCOUNT REQUEST" section of clientThread and changing the line 
 
-res.password = args[2]; 
+	res.password = args[2]; 
 	
 to 
 
-res.password = some_hash_function(args[2]);
+	res.password = some_hash_function(args[2]);
 	
 There is no change done to the Android app, and users will not even be able to detect this change.  
 

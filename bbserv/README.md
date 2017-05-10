@@ -26,7 +26,9 @@ This server is a java SocketServer that provides a multi-threaded interface that
 1. Extract the bbserv directory somewhere and navigate to the location with a cmd line.
 2. Run "javac *.java"
 3. Find your server IP address with the "ipconfig" cmd  (ifconfig for mac?)
-4. Run "java Server"  
+4. Run "java Server"
+
+If running on Windows, you can also run the batch file: ServerSetup.bat. This batch file runs the two commands found above and also prints out the IP address that your Server will be hosted on.
 
 **NOTE: There is a small chance that the server will freeze if left for 10-20 minutes unattended.  Either spam enter a few times to see if it becomes responsive, or just restart the process.  You will know this is happening if the app starts to silently fail and not respond to commands. All successful transactions will be saved in users.data, so a restart will not cause loss of user data.**
 
@@ -50,16 +52,16 @@ There are two ways of doing this.  For both ways, basic connection information s
 	4. When transferring, withdrawing, or depositing, the balance will update as soon as you return to the main screen.
 	
 2. Run "java Client" from another cmd line on the same computer as the Server (LEAVE THE SERVER RUNNING!)
-	..* This connects on the localhost, and you need to manually form your request strings using the protocol described in notes.txt
-	..* # is the divider character between fields
-	..* ex: to send a login request for user "jess" with password "pass", you would run "java Client" and then type "l#jess#pass"
-	..* Run the command "ppp" from Client to dump the user table to the server console. This is extremely helpful for debugging transfers and account creation.
+	1. This connects on the localhost, and you need to manually form your request strings using the protocol described in notes.txt
+	2. # is the divider character between fields
+	3. ex: to send a login request for user "jess" with password "pass", you would run "java Client" and then type "l#jess#pass"
+	4. Run the command "ppp" from Client to dump the user table to the server console. This is extremely helpful for debugging transfers and account creation.
 	
 	
 	
 ## How the Protocol Works:
 
-This architecture runs off a text-based #-delimited message system.  Individual fields of data are concatenated with #'s to be later String.split("#") by the receiver.  
+This architecture runs off a text-based #-delimited message system. Individual fields of data are concatenated with #'s to be later String.split("#") by the receiver.  
 
 All client-server interactions follow this pattern: 
 * Client makes a request string
@@ -75,7 +77,7 @@ More details on the full protocol as well as string examples of the protocol (ex
 
 ## How the Android Client Works:
 
-This client looks familiar but has a number of features added. The foremost is that the app has been turned into a thin client for an authoritative server. This means the app no longer runs the banking logic locally, but just sends a request with the users desired action to the server. The authoritative server then decides whether the request is valid, and if it is, it performs the action and sends the user their new state.  The app then updates the locally remembered state and shows the users the results of the process. To accomplish this, the android app uses a mixture of AsyncTasks to perform server requests and SharedPreferences to locally cache things like username, password, server IP, and balance.  There are links on those two particular concepts at the bottom for some quick reading.
+The app is a thin client for an authoritative server. This means the app doesn't run the banking logic locally, but just sends a request with the users desired action to the server. The authoritative server then decides whether the request is valid, and if it is, it performs the action and sends the user their new state.  The app then updates the locally remembered state and shows the users the results of the process. To accomplish this, the android app uses a mixture of AsyncTasks to perform server requests and SharedPreferences to locally cache things like username, password, server IP, and balance. There are links on those two particular concepts at the bottom for some quick reading.
 	
 
 	
@@ -88,11 +90,11 @@ This is a distributed architecture, so changes must be made to
 
 Server side only is for changes that only affect the user data storage. An example of this would be storing passwords as a cryptgraphic hash.  This would be done by going into the "Check for CREATE ACCOUNT REQUEST" section of clientThread and changing the line 
 
-	res.password = args[2]; 
+res.password = args[2]; 
 	
 to 
 
-	res.password = some_hash_function(args[2]);
+res.password = some_hash_function(args[2]);
 	
 There is no change done to the Android app, and users will not even be able to detect this change.  
 

@@ -19,10 +19,11 @@ Not all stakeholders speak the same language as our developers. Diagrams and moc
 
 ## Scenarios
 
-We will define a scenario of executing a certain functionality of a system as a series of steps describing a concrete example of the behavior of the ready developed system in practice and interaction with potential users. We will use the term story synonymously with scenario.
+> We will define a scenario of executing a certain functionality of a system as a series of steps describing a concrete example of the behavior of the ready developed system in practice and interaction with potential users. We will use the term story synonymously with scenario.
 
 Norbisrath, Ulrich; Zündorf, Albert; Jubeh, Ruben. Story Driven Modeling (Kindle Locations 325-326).  . Kindle Edition.
 
+---
 
 A sample scenario can be found below (TRANSFER_MONEY Scenario 1):
 

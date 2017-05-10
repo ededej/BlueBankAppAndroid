@@ -1,4 +1,4 @@
-# AGILE README:
+# Blue Agile
 
 ## Index
 
@@ -38,7 +38,7 @@ Our team uses kanban directories in order to visualize work and optimize flow of
 
 Tasks start in the to_do directory and spend most of their lives in the in_progress folder. Once completed, they spend some time in the review/testing directory until the team decides that it is unlikely that there will be any further changes made by the customers before it is moved to the done directory.
 
-Each task follows a similar template found here: LINK HERE
+Each task follows a similar template found here: https://github.com/ededej/BlueBankAppAndroid/blob/master/agile/kanban/to_do/Template.txt
 
 ## Retrospective
 

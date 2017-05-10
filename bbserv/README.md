@@ -1,4 +1,4 @@
-# BB SERV UPDATE README:
+# BB SERV README:
 
 ## INDEX:
 * Server files

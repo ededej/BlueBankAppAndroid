@@ -19,7 +19,7 @@ Insert APK link here
 3. Server is set up, people can now interact with your Server.
 4. Take note of the IP address that gets printed from the command line, you will be using this to login/create an account
 
-### Option 2(works for all)
+### Option 2
 
 1. Open your command line
 2. From your command line, switch to the bbserv directory from the repository you cloned
@@ -39,22 +39,22 @@ Insert APK link here
 
 ## Team
 
-Jess Miers (Product Owner)
+**Jess Miers** (Product Owner)
 
-Brandon Bui (Scrum Master)
+**Brandon Bui** (Scrum Master)
 
-Ashmita Kumar (Software Architect)
+**Ashmita Kumar** (Software Architect)
 
-Salonika Bose (Team Lead - Security)
+**Salonika Bose** (Team Lead - Security)
 
-Ermal Dedej (Team Lead - Android)
+**Ermal Dedej** (Team Lead - Android)
 
-Heymond Truong (Developer)
+**Heymond Truong** (Developer)
 
-Marcus Yarbrough (Developer)
+**Marcus Yarbrough** (Developer)
 
-Krishna Kanakapura (Developer)
+**Krishna Kanakapura** (Developer)
 
-Sara Borghei (Developer)
+**Sara Borghei** (Developer)
 
-Sushena Jammi (Developer)
+**Sushena Jammi** (Developer)

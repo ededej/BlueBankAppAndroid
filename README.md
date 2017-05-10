@@ -35,7 +35,7 @@ Insert APK link here
 
 ![Command Line Image](https://github.com/ededej/BlueBankAppAndroid/blob/master/images/instructionsimg1.png) ![Phone App Image](github link of phone app login screen here)
 
-3. It should be working! You can now create accounts and login. User/transaction data is stored onto the device that is running the server.
+3. It should be working! You can now create accounts and login. User/transaction data is stored onto the device that is running the server. **Note: You need to be in the same network in order to connect to the IP address**
 
 ## Team
 

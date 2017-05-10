@@ -38,12 +38,12 @@ There are two ways of doing this.  For both ways, basic connection information s
 1. Use the android app (of course).  The android must be on the same network (Local wifi is best.  Mobile doesn't work, and mason wifi is sketchy.  It probably won't work at mason, so we will be using a home router to connect for the demo)
 	..* Put in the IP address noted earlier, create an account, and log in.
 	..* This app has the features:
-		....* Account Creation
-		....* Login
-		....* Withdraw and Deposit to/from own account
-		....* Transfer money to another user
+		..* Account Creation
+		..* Login
+		..* Withdraw and Deposit to/from own account
+		..* Transfer money to another user
 	..* If the server is not running, none of the above features will work.
-		....* If this is the case, or for just seeing the internal screens, use the dummy credentials "dummy" and "Password1". These will bypass the network login and allow access to the Bank Main screen.
+		..* If this is the case, or for just seeing the internal screens, use the dummy credentials "dummy" and "Password1". These will bypass the network login and allow access to the Bank Main screen.
 	..* When transferring, withdrawing, or depositing, the balance will update as soon as you return to the main screen.
 	
 2. Run "java Client" from another cmd line on the same computer as the Server (LEAVE THE SERVER RUNNING!)
@@ -103,6 +103,8 @@ Client and Server changes, or end-to-end changes are things that must be changed
 
 (This is an incomplete list, but all concepts here are easily available online.  The code is commented as thoroughly as possible too)
 
+Server:
+
 * SocketServer - https://docs.oracle.com/javase/7/docs/api/java/net/ServerSocket.html
 
 * Socket - https://docs.oracle.com/javase/7/docs/api/java/net/Socket.html
@@ -110,7 +112,7 @@ Client and Server changes, or end-to-end changes are things that must be changed
 * synchronized(lock) - https://docs.oracle.com/javase/tutorial/essential/concurrency/syncmeth.html
 
 
-* Android:
+Android:
 
 * SharedPreferences - https://developer.android.com/reference/android/content/SharedPreferences.html
 

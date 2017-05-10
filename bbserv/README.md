@@ -28,23 +28,26 @@ This server is a java SocketServer that provides a multi-threaded interface that
 3. Find your server IP address with the "ipconfig" cmd  (ifconfig for mac?)
 4. Run "java Server"  
 
-**NOTE: There is a small chance that the server will freeze if left for 10-20 minutes unattended.  Either spam enter a few times to see if it becomes responsive, or just restart the process.  You will know this is happening if the app starts to silently fail and not respond to commands.  All successful transactions will be saved in users.data, so a restart will not cause loss of user data.**
+**NOTE: There is a small chance that the server will freeze if left for 10-20 minutes unattended.  Either spam enter a few times to see if it becomes responsive, or just restart the process.  You will know this is happening if the app starts to silently fail and not respond to commands. All successful transactions will be saved in users.data, so a restart will not cause loss of user data.**
 
 
 
 ## Client connections:
 
 There are two ways of doing this.  For both ways, basic connection information should appear on the server when you connect and when the connection is finished.  Clients connect in using Java Sockets. Links are available at the bottom of this doc for quick reading on these concepts.
-1. Use the android app (of course).  The android must be on the same network (Local wifi is best.  Mobile doesn't work, and mason wifi is sketchy.  It probably won't work at mason, so we will be using a home router to connect for the demo)
-	..* Put in the IP address noted earlier, create an account, and log in.
-	..* This app has the features:
-		..* Account Creation
-		..* Login
-		..* Withdraw and Deposit to/from own account
-		..* Transfer money to another user
-	..* If the server is not running, none of the above features will work.
-		..* If this is the case, or for just seeing the internal screens, use the dummy credentials "dummy" and "Password1". These will bypass the network login and allow access to the Bank Main screen.
-	..* When transferring, withdrawing, or depositing, the balance will update as soon as you return to the main screen.
+1. Use the android app (of course). The android must be on the same network (Local wifi is best. Mobile doesn't work, and mason wifi is sketchy.  It probably won't work at Mason, so we will be using a home router to connect for the demo)
+	1. Put in the IP address noted earlier, create an account, and log in.
+	2. This app has the features:
+		1. Account Creation
+		2. Login
+		3. Withdraw and Deposit to/from own account
+		4. Transfer money to another user (with and without QR)
+		5. Transaction log
+		6. Admin console
+		
+	3. If the server is not running, none of the above features will work.
+		1. If this is the case, or for just seeing the internal screens, use the dummy credentials "dummy" and "Password1". These will bypass the network login and allow access to the Bank Main screen.
+	4. When transferring, withdrawing, or depositing, the balance will update as soon as you return to the main screen.
 	
 2. Run "java Client" from another cmd line on the same computer as the Server (LEAVE THE SERVER RUNNING!)
 	..* This connects on the localhost, and you need to manually form your request strings using the protocol described in notes.txt

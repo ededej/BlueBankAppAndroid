@@ -1,6 +1,6 @@
-# BB SERV README:
+# Blue Bank Server README
 
-## INDEX:
+## Index:
 * Server files
 * Compiling and running the server
 * Client connections

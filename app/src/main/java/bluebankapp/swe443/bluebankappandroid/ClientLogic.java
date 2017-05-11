@@ -22,7 +22,8 @@ public class ClientLogic {
     static int PORT = 1337;
     static String DELIM = "#";
     static int LOCKOUT_THRESHOLD = 3;
-    static long LOCKOUT_DURATION = 10000; //360000;  // 60min * 60s/min * 1000 ms/s = 360,000 ms lockout
+    static long LOCKOUT_DURATION = 10000; //360000;  // 60min * 60s/min * 1000 ms/s = 3,600,000 ms lockout
+    static long LOCKOUT_TIMER = 300000;
 
     // End to end encryption function
     static String encrypt(String plaintext){

@@ -155,7 +155,8 @@ public class MainActivity extends AppCompatActivity {
                             "The lockout duration is: " + ClientLogic.LOCKOUT_DURATION/1000 + " seconds.",
                     Toast.LENGTH_LONG).show();
             return;
-        } else if (delta >= ClientLogic.LOCKOUT_DURATION) {
+        } else if (((numInvalid >= ClientLogic.LOCKOUT_THRESHOLD) && (delta >= ClientLogic.LOCKOUT_DURATION))
+            || ((numInvalid < ClientLogic.LOCKOUT_THRESHOLD) && (delta >= ClientLogic.LOCKOUT_TIMER))){
             // If we've gone past the duration, reset the counter.  Then send the request.
             numInvalid = 0;
             editor = getSharedPreferences("bluebank", Context.MODE_PRIVATE).edit();

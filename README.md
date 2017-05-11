@@ -33,7 +33,7 @@ https://github.com/ededej/BlueBankAppAndroid/raw/master/BlueBank.apk
 1. Run the Blue Bank application on any Android device
 2. Enter the IP address from the command line onto the designated area on the login screen.
 
-![Command Line Image](https://github.com/ededej/BlueBankAppAndroid/blob/master/images/instructionsimg1.png) ![Phone App Image](github link of phone app login screen here)
+![IP Address Location](https://github.com/ededej/BlueBankAppAndroid/blob/master/images/instructionsimg.png?raw=true)
 
 3. It should be working! You can now create accounts and login. User/transaction data is stored onto the device that is running the server. **Note: You need to be in the same network in order to connect to the IP address**
 

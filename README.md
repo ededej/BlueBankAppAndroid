@@ -1,7 +1,7 @@
 # Blue Bank Android Application
 
 ## Download the apk
-Insert APK link here
+https://github.com/ededej/BlueBankAppAndroid/raw/master/BlueBank.apk
 
 ## Prerequisite
 

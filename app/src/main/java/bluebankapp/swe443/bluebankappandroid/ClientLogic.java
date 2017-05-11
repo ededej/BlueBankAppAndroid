@@ -15,15 +15,71 @@ import java.net.Socket;
 import java.net.UnknownHostException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
 import static android.content.Context.MODE_PRIVATE;
 
 public class ClientLogic {
 
     static int PORT = 1337;
     static String DELIM = "#";
-    static int LOCKOUT_THRESHOLD = 5;
-    static long LOCKOUT_DURATION = 30000; //360000;  // 60min * 60s/min * 1000 ms/s = 360,000 ms lockout
+    static int LOCKOUT_THRESHOLD = 3;
+    static long LOCKOUT_DURATION = 10000; //360000;  // 60min * 60s/min * 1000 ms/s = 360,000 ms lockout
+
+    // End to end encryption function
+    static String encrypt(String plaintext){
+        byte key = 'x';
+        String ciphertext = "";
+        try {
+            byte[] cipherbyte = plaintext.getBytes("UTF-8");
+            for (int i = 0; i < cipherbyte.length; i++){
+                cipherbyte[i] = (byte)(((int)cipherbyte[i]) ^ ((int)key));
+            }
+            ciphertext = new String(cipherbyte, "UTF-8");
+        } catch (Exception e){
+            System.out.println("ENC Error: "+e.toString());
+        }
+
+        StringBuilder ciph = new StringBuilder();
+        for (int i = 0; i < ciphertext.length(); i++){
+            if (ciphertext.charAt(i) == '&'){
+                ciph.append("&amp;");
+            } else if (ciphertext.charAt(i) == '\n'){
+                ciph.append("&new;");
+            } else {
+                ciph.append(ciphertext.charAt(i));
+            }
+        }
+        return plaintext;
+    }
+
+    // End to end encryption function
+    static String decrypt(String ciphertext){
+        byte key = 'x';
+        String plaintext = "";
+        StringBuilder escaped = new StringBuilder();
+        for (int i = 0; i < ciphertext.length(); i++){
+            if (ciphertext.charAt(i) == '&'){
+                if (ciphertext.charAt(i+1) == 'a'){
+                    escaped.append('&');
+                } else {
+                    escaped.append('\n');
+                }
+                i += 4;
+            } else {
+                escaped.append(ciphertext.charAt(i));
+            }
+        }
+        ciphertext = escaped.toString();
+        try {
+            byte[] plainbyte = ciphertext.getBytes("UTF-8");
+            for (int i = 0; i < plainbyte.length; i++){
+                plainbyte[i] = (byte)(((int)plainbyte[i]) ^ ((int)key));
+            }
+            plaintext = new String(plainbyte, "UTF-8");
+        } catch (Exception e){
+            System.out.println("DEC Error: "+e.toString());
+        }
+        return ciphertext;
+    }
 
     // Method to toast if network errors occur.
     static boolean errorToast(Context c, Exception e, String SERVER) {
@@ -61,7 +117,7 @@ public class ClientLogic {
                 is = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
 
                 // Send the request.
-                os.println((String) req[1]);
+                os.println(encrypt((String) req[1]));
 
                 // Read the server's response.
                 res = is.readLine();
@@ -105,7 +161,7 @@ public class ClientLogic {
                 is = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
 
                 // Send the request.
-                os.println((String) req[1]);
+                os.println(encrypt((String) req[1]));
 
                 // Read the server's response.
                 res = is.readLine();
@@ -123,7 +179,7 @@ public class ClientLogic {
             if (errorToast(c, ex, SERVER)) { return; }
 
             // Parse the state.
-            String[] fields = res.split("#");
+            String[] fields = decrypt(res).split("#");
 
             // Check for errors and Toast accordingly.  Return.
             if (fields[0].equals("Error")){
@@ -176,7 +232,7 @@ public class ClientLogic {
                 is = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
 
                 // Send the request.
-                os.println((String) req[1]);
+                os.println(encrypt((String) req[1]));
 
                 // Read the server's response.
                 res = is.readLine();
@@ -194,7 +250,7 @@ public class ClientLogic {
             if (errorToast(c, ex, SERVER)) { return; }
 
             // Parse the state.
-            String[] fields = res.split("#");
+            String[] fields = decrypt(res).split("#");
 
             // Check for errors and Toast accordingly.  Return.
             if (fields[0].equals("Error")){
@@ -270,7 +326,7 @@ public class ClientLogic {
                 is = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
 
                 // Send the request.
-                os.println((String) req[1]);
+                os.println(encrypt((String) req[1]));
 
                 // Read the server's response.
                 res = is.readLine();
@@ -288,7 +344,7 @@ public class ClientLogic {
             if (errorToast(c, ex, SERVER)) { return; }
 
             // Parse the state.
-            String[] fields = res.split("#");
+            String[] fields = decrypt(res).split("#");
 
             // Check for errors and Toast accordingly.  Return.
             if (fields[0].equals("Error")){
@@ -336,7 +392,7 @@ public class ClientLogic {
                 is = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
 
                 // Send the request.
-                os.println((String) req[1]);
+                os.println(encrypt((String) req[1]));
 
                 // Read the server's response.
                 res = is.readLine();
@@ -354,7 +410,7 @@ public class ClientLogic {
             if (errorToast(c, ex, SERVER)) { return; }
 
             // Parse the state.
-            String[] fields = res.split("#");
+            String[] fields = decrypt(res).split("#");
 
             // Check for errors and Toast accordingly.  Return.
             if (fields[0].equals("Error")){
@@ -402,7 +458,7 @@ public class ClientLogic {
                 is = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
 
                 // Send the request.
-                os.println((String) req[1]);
+                os.println(encrypt((String) req[1]));
 
                 // Read the server's response.
                 res = is.readLine();
@@ -420,7 +476,7 @@ public class ClientLogic {
             if (errorToast(c, ex, SERVER)) { return; }
 
             // Parse the state.
-            String[] fields = res.split("#");
+            String[] fields = decrypt(res).split("#");
 
             // Check for errors and Toast accordingly.  Return.
             if (fields[0].equals("Error")) {
@@ -459,7 +515,7 @@ public class ClientLogic {
                 is = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
 
                 // Send the request.
-                os.println((String) req[1]);
+                os.println(encrypt((String) req[1]));
 
                 // Read the server's response.
                 res = is.readLine();
@@ -500,7 +556,7 @@ public class ClientLogic {
                 is = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
 
                 // Send the request.
-                os.println((String) req[1]);
+                os.println(encrypt((String) req[1]));
 
                 // Read the server's response.
                 res = is.readLine();
@@ -518,7 +574,7 @@ public class ClientLogic {
             if (errorToast(c, ex, SERVER)) { return; }
 
             // Parse the state.
-            String[] fields = res.split("#");
+            String[] fields = decrypt(res).split("#");
 
             // Check for errors and Toast accordingly.  Return.
             if (fields[0].equals("Error")) {

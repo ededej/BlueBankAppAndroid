@@ -29,7 +29,7 @@
         android:layout_below="@+id/setFee"
         android:layout_marginTop="30dp"
         android:background="@android:color/holo_blue_light"
-        android:text="Transaction"
+        android:text="All Transactions"
         android:textAlignment="center"
         android:textSize="24sp"
         android:typeface="sans"

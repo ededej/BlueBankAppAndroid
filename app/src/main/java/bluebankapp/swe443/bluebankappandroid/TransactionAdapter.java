@@ -49,16 +49,17 @@ public class TransactionAdapter extends ArrayAdapter<Transaction> {
         Transaction t = data[position];
 
         holder.date.setText(t.type);
-        //if type is withdraw, red.  if deposit, green.  if transfer, blue.  if undo, grey.
-        if (t.type.equals("Withdraw")){ holder.date.setTextColor(Color.RED); }
-        else if (t.type.equals("Deposit")){ holder.date.setTextColor(Color.GREEN); }
-        else if (t.type.equals("Transfer")){ holder.date.setTextColor(Color.BLACK); }
-        else { holder.date.setTextColor(Color.GRAY); }
-
         holder.otherparty.setText(t.acc1 + " --> ");
         //System.out.println("AMOUNT: "+Double.toString(t.amount));
         holder.amount.setText(String.format("$%.2f", t.amount));
         holder.balance.setText((t.acc2.equals("") ? t.acc1 : t.acc2));
+
+        //if type is withdraw, red.  if deposit, green.  if transfer, blue.  if undo, grey.
+        if (t.type.equals("Withdraw")){ holder.amount.setTextColor(Color.RED); }
+        else if (t.type.equals("Deposit")){ holder.amount.setTextColor(Color.GREEN); }
+        else if (t.type.equals("Transfer")){ holder.amount.setTextColor(Color.BLACK); }
+        else { holder.amount.setTextColor(Color.GRAY); }
+
         return row;
     }
 

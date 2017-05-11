@@ -44,7 +44,7 @@ public class TransactionActivity extends AppCompatActivity {
             public boolean onItemLongClick(AdapterView<?> arg0, View arg1,
                                            int pos, long id) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(TransactionActivity.this);
-                builder.setMessage("Do you want to dispute this transaction, amount")
+                builder.setMessage("Do you want to dispute this transaction?")
                         .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
                                 // Send a dispute request.

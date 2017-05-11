@@ -34,7 +34,7 @@ public class clientThread extends Thread {
         this.lock = lock;
         this.room = room;
     }
-
+	
     // Thread process - Runs when we start a new thread.
     public void run() {
         try {
@@ -45,7 +45,9 @@ public class clientThread extends Thread {
 
             // Unpack request, get lock, and do stuff.
             synchronized (lock) {
-				doLogic(is.readLine().split(Dude.DELIM));
+				String ciphertext = is.readLine();
+				String plaintext = decrypt(ciphertext);
+				doLogic(plaintext.split(Dude.DELIM));
                 writeTable();
                 writeLog(trans, Server.T_FILENAME);
                 writeLog(disputed, Server.D_FILENAME);
@@ -56,9 +58,9 @@ public class clientThread extends Thread {
 
             // Return user state.
             if (isDude) {
-                os.println(error ? "Error" + Response.DELIM + errMsg : ((Dude) res).toString());
+                os.println(encrypt(error ? "Error" + Response.DELIM + errMsg : ((Dude) res).toString()));
             } else {
-                os.println(Double.toString(((Dude) res).balance) + transactions);
+                os.println(encrypt(Double.toString(((Dude) res).balance) + transactions));
             }
 
             // Close sockets and streams.
@@ -74,11 +76,9 @@ public class clientThread extends Thread {
     // Authenticate users based on a username and password.  Query into the main HashTable of users.
     public boolean authUser(String u, String p) {
         String hashp = hashPass(p);
-        //System.out.println(hashp);
         if (!users.containsKey(u) || !users.get(u).password.equals(hashp)) {
             error = true;
             errMsg = "Authentication failed. Invalid username or password";
-            //System.out.println(hashp);
             return false;
         }
         return true;
@@ -276,7 +276,7 @@ public class clientThread extends Thread {
 				return;
 			}
 			trans.add(t);
-			if (args[8].equals("reject")){
+			if (args[8].equals("confirm")){
 				if (t.type.equals("Withdraw")){
 					Dude d = users.get(t.acc1);
 					d.balance += (t.fee + t.amount);
@@ -372,7 +372,63 @@ public class clientThread extends Thread {
             System.out.println("Error with Hashing Password!!!");
             return resPass;
         }
+    }
+	
+	// End to end encryption function
+	static String encrypt(String plaintext){
+        byte key = 'x';
+        String ciphertext = "";
+        try {
+            byte[] cipherbyte = plaintext.getBytes("UTF-8");
+            for (int i = 0; i < cipherbyte.length; i++){
+                cipherbyte[i] = (byte)(((int)cipherbyte[i]) ^ ((int)key));
+            }
+            ciphertext = new String(cipherbyte, "UTF-8");
+        } catch (Exception e){
+            System.out.println("ENC Error: "+e.toString());
+        }
+		
+		StringBuilder ciph = new StringBuilder();
+        for (int i = 0; i < ciphertext.length(); i++){
+            if (ciphertext.charAt(i) == '&'){
+                ciph.append("&amp;");
+            } else if (ciphertext.charAt(i) == '\n'){
+                ciph.append("&new;");
+            } else {
+                ciph.append(ciphertext.charAt(i));
+            }
+        }
+        return plaintext;
+    }
 
+	// End to end encryption function
+    static String decrypt(String ciphertext){
+        byte key = 'x';
+        String plaintext = "";
+		StringBuilder escaped = new StringBuilder();
+        for (int i = 0; i < ciphertext.length(); i++){
+            if (ciphertext.charAt(i) == '&'){
+                if (ciphertext.charAt(i+1) == 'a'){
+                    escaped.append('&');
+                } else {
+                    escaped.append('\n');
+                }
+                i += 4;
+            } else {
+                escaped.append(ciphertext.charAt(i));
+            }
+        }
+        ciphertext = escaped.toString();
+        try {
+            byte[] plainbyte = ciphertext.getBytes("UTF-8");
+            for (int i = 0; i < plainbyte.length; i++){
+                plainbyte[i] = (byte)(((int)plainbyte[i]) ^ ((int)key));
+            }
+            plaintext = new String(plainbyte, "UTF-8");
+        } catch (Exception e){
+            System.out.println("DEC Error: "+e.toString());
+        }
+        return ciphertext;
     }
 }
 

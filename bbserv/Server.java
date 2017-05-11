@@ -27,9 +27,9 @@ public class Server{
  private static LinkedList<Transaction> disputed;
  
  //Bank fees (these are % s).
- public static double wfee = 0.05;
- public static double dfee = 0.05;
- public static double tfee = 0.05;
+ public static double wfee = 0.0;
+ public static double dfee = 0.0;
+ public static double tfee = 0.0;
  
  public static void main(String[] args) throws Exception{
   int portnum = 1337;

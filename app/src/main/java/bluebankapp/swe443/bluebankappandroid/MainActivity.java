@@ -79,6 +79,10 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    public void fingerToast(View v){
+        Toast.makeText(this, "Log in with biometric scanner if your device has one!", Toast.LENGTH_LONG).show();
+    }
+
     public void createAccountClick(View v){
         IPBox = (EditText) findViewById(R.id.ipAddrInput);
 

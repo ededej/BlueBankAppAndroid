@@ -1,8 +1,11 @@
 # Features
 
-![Login and Create Account][welcome] ![Functionality][functionality]
-![Dispute][dispute] ![Admin Console][admin]
-![Application Security][appSecure] ![Network Security][netSecure]
+![Login and Create Account][welcome] 
+![Functionality][functionality]
+![Dispute][dispute] 
+![Admin Console][admin]
+![Application Security][appSecure] 
+![Network Security][netSecure]
 
 [welcome]: https://github.com/ededej/BlueBankAppAndroid/blob/master/images/bluebank_welcome.jpg?raw=true "Login and Create Account"
 [functionality]: https://github.com/ededej/BlueBankAppAndroid/blob/master/images/bluebank_functionality.jpg?raw=true "Functionality"

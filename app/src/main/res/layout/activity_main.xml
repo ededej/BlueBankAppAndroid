@@ -100,9 +100,19 @@
                 android:textAppearance="@style/TextAppearance.AppCompat.Body2"
                 android:textSize="16sp" />
 
+            <ImageView
+                android:id="@+id/fingerprint"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignTop="@+id/passwordInput"
+                app:srcCompat="@drawable/ic_fingerprint_black"
+                android:onClick="fingerToast"/>
+
             <EditText
                 android:id="@+id/passwordInput"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentEnd="true"

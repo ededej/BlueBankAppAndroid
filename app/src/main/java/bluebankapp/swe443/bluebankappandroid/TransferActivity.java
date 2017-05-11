@@ -1,8 +1,11 @@
 package bluebankapp.swe443.bluebankappandroid;
 
+import android.Manifest;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -73,6 +76,16 @@ public class TransferActivity extends AppCompatActivity implements ZXingScannerV
     }
 //
     public void doReadClick(View v){
+
+        // Biometrics on all qualifying devices.
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            requestPermissions(new String[]{Manifest.permission.CAMERA}, 1337);
+
+            if (checkSelfPermission(Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED){
+                return;
+            }
+        }
+
         mScannerView = new ZXingScannerView(this);   // Programmatically initialize the scanner view
         setContentView(mScannerView);
 

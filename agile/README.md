@@ -23,9 +23,9 @@ Outside of stand-ups and in-person meetings, we frequently communicate on Slack 
 
 Our team uses a burndown chart to track overall progress during each sprint. The hours in the burndown chart are derived from logs in the kanban directory. Within each task inside the kanban directory, there are logs of hours spent on the task by developers.
 
-A sprint lasts two weeks. Our team comes up with a project backlog of tasks we need to accomplish according to the scenarios we wrote. We then decide which tasks should be completed by the end of the sprint. Each task has an initial estimate that can change. You can also add new tasks to the sprint if necessary. The burndown chart is created with Microsoft Excel.
+A sprint lasts two weeks. Our team comes up with a project backlog of tasks we need to accomplish according to the scenarios we wrote. We then decide which tasks should be completed by the end of the sprint. Each task has an initial estimate that can change. You can also add new tasks to the sprint if necessary. The burndown chart is created with Microsoft Excel. A screenshot of one of the sprint's burndown charts is provided below:
 
-![Burndown Chart Image](LINK HERE)
+![Burndown Chart Example Image](https://github.com/ededej/BlueBankAppAndroid/blob/master/images/bluebank_burndownexample.jpg?raw=true)
 
 
 ## Kanban
